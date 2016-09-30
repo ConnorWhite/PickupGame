@@ -53,6 +53,3 @@
         <input type="submit" />
       </form>
     </div>
-
-<?php
-  include 'footer.php';

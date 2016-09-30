@@ -1,5 +1,6 @@
 DatabaseInterface.php
-  TODO: getCourts($lat, $lon, $range) Return all Courts within $range of ($lat, $lon)
+  TODO: addCourt()
+  TODO: addGame()
 
 DatabaseManager.php
 
@@ -14,4 +15,7 @@ index.php
 
 map.php
   TODO: Display all courts --> Ronny
-  TODO: Create plus button for adding a new court -->
+  TODO: Create plus button for adding a new court
+
+mygame.php
+  TODO: make this file --> Connor

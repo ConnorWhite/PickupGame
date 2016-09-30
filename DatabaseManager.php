@@ -1,27 +1,36 @@
 <?php
 	/* Functions:
-	 * getRow($table, $cols, $ids) - Get the first row in '$table' where each column '$cols' matches the corresponding value in '$ids'
-	 * getRows($table, $col, $id) - Get all rows in '$table' where each column '$col' matches '$id'
-	 * addRow($table, $col, $id) - Add a row to '$table' where each column in '$cols' is set to the corresponding value in '$values'
+	 * getRow($table, $cols, $vals) - Get the first row in '$table' where each column '$cols' matches the corresponding value in '$vals'
+	 * getRows($table, $cols, $vals) - Get all rows in '$table' where each column '$cols' matches '$vals'
+	 * addRow($table, $cols, $vals) - Add a row to '$table' where each column in '$cols' is set to the corresponding value in '$vals'
+	 * getRowsByRange($table, $cols, $vals, $ranges) - Returns all rows in '$table' where each column in '$cols' is within '$vals' +/- '$ranges'
 	 */
 
-	//Returns the first row in '$table' where each column '$cols' matches the corresponding value in '$ids'
-	function getRow($table, $cols, $ids){
-		$result = getResult($table, $cols, $ids);
+	//Returns the first row in '$table' where each column '$cols' matches the corresponding value in '$vals'
+	function getRow($table, $cols, $vals){
+		$result = getResult($table, $cols, $vals);
 		$row = mysqli_fetch_assoc($result);
 		mysqli_free_result($result);
 		return $row;
 	}
 
-	//Return all rows in '$table' where each column '$col' matches '$id'
-	function getRows($table, $col, $id){
-		$result = getResult($table, $col, $id);
+	//Return all rows in '$table' where each column '$col' matches '$vals'
+	function getRows($table, $cols, $vals){
+		$result = getResult($table, $cols, $vals);
 		$rows = mysqli_fetch_all($result, MYSQLI_ASSOC);
 		mysqli_free_result($result);
 		return $rows;
 	}
 
-	//Add a row to '$table' where each column in '$cols' is set to the corresponding value in '$values'
+	//Returns all rows in '$table' where each column in '$cols' is within '$vals' +/- '$ranges'
+	function getRowsByRange($table, $cols, $vals, $ranges){
+		$result = getResultByRange($table, $cols, $vals, $ranges);
+		$rows = mysqli_fetch_all($result, MYSQLI_ASSOC);
+		mysqli_free_result($result);
+		return $rows;
+	}
+
+	//Add a row to '$table' where each column in '$cols' is set to the corresponding value in '$vals'
 	function addRow($table, $cols, $vals){
 		$conn = getConnection();
 
@@ -58,7 +67,7 @@
 		$sql = "SELECT * FROM " . $table . " WHERE ";
 		if(is_array($cols) && is_array($vals)){//if cols and vals are arrays
 			for($c = 0; $c<count($cols) && $c<count($vals); $c++){//for each column
-				$sql = $sql . "`" . $cols[$c]. "` = '" . $vals[$c] . "'";
+				$sql = $sql . "`" . $cols[$c] . "` = '" . $vals[$c] . "'";
 				if(($c + 1) < count($cols)){
 					$sql = $sql . " AND ";
 				}
@@ -67,6 +76,29 @@
 			$cols = arrayToVar($cols);
 			$vals = arrayToVar($vals);
 			$sql = $sql . "`" . $cols . "` = '" . $vals . "'";
+		}
+
+		$result = mysqli_query($conn, $sql);
+		mysqli_close($conn);
+
+		return $result;
+	}
+
+	function getResultByRange($table, $cols, $vals, $ranges){
+		$conn = getConnection();
+
+		$sql = "SELECT * FROM " . $table . " WHERE ";
+		if(is_array($cols) && is_array($vals) && is_array($ranges)){//if cols and vals are arrays
+			for($c = 0; $c<count($cols) && $c<count($vals); $c++){//for each column
+				$sql = $sql . "`" . $cols[$c]. "` <= '" . ($vals[$c]+$ranges[$c]) . "' AND `" . $cols[$c]. "` >= '" . ($vals[$c]-$ranges[$c]) . "'";
+				if(($c + 1) < count($cols)){
+					$sql = $sql . " AND ";
+				}
+			}
+		} else {//If cols and vals are variables
+			$cols = arrayToVar($cols);
+			$vals = arrayToVar($vals);
+			$sql = $sql . "`" . $cols . "` <= '" . ($vals+$ranges) . "' AND `" . $cols . "` >= '" . ($vals-$ranges) . "'";
 		}
 
 		$result = mysqli_query($conn, $sql);
