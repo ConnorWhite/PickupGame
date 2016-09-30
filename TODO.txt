@@ -1,1 +1,7 @@
 Test
+Connor
+Ronny's line of TODO documentation
+another conflict
+
+
+Test out the new algorithm
