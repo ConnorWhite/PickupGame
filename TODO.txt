@@ -1,7 +1,17 @@
-Test
-Connor
-Ronny's line of TODO documentation
-another conflict
+DatabaseInterface.php
+  TODO: getCourts($lat, $lon, $range) Return all Courts within $range of ($lat, $lon)
 
+DatabaseManager.php
 
-Test out the new algorithm
+footer.php
+  TODO
+
+head.php
+
+header.php
+
+index.php
+
+map.php
+  TODO: Display all courts --> Ronny
+  TODO: Create plus button for adding a new court -->
