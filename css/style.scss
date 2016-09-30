@@ -1,0 +1,75 @@
+//Styles
+
+$barHeight: 48px;
+$lightColor: #fff;
+$darkColor: #333;
+
+//TODO: CSS reset (check all other browsers)
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100%;
+}
+
+header {
+  position: fixed;
+  background-color: $lightColor;
+  height: $barHeight;
+  width: 100%;
+  z-index: 10;
+
+  h1 {
+    color: $darkColor;
+    display: inline-block;
+  }
+  ul {
+    display: inline-block;
+    float: right;
+    list-style-type: none;
+  }
+}
+
+footer {
+  position: fixed;
+  background-color: $darkColor;
+  height: $barHeight;
+  bottom: 0px;
+  z-index: 9;
+  width: 100%;
+}
+
+h1 {
+  margin: 0;
+}
+
+.wrap {
+  width: 80%;
+  margin: 0 auto;
+}
+
+#login {
+  background-image: url("/PickupGame/img/basketball.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  height: 100%;
+  width: 100%;
+
+  h1 {
+    color: $lightColor;
+  }
+  .error {
+    color: red;
+    padding-left: 10px;
+  }
+}
+
+#map {
+  width: 100%;
+  top: $barHeight;
+}
