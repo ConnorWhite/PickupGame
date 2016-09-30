@@ -1,11 +1,27 @@
+court.php
+  TODO: HTML Structure
+  TODO: List of games (Time/day, #ofplayers)
+
 DatabaseInterface.php
-  TODO: addCourt()
-  TODO: addGame()
+  TODO: addCourt($name, $longitude, $latitude)
+  TODO: addGame($name, $courtID, $date)
+  TODO: getGamesByPlayer($playerID)
+  TODO: getGamesByCourt($courtID)
+  TODO: getPlayers($gameID)
+  TODO: getMessages($gameID)
+  TODO: addMessage($playerID, $gameID, $content, NOW())
 
 DatabaseManager.php
 
 footer.php
   TODO
+
+game.php
+  TODO: HTML Structure
+  TODO: Game info (court, time/day)
+  TODO: List of players
+  TODO: Display messages
+  TODO: Post a message
 
 head.php
 
@@ -14,8 +30,15 @@ header.php
 index.php
 
 map.php
-  TODO: Display all courts --> Ronny
   TODO: Create plus button for adding a new court
 
-mygame.php
-  TODO: make this file --> Connor
+map.js
+  TODO: Display all courts --> Ronny
+  TODO: Add new courts
+
+mygames.php
+  TODO: HTML Structure
+  TODO: List of games (GAME, COURT, TIME/DAY, #ofPlayers)
+
+mygames.js
+  TODO: Remove My Games link from menu
