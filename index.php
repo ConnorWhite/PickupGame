@@ -5,8 +5,8 @@
   if($_SERVER["REQUEST_METHOD"] == "POST") {
     $name = test_input($_POST["name"]);
     $pass = test_input($_POST["pass"]);
-
-    if(empty($name))
+    
+	if(empty($name))
       $nameErr = "* Required";
     else
       $nameErr = "";
@@ -16,7 +16,7 @@
       $passErr = "";
 
     if(empty($nameErr) && empty($passErr)){//No errors
-      $player = getPlayer($name);
+      $player = getPlayerByName($name);
 
       if(empty($player)){//If username is not taken
         addPlayer($name, $pass);
