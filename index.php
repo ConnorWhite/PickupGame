@@ -48,7 +48,7 @@
       <h1>Pickup Game</h1>
       <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" accept-charset="UTF-8">
         <input type="text" name="name" placeholder="Username" /><span class="error"><?php echo $nameErr ?></span><br />
-        <input type="text" name="pass" placeholder="Password" /><span class="error"><?php echo $passErr ?></span><br />
+        <input type="password" name="pass" placeholder="Password" /><span class="error"><?php echo $passErr ?></span><br />
         <input type="submit" />
       </form>
     </div>
