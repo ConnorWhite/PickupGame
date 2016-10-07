@@ -1,8 +1,12 @@
 <?php
   include 'DatabaseManager.php';
+  
+  function getPlayerById($playerID){
+    return getRow("Player", "ID", $playerID);
+  }
 
-  function getPlayer($name){
-    return getRow("Player", "Name", $name);
+  function getPlayerByName($name){
+   return getRow("Player", "Name", $name);
   }
   function addPlayer($name, $pass){
     addRow("Player", array("Name", "Password"), array($name, $pass));

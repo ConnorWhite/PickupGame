@@ -1,7 +1,7 @@
 <?php
 	include 'pattern/Observer.php';
 
-	class Game implements Subject {
+	class Chat implements Subject {
 		private $id = -1; // uninitialized
 		private $name;
 

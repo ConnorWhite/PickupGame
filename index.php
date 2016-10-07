@@ -1,6 +1,5 @@
 <?php
   include 'DatabaseInterface.php';
-
   $nameErr = $passErr = "";
 
   if($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -43,7 +42,7 @@
     header('Location: map.php');
   }
 
-  include 'Head.php'
+  include 'head.php'
 ?>
     <div id="login">
       <h1>Pickup Game</h1>
