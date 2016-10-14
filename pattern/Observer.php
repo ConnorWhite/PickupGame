@@ -11,5 +11,3 @@
 		public function unregister(Observer $observer);
 		public function notify();
 	}
-
-

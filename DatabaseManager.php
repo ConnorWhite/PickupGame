@@ -57,7 +57,9 @@
 		echo($sql);
 
 		mysqli_query($conn, $sql);
+		$pid = mysqli_insert_id($conn);
 		mysqli_close($conn);
+		return $pid;
 	}
 
 	//Returns a result from '$table' where the value in each column in '$col' matches the corresponding value in '$vals'
