@@ -19,7 +19,8 @@
       $player = getPlayerByName($name);
 
       if(empty($player)){//If username is not taken
-        addPlayer($name, $pass);
+        $pid = addPlayer($name, $pass);
+		error_log("$name's player id: $pid");
         login($player);
       } else if($player['Password'] == $pass){//correct password
         login($player);

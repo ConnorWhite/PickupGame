@@ -9,7 +9,7 @@
     return getRow("Player", "Name", $name);
   }
   function addPlayer($name, $pass){
-    addRow("Player", array("Name", "Password"), array($name, $pass));
+    return addRow("Player", array("Name", "Password"), array($name, $pass));
   }
   //Return all Courts within $range of ($lat, $lon)
   function getCourts($longitude, $latitude, $ranges){
