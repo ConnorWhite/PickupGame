@@ -21,9 +21,9 @@
       if(empty($player)){//If username is not taken
         $pid = addPlayer($name, $pass);
 		error_log("$name's player id: $pid");
-        login($player['name']);
+        login($player['Name']);
       } else if($player['Password'] == $pass){//correct password
-        login($player['name']);
+        login($player['Name']);
       } else { //incorrect password OR username taken
         $passErr = "* Incorrect password, or username is taken";
       }
@@ -38,10 +38,9 @@
   }
 
   function login($name){
-    session_start();
+    echo $name;
     $_SESSION['username'] = $name;
     header('Location: map.php');
-    exit();
   }
 
   include 'head.php'

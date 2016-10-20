@@ -1,6 +1,5 @@
 <?php
   include 'header.php';
-  echo $_SESSION['username'];
 ?>
 
 <div id="map">
