@@ -1,9 +1,5 @@
-<?php
-
-?>
-  <!DOCTYPE html>
-    <html>
-
+<!DOCTYPE html>
+  <html>
     <head>
       <title>Pickup Game</title>
       <meta name="description" content="Create and join basketball games at your local courts!" />
