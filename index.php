@@ -1,11 +1,11 @@
 <?php
-  include 'DatabaseInterface.php';
+  include 'DatabaseAdapter.php';
   $nameErr = $passErr = "";
 
   if($_SERVER["REQUEST_METHOD"] == "POST") {
     $name = test_input($_POST["name"]);
     $pass = test_input($_POST["pass"]);
-    
+
 	if(empty($name))
       $nameErr = "* Required";
     else
@@ -21,9 +21,9 @@
       if(empty($player)){//If username is not taken
         $pid = addPlayer($name, $pass);
 		error_log("$name's player id: $pid");
-        login($player);
+        login($player['name']);
       } else if($player['Password'] == $pass){//correct password
-        login($player);
+        login($player['name']);
       } else { //incorrect password OR username taken
         $passErr = "* Incorrect password, or username is taken";
       }
@@ -41,6 +41,7 @@
     session_start();
     $_SESSION['username'] = $name;
     header('Location: map.php');
+    exit();
   }
 
   include 'head.php'
