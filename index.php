@@ -1,4 +1,5 @@
 <?php
+  session_start();
   include 'DatabaseAdapter.php';
   $nameErr = $passErr = "";
 
@@ -43,7 +44,7 @@
     header('Location: map.php');
   }
 
-  include 'head.php'
+  include 'head.php';
 ?>
     <div id="login">
       <h1>Pickup Game</h1>

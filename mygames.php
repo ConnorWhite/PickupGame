@@ -1,3 +1,3 @@
 <?php
-
-//TODO
+  $title = "My Games";
+  include 'header.php';
