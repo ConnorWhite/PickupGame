@@ -49,7 +49,7 @@
     return $games;
   }
   // Input: Name, Longitude, Latitude
-  // Output: courtID
+  // Output: courtID Test
   function addCourt($name, $long, $lat){
     return addRow(COURT_TABLE, array("Name", "Longitude", "Latitude"), array($name, $long, $lat));
   }
