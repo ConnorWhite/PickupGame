@@ -1,8 +1,6 @@
-/* 
-Created by: Kenrick Beckett
-
-Name: Chat Engine
-*/
+/** Chat Engine
+ * date: 10/21/16
+ */
 
 var instanse = false;
 var state;
@@ -32,8 +30,8 @@ function getStateOfChat(){
 				   state = data.state;
 				   instanse = false;
 			   },
-			});
-	}	 
+		});
+	} return instanse;	 
 }
 
 //Updates the chat
@@ -55,7 +53,8 @@ function updateChat(){
                             $('#chat-area').append($("<p>"+ data.text[i] +"</p>"));
                         }								  
 				   }
-				   document.getElementById('chat-area').scrollTop = document.getElementById('chat-area').scrollHeight;
+				   document.getElementById('chat-area').scrollTop = 
+				   		document.getElementById('chat-area').scrollHeight;
 				   instanse = false;
 				   state = data.state;
 			   },
@@ -63,12 +62,11 @@ function updateChat(){
 	 }
 	 else {
 		 setTimeout(updateChat, 1500);
-	 }
+	 } return instanse;
 }
 
 //send the message
-function sendChat(message, nickname)
-{       
+function sendChat(message, nickname){       
     updateChat();
      $.ajax({
 		   type: "POST",
@@ -85,3 +83,4 @@ function sendChat(message, nickname)
 		   },
 		});
 }
+
