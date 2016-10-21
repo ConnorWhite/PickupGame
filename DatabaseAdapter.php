@@ -13,6 +13,19 @@
     return addRow(PLAYER_TABLE, array("Name", "Password"), array($name, $pass));
   }
 
+  // Input: gameID
+  // Output: array of players associated with GameID
+  function getPlayers($gameID)
+  {
+    $playerGameMap = getRows(PLAYER_GAME_TABLE, "gameID", $gameID);
+    $players = array();
+    foreach ($playerGameMap as $playerGame){
+      $player = getPlayerByID($playerGame["PlayerID"]);
+      array_push($players, $player);
+    }
+    return $players;
+  }
+
   //Input: player name
   //Ouput: player
   function getPlayerByName($name){
