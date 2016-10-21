@@ -25,6 +25,12 @@
     return getRow(PLAYER_TABLE, "ID", $id);
   }
 
+  //Input: game
+  //Output: gameID
+  function addGame($name, $date, $courtID) {
+    return addRow(GAME_TABLE, array("Name", "Date", "CourtID"), array($name, $date, $courtID));
+  }
+
   //Input: game ID
   //Ouput: game
   function getGameByID($id){
@@ -41,6 +47,11 @@
       array_push($games, $game);
     }
     return $games;
+  }
+  // Input: Name, Longitude, Latitude
+  // Output: courtID Test
+  function addCourt($name, $long, $lat){
+    return addRow(COURT_TABLE, array("Name", "Longitude", "Latitude"), array($name, $long, $lat));
   }
 
   //Input: courtID
