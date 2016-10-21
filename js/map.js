@@ -10,5 +10,7 @@ function initMap() {
   var headerHeight = document.getElementById("header").clientHeight;
   var footerHeight = document.getElementById("footer").clientHeight;
   document.getElementById('map').style.height = (window.innerHeight - headerHeight - footerHeight) + 'px';
+  //Set header position to fixed
+  document.getElementById("header").style.position = "fixed";
   //TODO: remove 'Map' from menu
 }
