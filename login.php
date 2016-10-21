@@ -34,7 +34,7 @@ function onSignIn(googleUser) {
 
     xmlhttp.onreadystatechange = function() {
         if (xmlhttp.readyState == XMLHttpRequest.DONE) {
-            var win = window.open('map.php');
+            var win = window.location.replace('map.php');
         }
     }
 
