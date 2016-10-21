@@ -25,6 +25,12 @@
     return getRow(PLAYER_TABLE, "ID", $id);
   }
 
+  //Input: game
+  //Output: gameID
+  function addGame($name, $date, $courtID) {
+    return addRow(GAME_TABLE, array("Name", "Date", "CourtID"), array($name, $date, $courtID));
+  }
+
   //Input: game ID
   //Ouput: game
   function getGameByID($id){
