@@ -1,6 +1,7 @@
-/** Chat.js
- forwards requests for our chat
- to the processing class
+/* 
+Created by: Kenrick Beckett
+
+Name: Chat Engine
 */
 
 var instanse = false;
@@ -66,7 +67,8 @@ function updateChat(){
 }
 
 //send the message
-function sendChat(message, nickname){       
+function sendChat(message, nickname)
+{       
     updateChat();
      $.ajax({
 		   type: "POST",
