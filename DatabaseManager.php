@@ -6,6 +6,11 @@
 	 * getRowsByRange($table, $cols, $vals, $ranges) - Returns all rows in '$table' where each column in '$cols' is within '$vals' +/- '$ranges'
 	 */
 
+	 define("SERVERNAME", "mysql.connorwhite.org");
+	 define("USERNAME", "ee461l_team");
+	 define("PASSWORD", "c8XCrjcnss9E6fBX");
+	 define("DATABASE", "pickupgame_db");
+
 	//Returns the first row in '$table' where each column '$cols' matches the corresponding value in '$vals'
 	function getRow($table, $cols, $vals){
 		$result = getResult($table, $cols, $vals);
@@ -117,12 +122,7 @@
 
 	//Returns a connection to the database
 	function getConnection(){
-		$servername = "mysql.connorwhite.org";
-		$username = "ee461l_team";
-		$password = "c8XCrjcnss9E6fBX";
-		$database = "pickupgame_db";
-
-		$conn = new mysqli($servername, $username, $password, $database);
+		$conn = new mysqli(SERVERNAME, USERNAME, PASSWORD, DATABASE);
 		if($conn->connect_error) {
 			die("Connection failed: " . $conn->connect_error);
 		}

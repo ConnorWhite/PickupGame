@@ -5,7 +5,6 @@ court.php
 DatabaseInterface.php
   TODO: addCourt($name, $longitude, $latitude)
   TODO: addGame($name, $courtID, $date)
-  TODO: getGamesByPlayer($playerID)
   TODO: getGamesByCourt($courtID)
   TODO: getPlayers($gameID)
   TODO: getMessages($gameID)
@@ -26,6 +25,7 @@ game.php
 head.php
 
 header.php
+  TODO: on logout, reset $_SESSION['playerID']
 
 index.php
 
@@ -37,8 +37,8 @@ map.js
   TODO: Add new courts
 
 mygames.php
-  TODO: HTML Structure
-  TODO: List of games (GAME, COURT, TIME/DAY, #ofPlayers)
+  TODO: make game title a link to game.php. Pass game ID as a session variable.
+  TODO: make court a link to court.php. Pass court ID as a session variable.
 
 mygames.js
   TODO: Remove My Games link from menu
