@@ -4,7 +4,7 @@
   <header id="header">
     <div class="wrap">
       <h1>
-        <a href="/PickupGame/map.php"><?php echo $title; ?></a>
+        <?php echo $title; ?>
       </h1>
       <ul>
         <li>
