@@ -3,10 +3,16 @@
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
     $function = $_POST['function'];
 	$id = $_POST['id'];
-    
+
     $log = array();
-    
+
     switch($function) {
+        
+		case('addCourt'):
+        break;
+
+        case('getCourt'):
+        break;
     
     	 case('getChatState'):
 		 	 $chatlog = "chat/logs/$id.txt";
@@ -26,7 +32,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
         	 if($state == $count){
         		 $log['state'] = $state;
         		 $log['text'] = false;
-        		 
+
         		 }
         		 else{
         			 $text= array();
@@ -36,13 +42,11 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
         				   if($line_num >= $state){
                          $text[] =  $line = str_replace("\n", "", $line);
         				   }
-         
+
                         }
-        			 $log['text'] = $text; 
+        			 $log['text'] = $text;
         		 }
-        	  
-             break;
-    	 
+
     	 case('sendChat'):
 			$chatlog = "chat/logs/$id.txt";
 			$nickname = htmlentities(strip_tags($_POST['nickname']));

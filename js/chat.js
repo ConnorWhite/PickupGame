@@ -21,7 +21,7 @@ function getStateOfChat(){
 			   type: "POST",
 			   url: "process.php",
 			   data: {  
-			   			'function': 'getState',
+			   			'function': 'getChatState',
 						'id': 'chat'
 						},
 			   dataType: "json",
@@ -42,7 +42,7 @@ function updateChat(){
 			   type: "POST",
 			   url: "process.php",
 			   data: {  
-			   			'function': 'update',
+			   			'function': 'updateChat',
 						'state': state,
 						'id': 'chat'
 						},
@@ -72,7 +72,7 @@ function sendChat(message, nickname){
 		   type: "POST",
 		   url: "process.php",
 		   data: {  
-		   			'function': 'send',
+		   			'function': 'sendChat',
 					'message': message,
 					'nickname': nickname,
 					'id': 'chat'
