@@ -1,6 +1,6 @@
 <?php
   session_start();
-  include 'DatabaseAdapter.php';
+  include 'DatabaseFacade.php';
   $nameErr = $passErr = "";
 
   if($_SERVER["REQUEST_METHOD"] == "POST") {

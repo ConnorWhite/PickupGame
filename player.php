@@ -1,6 +1,6 @@
 <?php
 	include 'pattern/Observer.php';
-	class Chat implements Observer {
+	class Player implements Observer {
 		private $id = -1; // same as player id
 		private $name;
 		private $games = array();
@@ -18,19 +18,6 @@
 			array('subject' => $subject, 'notification' => $notification);
 		}
 
-		public function register(Observer $player) {
-			$players[$player->id] = $player;
-		}
-
-		public function unregister(Observer $player) {
-			unset($players[$player->id]);
-		}
-
-		public function notify(){
-			foreach($players as $player){
-				$player->update();
-			}
-		}
 	}
 
 ?>

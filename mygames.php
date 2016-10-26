@@ -1,7 +1,7 @@
 <?php
   session_start();
 
-  include "DatabaseAdapter.php";
+  include "DatabaseFacade.php";
   $games = getGamesByPlayerID($_SESSION['playerID']);
 
   $title = "My Games";

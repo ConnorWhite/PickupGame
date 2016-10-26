@@ -3,7 +3,7 @@
 
 	session_start();
 	//include 'pattern/Observer.php';
-	include 'DatabaseAdapter.php';
+	include 'DatabaseFacade.php';
 
 	// Set in gameID
 	//$gameID = $_SESSION['gameID'];

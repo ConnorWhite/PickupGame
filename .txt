@@ -29,3 +29,16 @@
 <span>conn</span>cool chat bro 
 <span>ronn</span>thanks 
 <span>conn</span>g2g 
+<span>ronny</span>ronny's 
+<span>ronny</span>very nice 
+<span>ronny</span>chat application 
+<span>george</span>good job dude 
+<span>george</span>I really likw how it was implemented 
+<span>ronny</span>lol, thanks! 
+<span>ronny</span>I appreciate it! 
+<span>George</span>Hey Ron, can you play ball tonight? 
+<span>Ronny</span>Um, maybe. What time did you have in mind? 
+<span>George</span>Hmm, I was hoping we could play around 7 p.m. 
+<span>Ronny</span>One second, let me check my schedule. 
+<span>Ronny</span>Sorry, I don't know if I can make it. 
+<span>Ronny</span>I have a test on Friday :( 
