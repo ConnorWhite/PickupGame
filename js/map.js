@@ -35,13 +35,17 @@ function addCourt(marker) {
   if(confirm("Adding New Court"))
   {
     // call php function databaseFacade-> add court data
+    // display new court pin on map
   }
 
 }
 
+// Function that stores all courts
+// currently in the database, as markers
+// in the courtDisplayMarkers array
 function initCourtDisplayMarkers()
 {
-
+  
 }
 
 // Function that is added as a listener
