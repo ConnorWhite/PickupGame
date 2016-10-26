@@ -22,7 +22,7 @@ function getStateOfChat(){
 			   url: "process.php",
 			   data: {  
 			   			'function': 'getState',
-						'file': file
+						'id': 'chat'
 						},
 			   dataType: "json",
 			
@@ -44,7 +44,7 @@ function updateChat(){
 			   data: {  
 			   			'function': 'update',
 						'state': state,
-						'file': file
+						'id': 'chat'
 						},
 			   dataType: "json",
 			   success: function(data){
@@ -75,7 +75,7 @@ function sendChat(message, nickname){
 		   			'function': 'send',
 					'message': message,
 					'nickname': nickname,
-					'file': file
+					'id': 'chat'
 				 },
 		   dataType: "json",
 		   success: function(data){
