@@ -32,6 +32,7 @@ function addCourt(marker) {
 
   if(confirm("Adding New Court"))
   {
+    // call php function databaseFacade-> add court data
   }
 
 }
