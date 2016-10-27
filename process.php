@@ -6,20 +6,20 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     $log = array();
 
     switch($function) {
-        
+
 		case('addCourt'):
         break;
 
-        case('getCourt'):
+    case('getCourt'):
         break;
 
 		case('getChatState'):
-			$chatlog = "chat/logs$id.txt";
+			$chatlog = "chat/logs/$id.txt";
 			if(file_exists($chatlog)){
 				$lines = file($chatlog);
 			}
-			$log['state'] = count($lines); 
-			break;	
+			$log['state'] = count($lines);
+			break;
 
 		case('updateChat'):
 			$chatlog = "chat/logs/$id.txt";
@@ -53,8 +53,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 			if(($message) != "\n"){
 				if(preg_match($reg_exUrl, $message, $url)) {
 					$message = preg_replace($reg_exUrl, '<a href="'.$url[0].'" target="_blank">'.$url[0].'</a>', $message);
-				}		
-				fwrite(fopen("$chatlog", 'a'), "<span>". $nickname . "</span>" . $message = str_replace("\n", " ", $message) . "\n"); 
+				}
+				fwrite(fopen("$chatlog", 'a'), "<span>". $nickname . "</span>" . $message = str_replace("\n", " ", $message) . "\n");
 			}
 			break;
 	}
