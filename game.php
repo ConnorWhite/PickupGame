@@ -29,7 +29,9 @@
 
 	</div>
 
-	<?php include 'chat.php'
+	<?php include 'chat.php';
+	include 'footer.php';
+
 
 /*
 	class Game implements Subject {
@@ -60,4 +62,6 @@
 			}
 		}
 
-	} */ ?>
+	} */
+
+	?>
