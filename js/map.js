@@ -1,3 +1,5 @@
+
+
 var map;
 // In the following example, markers appear when the user clicks on the map.
 // Each marker is labeled with a single alphabetical character.
@@ -21,31 +23,48 @@ function initMap() {
   document.getElementById("header").style.position = "fixed";
   //TODO: remove 'Map' from menu
 
+  // Initialize and Display the markers for all courts in database
+  placeCourtMarker(initCourtDisplayMarkers(courtDisplayMarkers));
+
   // Ability to place marker for a new court's location
   google.maps.event.addListener(map, 'click', function(event) {
-    placeMarker(event.latLng, true, addCourtMarker);
+    addCourtMarker = placeMarker(event.latLng, true, addCourtMarker);
   });
+console.log("hello3");
 }
+
 
 // Function for handling a add court REQUEST
 // Input: marker | variable for holding the...
 // ...court data that is to be added to the database
+// returns true if user decided to add a court
+// returns false otherwise
 function addCourt(marker) {
-//  marker.location;
-  if(confirm("Adding New Court"))
+
+  if(confirm("Are you sure you want to add a new court here?"))
   {
-    // call php function databaseFacade-> add court data
     // display new court pin on map
+    //var courtName = prompt("Please enter this new court's name", "Court Name");
+    $( "#dialog" ).dialog();
+
+    marker.location;
+    // call php function databaseFacade-> add court data, with the location data and court name
+
+    // Initialize and Display the markers for all courts in database
+    // Since there is now a new court in the database
+    placeCourtMarker(initCourtDisplayMarkers(courtDisplayMarkers));
+    return true;
   }
 
+  return false;
 }
 
 // Function that stores all courts
 // currently in the database, as markers
 // in the courtDisplayMarkers array
-function initCourtDisplayMarkers()
+function initCourtDisplayMarkers(arrayOfMarkers)
 {
-  
+
 }
 
 // Function that is added as a listener
@@ -67,33 +86,34 @@ function placeCourtMarker(marker)
 // The marker is either for a potential court to be added as requested by the user
 // Or, the marker is for having a court's
 // The two use cases is determined by the courtAddFlag
+// Returns the marker, for use for adding a court
 function placeMarker(location, courtAddFlag, marker) {
-  if ( marker ) {
+
+  if(courtAddFlag) // handle placing a add court marker
+  {
+    if ( marker ) {
+      marker.setPosition(location);
+      marker.visible = true;
+    } else {
+      console.log("hello\n");
+      marker = new google.maps.Marker({
+        position: location,
+        label: "+",
+        map: map
+      });
+
+      marker.addListener('click', function(){addCourt(marker);});
+    }
+
+  }  // end if(courtAddFlag)
+  else { // or else, handle displaying a court to display
+    if(marker == null)
+    {
+      throw new Error("Why you giving me a Null marker?");
+    }
     marker.setPosition(location);
     marker.visible = true;
-  } else if(courtAddFlag == true){
-    marker = new google.maps.Marker({
-      position: location,
-      label: "+",
-      map: map
-    });
-  } else { // else if( courtAddFlag == false)
-    // In my design plan, this should never happen
-    // all markers for viewing a court should be created already
-    // in intMap()
   }
 
-  if( courtAddFlag == true ) // we know this marker is for a potential court to be added
-    marker.addListener('click', function(){addCourt(addCourtMarker);});
-  else { // we know that this marker is for a court already in the data base
-    // used for displaying that court's location on the google map
-    // click on that marker brings up the court's info text
-    // double clicking on that marker brings the user to that specific court's .php page
-    marker.addListener('click', function(marker) {
-      viewCourtInfo(marker);
-    });
-    marker.addListener('dblclick', function(marker) {
-      takeUserToTheRequestedCourtPage(marker);
-    });
-  }
+  return marker;
 }
