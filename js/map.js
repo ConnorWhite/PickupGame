@@ -37,7 +37,6 @@ function initMap() {
   	]
   });
 
-  $("#dialog").addClass("jquery_form ui-widget-header")
 
 
 
@@ -90,7 +89,7 @@ function addCourt(marker) {
 // A dialog box pops out
 // We add the court if the user presses submit
 // We don't if else
-function addCourtLevelDialog(value, courtData, addCourtMarker){
+function addCourtLevelDialog(value, courtData){
 
       if(value)
       {
