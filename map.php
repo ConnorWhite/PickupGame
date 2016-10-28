@@ -4,14 +4,29 @@
   include 'header.php';
 ?>
 
-<link rel="stylesheet" href="jquery_form/jquery-ui.min.css">
+<link rel="stylesheet" href="jquery_form/jquery-ui.css">
 <script src="jquery_form/external/jquery/jquery.js"></script>
-<script src="jquery_form/jquery-ui.min.js"></script>
+<script src="jquery_form/jquery-ui.js"></script>
+
+
+
+<div id="addCourtDialog" title="New Court Form">
+    <p>Input court name</p>
+    <input id="addCourtName" class="myInput" type="text" />
+</div>
+
+<div id="courtInfoDialog" title="New Court Form">
+    <div id="dynamicCourtInfoTextCourtName"></div>
+    <div id="dynamicCourtInfoTextCourtPlayerCount"></div>
+    <div id="dynamicCourtInfoTextCourtGameCount"></div>
+</div>
 
 <div id="map">
   <!-- TODO: Display all courts -->
   <!-- TODO: Create plus button for adding a new court -->
 </div>
+
+
 
 <?php
   include('footer.php');

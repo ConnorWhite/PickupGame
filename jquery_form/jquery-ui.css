@@ -1,19 +1,19 @@
 /*! jQuery UI - v1.12.1 - 2016-10-27
 * http://jqueryui.com
 * Includes: draggable.css, core.css, resizable.css, selectable.css, sortable.css, accordion.css, autocomplete.css, menu.css, button.css, controlgroup.css, checkboxradio.css, datepicker.css, dialog.css, progressbar.css, selectmenu.css, slider.css, spinner.css, tabs.css, tooltip.css, theme.css
-* To view and modify this theme, visit http://jqueryui.com/themeroller/?scope=jquery_form&folderName=smoothness&cornerRadiusShadow=8px&offsetLeftShadow=-8px&offsetTopShadow=-8px&thicknessShadow=8px&opacityShadow=30&bgImgOpacityShadow=0&bgTextureShadow=flat&bgColorShadow=aaaaaa&opacityOverlay=30&bgImgOpacityOverlay=0&bgTextureOverlay=flat&bgColorOverlay=aaaaaa&iconColorError=cd0a0a&fcError=cd0a0a&borderColorError=cd0a0a&bgImgOpacityError=95&bgTextureError=glass&bgColorError=fef1ec&iconColorHighlight=2e83ff&fcHighlight=363636&borderColorHighlight=fcefa1&bgImgOpacityHighlight=55&bgTextureHighlight=glass&bgColorHighlight=fbf9ee&iconColorActive=454545&fcActive=212121&borderColorActive=aaaaaa&bgImgOpacityActive=65&bgTextureActive=glass&bgColorActive=ffffff&iconColorHover=454545&fcHover=212121&borderColorHover=999999&bgImgOpacityHover=75&bgTextureHover=glass&bgColorHover=dadada&iconColorDefault=888888&fcDefault=555555&borderColorDefault=d3d3d3&bgImgOpacityDefault=75&bgTextureDefault=glass&bgColorDefault=e6e6e6&iconColorContent=222222&fcContent=222222&borderColorContent=aaaaaa&bgImgOpacityContent=75&bgTextureContent=flat&bgColorContent=ffffff&iconColorHeader=222222&fcHeader=222222&borderColorHeader=aaaaaa&bgImgOpacityHeader=75&bgTextureHeader=highlight_soft&bgColorHeader=cccccc&cornerRadius=4px&fsDefault=1.1em&fwDefault=normal&ffDefault=Verdana%2CArial%2Csans-serif
+* To view and modify this theme, visit http://jqueryui.com/themeroller/?scope=.jquery_form&folderName=smoothness&cornerRadiusShadow=8px&offsetLeftShadow=-8px&offsetTopShadow=-8px&thicknessShadow=8px&opacityShadow=30&bgImgOpacityShadow=0&bgTextureShadow=flat&bgColorShadow=aaaaaa&opacityOverlay=30&bgImgOpacityOverlay=0&bgTextureOverlay=flat&bgColorOverlay=aaaaaa&iconColorError=cd0a0a&fcError=cd0a0a&borderColorError=cd0a0a&bgImgOpacityError=95&bgTextureError=glass&bgColorError=fef1ec&iconColorHighlight=2e83ff&fcHighlight=363636&borderColorHighlight=fcefa1&bgImgOpacityHighlight=55&bgTextureHighlight=glass&bgColorHighlight=fbf9ee&iconColorActive=454545&fcActive=212121&borderColorActive=aaaaaa&bgImgOpacityActive=65&bgTextureActive=glass&bgColorActive=ffffff&iconColorHover=454545&fcHover=212121&borderColorHover=999999&bgImgOpacityHover=75&bgTextureHover=glass&bgColorHover=dadada&iconColorDefault=888888&fcDefault=555555&borderColorDefault=d3d3d3&bgImgOpacityDefault=75&bgTextureDefault=glass&bgColorDefault=e6e6e6&iconColorContent=222222&fcContent=222222&borderColorContent=aaaaaa&bgImgOpacityContent=75&bgTextureContent=flat&bgColorContent=ffffff&iconColorHeader=222222&fcHeader=222222&borderColorHeader=aaaaaa&bgImgOpacityHeader=75&bgTextureHeader=highlight_soft&bgColorHeader=cccccc&cornerRadius=4px&fsDefault=1.1em&fwDefault=normal&ffDefault=Verdana%2CArial%2Csans-serif
 * Copyright jQuery Foundation and other contributors; Licensed MIT */
 
-jquery_form .ui-draggable-handle {
+.jquery_form .ui-draggable-handle {
 	-ms-touch-action: none;
 	touch-action: none;
 }
 /* Layout helpers
 ----------------------------------*/
-jquery_form .ui-helper-hidden {
+.jquery_form .ui-helper-hidden {
 	display: none;
 }
-jquery_form .ui-helper-hidden-accessible {
+.jquery_form .ui-helper-hidden-accessible {
 	border: 0;
 	clip: rect(0 0 0 0);
 	height: 1px;
@@ -23,7 +23,7 @@ jquery_form .ui-helper-hidden-accessible {
 	position: absolute;
 	width: 1px;
 }
-jquery_form .ui-helper-reset {
+.jquery_form .ui-helper-reset {
 	margin: 0;
 	padding: 0;
 	border: 0;
@@ -33,16 +33,16 @@ jquery_form .ui-helper-reset {
 	font-size: 100%;
 	list-style: none;
 }
-jquery_form .ui-helper-clearfix:before,
-jquery_form .ui-helper-clearfix:after {
+.jquery_form .ui-helper-clearfix:before,
+.jquery_form .ui-helper-clearfix:after {
 	content: "";
 	display: table;
 	border-collapse: collapse;
 }
-jquery_form .ui-helper-clearfix:after {
+.jquery_form .ui-helper-clearfix:after {
 	clear: both;
 }
-jquery_form .ui-helper-zfix {
+.jquery_form .ui-helper-zfix {
 	width: 100%;
 	height: 100%;
 	top: 0;
@@ -52,14 +52,14 @@ jquery_form .ui-helper-zfix {
 	filter:Alpha(Opacity=0); /* support: IE8 */
 }
 
-jquery_form .ui-front {
+.jquery_form .ui-front {
 	z-index: 100;
 }
 
 
 /* Interaction Cues
 ----------------------------------*/
-jquery_form .ui-state-disabled {
+.jquery_form .ui-state-disabled {
 	cursor: default !important;
 	pointer-events: none;
 }
@@ -67,7 +67,7 @@ jquery_form .ui-state-disabled {
 
 /* Icons
 ----------------------------------*/
-jquery_form .ui-icon {
+.jquery_form .ui-icon {
 	display: inline-block;
 	vertical-align: middle;
 	margin-top: -.25em;
@@ -77,7 +77,7 @@ jquery_form .ui-icon {
 	background-repeat: no-repeat;
 }
 
-jquery_form .ui-widget-icon-block {
+.jquery_form .ui-widget-icon-block {
 	left: 50%;
 	margin-left: -8px;
 	display: block;
@@ -87,97 +87,97 @@ jquery_form .ui-widget-icon-block {
 ----------------------------------*/
 
 /* Overlays */
-jquery_form .ui-widget-overlay {
+.jquery_form .ui-widget-overlay {
 	position: fixed;
 	top: 0;
 	left: 0;
 	width: 100%;
 	height: 100%;
 }
-jquery_form .ui-resizable {
+.jquery_form .ui-resizable {
 	position: relative;
 }
-jquery_form .ui-resizable-handle {
+.jquery_form .ui-resizable-handle {
 	position: absolute;
 	font-size: 0.1px;
 	display: block;
 	-ms-touch-action: none;
 	touch-action: none;
 }
-jquery_form .ui-resizable-disabled .ui-resizable-handle,
-jquery_form .ui-resizable-autohide .ui-resizable-handle {
+.jquery_form .ui-resizable-disabled .ui-resizable-handle,
+.jquery_form .ui-resizable-autohide .ui-resizable-handle {
 	display: none;
 }
-jquery_form .ui-resizable-n {
+.jquery_form .ui-resizable-n {
 	cursor: n-resize;
 	height: 7px;
 	width: 100%;
 	top: -5px;
 	left: 0;
 }
-jquery_form .ui-resizable-s {
+.jquery_form .ui-resizable-s {
 	cursor: s-resize;
 	height: 7px;
 	width: 100%;
 	bottom: -5px;
 	left: 0;
 }
-jquery_form .ui-resizable-e {
+.jquery_form .ui-resizable-e {
 	cursor: e-resize;
 	width: 7px;
 	right: -5px;
 	top: 0;
 	height: 100%;
 }
-jquery_form .ui-resizable-w {
+.jquery_form .ui-resizable-w {
 	cursor: w-resize;
 	width: 7px;
 	left: -5px;
 	top: 0;
 	height: 100%;
 }
-jquery_form .ui-resizable-se {
+.jquery_form .ui-resizable-se {
 	cursor: se-resize;
 	width: 12px;
 	height: 12px;
 	right: 1px;
 	bottom: 1px;
 }
-jquery_form .ui-resizable-sw {
+.jquery_form .ui-resizable-sw {
 	cursor: sw-resize;
 	width: 9px;
 	height: 9px;
 	left: -5px;
 	bottom: -5px;
 }
-jquery_form .ui-resizable-nw {
+.jquery_form .ui-resizable-nw {
 	cursor: nw-resize;
 	width: 9px;
 	height: 9px;
 	left: -5px;
 	top: -5px;
 }
-jquery_form .ui-resizable-ne {
+.jquery_form .ui-resizable-ne {
 	cursor: ne-resize;
 	width: 9px;
 	height: 9px;
 	right: -5px;
 	top: -5px;
 }
-jquery_form .ui-selectable {
+.jquery_form .ui-selectable {
 	-ms-touch-action: none;
 	touch-action: none;
 }
-jquery_form .ui-selectable-helper {
+.jquery_form .ui-selectable-helper {
 	position: absolute;
 	z-index: 100;
 	border: 1px dotted black;
 }
-jquery_form .ui-sortable-handle {
+.jquery_form .ui-sortable-handle {
 	-ms-touch-action: none;
 	touch-action: none;
 }
-jquery_form .ui-accordion .ui-accordion-header {
+.jquery_form .ui-accordion .ui-accordion-header {
 	display: block;
 	cursor: pointer;
 	position: relative;
@@ -185,59 +185,59 @@ jquery_form .ui-accordion .ui-accordion-header {
 	padding: .5em .5em .5em .7em;
 	font-size: 100%;
 }
-jquery_form .ui-accordion .ui-accordion-content {
+.jquery_form .ui-accordion .ui-accordion-content {
 	padding: 1em 2.2em;
 	border-top: 0;
 	overflow: auto;
 }
-jquery_form .ui-autocomplete {
+.jquery_form .ui-autocomplete {
 	position: absolute;
 	top: 0;
 	left: 0;
 	cursor: default;
 }
-jquery_form .ui-menu {
+.jquery_form .ui-menu {
 	list-style: none;
 	padding: 0;
 	margin: 0;
 	display: block;
 	outline: 0;
 }
-jquery_form .ui-menu .ui-menu {
+.jquery_form .ui-menu .ui-menu {
 	position: absolute;
 }
-jquery_form .ui-menu .ui-menu-item {
+.jquery_form .ui-menu .ui-menu-item {
 	margin: 0;
 	cursor: pointer;
 	/* support: IE10, see #8844 */
 	list-style-image: url("data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7");
 }
-jquery_form .ui-menu .ui-menu-item-wrapper {
+.jquery_form .ui-menu .ui-menu-item-wrapper {
 	position: relative;
 	padding: 3px 1em 3px .4em;
 }
-jquery_form .ui-menu .ui-menu-divider {
+.jquery_form .ui-menu .ui-menu-divider {
 	margin: 5px 0;
 	height: 0;
 	font-size: 0;
 	line-height: 0;
 	border-width: 1px 0 0 0;
 }
-jquery_form .ui-menu .ui-state-focus,
-jquery_form .ui-menu .ui-state-active {
+.jquery_form .ui-menu .ui-state-focus,
+.jquery_form .ui-menu .ui-state-active {
 	margin: -1px;
 }
 
 /* icon support */
-jquery_form .ui-menu-icons {
+.jquery_form .ui-menu-icons {
 	position: relative;
 }
-jquery_form .ui-menu-icons .ui-menu-item-wrapper {
+.jquery_form .ui-menu-icons .ui-menu-item-wrapper {
 	padding-left: 2em;
 }
 
 /* left-aligned */
-jquery_form .ui-menu .ui-icon {
+.jquery_form .ui-menu .ui-icon {
 	position: absolute;
 	top: 0;
 	bottom: 0;
@@ -246,11 +246,11 @@ jquery_form .ui-menu .ui-icon {
 }
 
 /* right-aligned */
-jquery_form .ui-menu .ui-menu-icon {
+.jquery_form .ui-menu .ui-menu-icon {
 	left: auto;
 	right: 0;
 }
-jquery_form .ui-button {
+.jquery_form .ui-button {
 	padding: .4em 1em;
 	display: inline-block;
 	position: relative;
@@ -268,16 +268,16 @@ jquery_form .ui-button {
 	overflow: visible;
 }
 
-jquery_form .ui-button,
-jquery_form .ui-button:link,
-jquery_form .ui-button:visited,
-jquery_form .ui-button:hover,
-jquery_form .ui-button:active {
+.jquery_form .ui-button,
+.jquery_form .ui-button:link,
+.jquery_form .ui-button:visited,
+.jquery_form .ui-button:hover,
+.jquery_form .ui-button:active {
 	text-decoration: none;
 }
 
 /* to make room for the icon, a width needs to be set here */
-jquery_form .ui-button-icon-only {
+.jquery_form .ui-button-icon-only {
 	width: 2em;
 	box-sizing: border-box;
 	text-indent: -9999px;
@@ -285,12 +285,12 @@ jquery_form .ui-button-icon-only {
 }
 
 /* no icon support for input elements */
-inputjquery_form .ui-button.ui-button-icon-only {
+input.jquery_form .ui-button.ui-button-icon-only {
 	text-indent: 0;
 }
 
 /* button icon element(s) */
-jquery_form .ui-button-icon-only .ui-icon {
+.jquery_form .ui-button-icon-only .ui-icon {
 	position: absolute;
 	top: 50%;
 	left: 50%;
@@ -298,7 +298,7 @@ jquery_form .ui-button-icon-only .ui-icon {
 	margin-left: -8px;
 }
 
-jquery_form .ui-button.ui-icon-notext .ui-icon {
+.jquery_form .ui-button.ui-icon-notext .ui-icon {
 	padding: 0;
 	width: 2.1em;
 	height: 2.1em;
@@ -307,7 +307,7 @@ jquery_form .ui-button.ui-icon-notext .ui-icon {
 
 }
 
-inputjquery_form .ui-button.ui-icon-notext .ui-icon {
+input.jquery_form .ui-button.ui-icon-notext .ui-icon {
 	width: auto;
 	height: auto;
 	text-indent: 0;
@@ -317,25 +317,25 @@ inputjquery_form .ui-button.ui-icon-notext .ui-icon {
 
 /* workarounds */
 /* Support: Firefox 5 - 40 */
-inputjquery_form .ui-button::-moz-focus-inner,
-buttonjquery_form .ui-button::-moz-focus-inner {
+input.jquery_form .ui-button::-moz-focus-inner,
+button.jquery_form .ui-button::-moz-focus-inner {
 	border: 0;
 	padding: 0;
 }
-jquery_form .ui-controlgroup {
+.jquery_form .ui-controlgroup {
 	vertical-align: middle;
 	display: inline-block;
 }
-jquery_form .ui-controlgroup > .ui-controlgroup-item {
+.jquery_form .ui-controlgroup > .ui-controlgroup-item {
 	float: left;
 	margin-left: 0;
 	margin-right: 0;
 }
-jquery_form .ui-controlgroup > .ui-controlgroup-item:focus,
-jquery_form .ui-controlgroup > .ui-controlgroup-item.ui-visual-focus {
+.jquery_form .ui-controlgroup > .ui-controlgroup-item:focus,
+.jquery_form .ui-controlgroup > .ui-controlgroup-item.ui-visual-focus {
 	z-index: 9999;
 }
-jquery_form .ui-controlgroup-vertical > .ui-controlgroup-item {
+.jquery_form .ui-controlgroup-vertical > .ui-controlgroup-item {
 	display: block;
 	float: none;
 	width: 100%;
@@ -343,96 +343,96 @@ jquery_form .ui-controlgroup-vertical > .ui-controlgroup-item {
 	margin-bottom: 0;
 	text-align: left;
 }
-jquery_form .ui-controlgroup-vertical .ui-controlgroup-item {
+.jquery_form .ui-controlgroup-vertical .ui-controlgroup-item {
 	box-sizing: border-box;
 }
-jquery_form .ui-controlgroup .ui-controlgroup-label {
+.jquery_form .ui-controlgroup .ui-controlgroup-label {
 	padding: .4em 1em;
 }
-jquery_form .ui-controlgroup .ui-controlgroup-label span {
+.jquery_form .ui-controlgroup .ui-controlgroup-label span {
 	font-size: 80%;
 }
-jquery_form .ui-controlgroup-horizontal .ui-controlgroup-label + .ui-controlgroup-item {
+.jquery_form .ui-controlgroup-horizontal .ui-controlgroup-label + .ui-controlgroup-item {
 	border-left: none;
 }
-jquery_form .ui-controlgroup-vertical .ui-controlgroup-label + .ui-controlgroup-item {
+.jquery_form .ui-controlgroup-vertical .ui-controlgroup-label + .ui-controlgroup-item {
 	border-top: none;
 }
-jquery_form .ui-controlgroup-horizontal .ui-controlgroup-label.ui-widget-content {
+.jquery_form .ui-controlgroup-horizontal .ui-controlgroup-label.ui-widget-content {
 	border-right: none;
 }
-jquery_form .ui-controlgroup-vertical .ui-controlgroup-label.ui-widget-content {
+.jquery_form .ui-controlgroup-vertical .ui-controlgroup-label.ui-widget-content {
 	border-bottom: none;
 }
 
 /* Spinner specific style fixes */
-jquery_form .ui-controlgroup-vertical .ui-spinner-input {
+.jquery_form .ui-controlgroup-vertical .ui-spinner-input {
 
 	/* Support: IE8 only, Android < 4.4 only */
 	width: 75%;
 	width: calc( 100% - 2.4em );
 }
-jquery_form .ui-controlgroup-vertical .ui-spinner .ui-spinner-up {
+.jquery_form .ui-controlgroup-vertical .ui-spinner .ui-spinner-up {
 	border-top-style: solid;
 }
 
-jquery_form .ui-checkboxradio-label .ui-icon-background {
+.jquery_form .ui-checkboxradio-label .ui-icon-background {
 	box-shadow: inset 1px 1px 1px #ccc;
 	border-radius: .12em;
 	border: none;
 }
-jquery_form .ui-checkboxradio-radio-label .ui-icon-background {
+.jquery_form .ui-checkboxradio-radio-label .ui-icon-background {
 	width: 16px;
 	height: 16px;
 	border-radius: 1em;
 	overflow: visible;
 	border: none;
 }
-jquery_form .ui-checkboxradio-radio-label.ui-checkboxradio-checked .ui-icon,
-jquery_form .ui-checkboxradio-radio-label.ui-checkboxradio-checked:hover .ui-icon {
+.jquery_form .ui-checkboxradio-radio-label.ui-checkboxradio-checked .ui-icon,
+.jquery_form .ui-checkboxradio-radio-label.ui-checkboxradio-checked:hover .ui-icon {
 	background-image: none;
 	width: 8px;
 	height: 8px;
 	border-width: 4px;
 	border-style: solid;
 }
-jquery_form .ui-checkboxradio-disabled {
+.jquery_form .ui-checkboxradio-disabled {
 	pointer-events: none;
 }
-jquery_form .ui-datepicker {
+.jquery_form .ui-datepicker {
 	width: 17em;
 	padding: .2em .2em 0;
 	display: none;
 }
-jquery_form .ui-datepicker .ui-datepicker-header {
+.jquery_form .ui-datepicker .ui-datepicker-header {
 	position: relative;
 	padding: .2em 0;
 }
-jquery_form .ui-datepicker .ui-datepicker-prev,
-jquery_form .ui-datepicker .ui-datepicker-next {
+.jquery_form .ui-datepicker .ui-datepicker-prev,
+.jquery_form .ui-datepicker .ui-datepicker-next {
 	position: absolute;
 	top: 2px;
 	width: 1.8em;
 	height: 1.8em;
 }
-jquery_form .ui-datepicker .ui-datepicker-prev-hover,
-jquery_form .ui-datepicker .ui-datepicker-next-hover {
+.jquery_form .ui-datepicker .ui-datepicker-prev-hover,
+.jquery_form .ui-datepicker .ui-datepicker-next-hover {
 	top: 1px;
 }
-jquery_form .ui-datepicker .ui-datepicker-prev {
+.jquery_form .ui-datepicker .ui-datepicker-prev {
 	left: 2px;
 }
-jquery_form .ui-datepicker .ui-datepicker-next {
+.jquery_form .ui-datepicker .ui-datepicker-next {
 	right: 2px;
 }
-jquery_form .ui-datepicker .ui-datepicker-prev-hover {
+.jquery_form .ui-datepicker .ui-datepicker-prev-hover {
 	left: 1px;
 }
-jquery_form .ui-datepicker .ui-datepicker-next-hover {
+.jquery_form .ui-datepicker .ui-datepicker-next-hover {
 	right: 1px;
 }
-jquery_form .ui-datepicker .ui-datepicker-prev span,
-jquery_form .ui-datepicker .ui-datepicker-next span {
+.jquery_form .ui-datepicker .ui-datepicker-prev span,
+.jquery_form .ui-datepicker .ui-datepicker-next span {
 	display: block;
 	position: absolute;
 	left: 50%;
@@ -440,43 +440,43 @@ jquery_form .ui-datepicker .ui-datepicker-next span {
 	top: 50%;
 	margin-top: -8px;
 }
-jquery_form .ui-datepicker .ui-datepicker-title {
+.jquery_form .ui-datepicker .ui-datepicker-title {
 	margin: 0 2.3em;
 	line-height: 1.8em;
 	text-align: center;
 }
-jquery_form .ui-datepicker .ui-datepicker-title select {
+.jquery_form .ui-datepicker .ui-datepicker-title select {
 	font-size: 1em;
 	margin: 1px 0;
 }
-jquery_form .ui-datepicker select.ui-datepicker-month,
-jquery_form .ui-datepicker select.ui-datepicker-year {
+.jquery_form .ui-datepicker select.ui-datepicker-month,
+.jquery_form .ui-datepicker select.ui-datepicker-year {
 	width: 45%;
 }
-jquery_form .ui-datepicker table {
+.jquery_form .ui-datepicker table {
 	width: 100%;
 	font-size: .9em;
 	border-collapse: collapse;
 	margin: 0 0 .4em;
 }
-jquery_form .ui-datepicker th {
+.jquery_form .ui-datepicker th {
 	padding: .7em .3em;
 	text-align: center;
 	font-weight: bold;
 	border: 0;
 }
-jquery_form .ui-datepicker td {
+.jquery_form .ui-datepicker td {
 	border: 0;
 	padding: 1px;
 }
-jquery_form .ui-datepicker td span,
-jquery_form .ui-datepicker td a {
+.jquery_form .ui-datepicker td span,
+.jquery_form .ui-datepicker td a {
 	display: block;
 	padding: .2em;
 	text-align: right;
 	text-decoration: none;
 }
-jquery_form .ui-datepicker .ui-datepicker-buttonpane {
+.jquery_form .ui-datepicker .ui-datepicker-buttonpane {
 	background-image: none;
 	margin: .7em 0 0 0;
 	padding: 0 .2em;
@@ -484,7 +484,7 @@ jquery_form .ui-datepicker .ui-datepicker-buttonpane {
 	border-right: 0;
 	border-bottom: 0;
 }
-jquery_form .ui-datepicker .ui-datepicker-buttonpane button {
+.jquery_form .ui-datepicker .ui-datepicker-buttonpane button {
 	float: right;
 	margin: .5em .2em .4em;
 	cursor: pointer;
@@ -492,81 +492,81 @@ jquery_form .ui-datepicker .ui-datepicker-buttonpane button {
 	width: auto;
 	overflow: visible;
 }
-jquery_form .ui-datepicker .ui-datepicker-buttonpane button.ui-datepicker-current {
+.jquery_form .ui-datepicker .ui-datepicker-buttonpane button.ui-datepicker-current {
 	float: left;
 }
 
 /* with multiple calendars */
-jquery_form .ui-datepicker.ui-datepicker-multi {
+.jquery_form .ui-datepicker.ui-datepicker-multi {
 	width: auto;
 }
-jquery_form .ui-datepicker-multi .ui-datepicker-group {
+.jquery_form .ui-datepicker-multi .ui-datepicker-group {
 	float: left;
 }
-jquery_form .ui-datepicker-multi .ui-datepicker-group table {
+.jquery_form .ui-datepicker-multi .ui-datepicker-group table {
 	width: 95%;
 	margin: 0 auto .4em;
 }
-jquery_form .ui-datepicker-multi-2 .ui-datepicker-group {
+.jquery_form .ui-datepicker-multi-2 .ui-datepicker-group {
 	width: 50%;
 }
-jquery_form .ui-datepicker-multi-3 .ui-datepicker-group {
+.jquery_form .ui-datepicker-multi-3 .ui-datepicker-group {
 	width: 33.3%;
 }
-jquery_form .ui-datepicker-multi-4 .ui-datepicker-group {
+.jquery_form .ui-datepicker-multi-4 .ui-datepicker-group {
 	width: 25%;
 }
-jquery_form .ui-datepicker-multi .ui-datepicker-group-last .ui-datepicker-header,
-jquery_form .ui-datepicker-multi .ui-datepicker-group-middle .ui-datepicker-header {
+.jquery_form .ui-datepicker-multi .ui-datepicker-group-last .ui-datepicker-header,
+.jquery_form .ui-datepicker-multi .ui-datepicker-group-middle .ui-datepicker-header {
 	border-left-width: 0;
 }
-jquery_form .ui-datepicker-multi .ui-datepicker-buttonpane {
+.jquery_form .ui-datepicker-multi .ui-datepicker-buttonpane {
 	clear: left;
 }
-jquery_form .ui-datepicker-row-break {
+.jquery_form .ui-datepicker-row-break {
 	clear: both;
 	width: 100%;
 	font-size: 0;
 }
 
 /* RTL support */
-jquery_form .ui-datepicker-rtl {
+.jquery_form .ui-datepicker-rtl {
 	direction: rtl;
 }
-jquery_form .ui-datepicker-rtl .ui-datepicker-prev {
+.jquery_form .ui-datepicker-rtl .ui-datepicker-prev {
 	right: 2px;
 	left: auto;
 }
-jquery_form .ui-datepicker-rtl .ui-datepicker-next {
+.jquery_form .ui-datepicker-rtl .ui-datepicker-next {
 	left: 2px;
 	right: auto;
 }
-jquery_form .ui-datepicker-rtl .ui-datepicker-prev:hover {
+.jquery_form .ui-datepicker-rtl .ui-datepicker-prev:hover {
 	right: 1px;
 	left: auto;
 }
-jquery_form .ui-datepicker-rtl .ui-datepicker-next:hover {
+.jquery_form .ui-datepicker-rtl .ui-datepicker-next:hover {
 	left: 1px;
 	right: auto;
 }
-jquery_form .ui-datepicker-rtl .ui-datepicker-buttonpane {
+.jquery_form .ui-datepicker-rtl .ui-datepicker-buttonpane {
 	clear: right;
 }
-jquery_form .ui-datepicker-rtl .ui-datepicker-buttonpane button {
+.jquery_form .ui-datepicker-rtl .ui-datepicker-buttonpane button {
 	float: left;
 }
-jquery_form .ui-datepicker-rtl .ui-datepicker-buttonpane button.ui-datepicker-current,
-jquery_form .ui-datepicker-rtl .ui-datepicker-group {
+.jquery_form .ui-datepicker-rtl .ui-datepicker-buttonpane button.ui-datepicker-current,
+.jquery_form .ui-datepicker-rtl .ui-datepicker-group {
 	float: right;
 }
-jquery_form .ui-datepicker-rtl .ui-datepicker-group-last .ui-datepicker-header,
-jquery_form .ui-datepicker-rtl .ui-datepicker-group-middle .ui-datepicker-header {
+.jquery_form .ui-datepicker-rtl .ui-datepicker-group-last .ui-datepicker-header,
+.jquery_form .ui-datepicker-rtl .ui-datepicker-group-middle .ui-datepicker-header {
 	border-right-width: 0;
 	border-left-width: 1px;
 }
 
 /* Icons */
-jquery_form .ui-datepicker .ui-icon {
+.jquery_form .ui-datepicker .ui-icon {
 	display: block;
 	text-indent: -99999px;
 	overflow: hidden;
@@ -574,18 +574,18 @@ jquery_form .ui-datepicker .ui-icon {
 	left: .5em;
 	top: .3em;
 }
-jquery_form .ui-dialog {
+.jquery_form .ui-dialog {
 	position: absolute;
 	top: 0;
 	left: 0;
 	padding: .2em;
 	outline: 0;
 }
-jquery_form .ui-dialog .ui-dialog-titlebar {
+.jquery_form .ui-dialog .ui-dialog-titlebar {
 	padding: .4em 1em;
 	position: relative;
 }
-jquery_form .ui-dialog .ui-dialog-title {
+.jquery_form .ui-dialog .ui-dialog-title {
 	float: left;
 	margin: .1em 0;
 	white-space: nowrap;
@@ -593,7 +593,7 @@ jquery_form .ui-dialog .ui-dialog-title {
 	overflow: hidden;
 	text-overflow: ellipsis;
 }
-jquery_form .ui-dialog .ui-dialog-titlebar-close {
+.jquery_form .ui-dialog .ui-dialog-titlebar-close {
 	position: absolute;
 	right: .3em;
 	top: 50%;
@@ -602,88 +602,88 @@ jquery_form .ui-dialog .ui-dialog-titlebar-close {
 	padding: 1px;
 	height: 20px;
 }
-jquery_form .ui-dialog .ui-dialog-content {
+.jquery_form .ui-dialog .ui-dialog-content {
 	position: relative;
 	border: 0;
 	padding: .5em 1em;
 	background: none;
 	overflow: auto;
 }
-jquery_form .ui-dialog .ui-dialog-buttonpane {
+.jquery_form .ui-dialog .ui-dialog-buttonpane {
 	text-align: left;
 	border-width: 1px 0 0 0;
 	background-image: none;
 	margin-top: .5em;
 	padding: .3em 1em .5em .4em;
 }
-jquery_form .ui-dialog .ui-dialog-buttonpane .ui-dialog-buttonset {
+.jquery_form .ui-dialog .ui-dialog-buttonpane .ui-dialog-buttonset {
 	float: right;
 }
-jquery_form .ui-dialog .ui-dialog-buttonpane button {
+.jquery_form .ui-dialog .ui-dialog-buttonpane button {
 	margin: .5em .4em .5em 0;
 	cursor: pointer;
 }
-jquery_form .ui-dialog .ui-resizable-n {
+.jquery_form .ui-dialog .ui-resizable-n {
 	height: 2px;
 	top: 0;
 }
-jquery_form .ui-dialog .ui-resizable-e {
+.jquery_form .ui-dialog .ui-resizable-e {
 	width: 2px;
 	right: 0;
 }
-jquery_form .ui-dialog .ui-resizable-s {
+.jquery_form .ui-dialog .ui-resizable-s {
 	height: 2px;
 	bottom: 0;
 }
-jquery_form .ui-dialog .ui-resizable-w {
+.jquery_form .ui-dialog .ui-resizable-w {
 	width: 2px;
 	left: 0;
 }
-jquery_form .ui-dialog .ui-resizable-se,
-jquery_form .ui-dialog .ui-resizable-sw,
-jquery_form .ui-dialog .ui-resizable-ne,
-jquery_form .ui-dialog .ui-resizable-nw {
+.jquery_form .ui-dialog .ui-resizable-se,
+.jquery_form .ui-dialog .ui-resizable-sw,
+.jquery_form .ui-dialog .ui-resizable-ne,
+.jquery_form .ui-dialog .ui-resizable-nw {
 	width: 7px;
 	height: 7px;
 }
-jquery_form .ui-dialog .ui-resizable-se {
+.jquery_form .ui-dialog .ui-resizable-se {
 	right: 0;
 	bottom: 0;
 }
-jquery_form .ui-dialog .ui-resizable-sw {
+.jquery_form .ui-dialog .ui-resizable-sw {
 	left: 0;
 	bottom: 0;
 }
-jquery_form .ui-dialog .ui-resizable-ne {
+.jquery_form .ui-dialog .ui-resizable-ne {
 	right: 0;
 	top: 0;
 }
-jquery_form .ui-dialog .ui-resizable-nw {
+.jquery_form .ui-dialog .ui-resizable-nw {
 	left: 0;
 	top: 0;
 }
-jquery_form .ui-draggable .ui-dialog-titlebar {
+.jquery_form .ui-draggable .ui-dialog-titlebar {
 	cursor: move;
 }
-jquery_form .ui-progressbar {
+.jquery_form .ui-progressbar {
 	height: 2em;
 	text-align: left;
 	overflow: hidden;
 }
-jquery_form .ui-progressbar .ui-progressbar-value {
+.jquery_form .ui-progressbar .ui-progressbar-value {
 	margin: -1px;
 	height: 100%;
 }
-jquery_form .ui-progressbar .ui-progressbar-overlay {
+.jquery_form .ui-progressbar .ui-progressbar-overlay {
 	background: url("data:image/gif;base64,R0lGODlhKAAoAIABAAAAAP///yH/C05FVFNDQVBFMi4wAwEAAAAh+QQJAQABACwAAAAAKAAoAAACkYwNqXrdC52DS06a7MFZI+4FHBCKoDeWKXqymPqGqxvJrXZbMx7Ttc+w9XgU2FB3lOyQRWET2IFGiU9m1frDVpxZZc6bfHwv4c1YXP6k1Vdy292Fb6UkuvFtXpvWSzA+HycXJHUXiGYIiMg2R6W459gnWGfHNdjIqDWVqemH2ekpObkpOlppWUqZiqr6edqqWQAAIfkECQEAAQAsAAAAACgAKAAAApSMgZnGfaqcg1E2uuzDmmHUBR8Qil95hiPKqWn3aqtLsS18y7G1SzNeowWBENtQd+T1JktP05nzPTdJZlR6vUxNWWjV+vUWhWNkWFwxl9VpZRedYcflIOLafaa28XdsH/ynlcc1uPVDZxQIR0K25+cICCmoqCe5mGhZOfeYSUh5yJcJyrkZWWpaR8doJ2o4NYq62lAAACH5BAkBAAEALAAAAAAoACgAAAKVDI4Yy22ZnINRNqosw0Bv7i1gyHUkFj7oSaWlu3ovC8GxNso5fluz3qLVhBVeT/Lz7ZTHyxL5dDalQWPVOsQWtRnuwXaFTj9jVVh8pma9JjZ4zYSj5ZOyma7uuolffh+IR5aW97cHuBUXKGKXlKjn+DiHWMcYJah4N0lYCMlJOXipGRr5qdgoSTrqWSq6WFl2ypoaUAAAIfkECQEAAQAsAAAAACgAKAAAApaEb6HLgd/iO7FNWtcFWe+ufODGjRfoiJ2akShbueb0wtI50zm02pbvwfWEMWBQ1zKGlLIhskiEPm9R6vRXxV4ZzWT2yHOGpWMyorblKlNp8HmHEb/lCXjcW7bmtXP8Xt229OVWR1fod2eWqNfHuMjXCPkIGNileOiImVmCOEmoSfn3yXlJWmoHGhqp6ilYuWYpmTqKUgAAIfkECQEAAQAsAAAAACgAKAAAApiEH6kb58biQ3FNWtMFWW3eNVcojuFGfqnZqSebuS06w5V80/X02pKe8zFwP6EFWOT1lDFk8rGERh1TTNOocQ61Hm4Xm2VexUHpzjymViHrFbiELsefVrn6XKfnt2Q9G/+Xdie499XHd2g4h7ioOGhXGJboGAnXSBnoBwKYyfioubZJ2Hn0RuRZaflZOil56Zp6iioKSXpUAAAh+QQJAQABACwAAAAAKAAoAAACkoQRqRvnxuI7kU1a1UU5bd5tnSeOZXhmn5lWK3qNTWvRdQxP8qvaC+/yaYQzXO7BMvaUEmJRd3TsiMAgswmNYrSgZdYrTX6tSHGZO73ezuAw2uxuQ+BbeZfMxsexY35+/Qe4J1inV0g4x3WHuMhIl2jXOKT2Q+VU5fgoSUI52VfZyfkJGkha6jmY+aaYdirq+lQAACH5BAkBAAEALAAAAAAoACgAAAKWBIKpYe0L3YNKToqswUlvznigd4wiR4KhZrKt9Upqip61i9E3vMvxRdHlbEFiEXfk9YARYxOZZD6VQ2pUunBmtRXo1Lf8hMVVcNl8JafV38aM2/Fu5V16Bn63r6xt97j09+MXSFi4BniGFae3hzbH9+hYBzkpuUh5aZmHuanZOZgIuvbGiNeomCnaxxap2upaCZsq+1kAACH5BAkBAAEALAAAAAAoACgAAAKXjI8By5zf4kOxTVrXNVlv1X0d8IGZGKLnNpYtm8Lr9cqVeuOSvfOW79D9aDHizNhDJidFZhNydEahOaDH6nomtJjp1tutKoNWkvA6JqfRVLHU/QUfau9l2x7G54d1fl995xcIGAdXqMfBNadoYrhH+Mg2KBlpVpbluCiXmMnZ2Sh4GBqJ+ckIOqqJ6LmKSllZmsoq6wpQAAAh+QQJAQABACwAAAAAKAAoAAAClYx/oLvoxuJDkU1a1YUZbJ59nSd2ZXhWqbRa2/gF8Gu2DY3iqs7yrq+xBYEkYvFSM8aSSObE+ZgRl1BHFZNr7pRCavZ5BW2142hY3AN/zWtsmf12p9XxxFl2lpLn1rseztfXZjdIWIf2s5dItwjYKBgo9yg5pHgzJXTEeGlZuenpyPmpGQoKOWkYmSpaSnqKileI2FAAACH5BAkBAAEALAAAAAAoACgAAAKVjB+gu+jG4kORTVrVhRlsnn2dJ3ZleFaptFrb+CXmO9OozeL5VfP99HvAWhpiUdcwkpBH3825AwYdU8xTqlLGhtCosArKMpvfa1mMRae9VvWZfeB2XfPkeLmm18lUcBj+p5dnN8jXZ3YIGEhYuOUn45aoCDkp16hl5IjYJvjWKcnoGQpqyPlpOhr3aElaqrq56Bq7VAAAOw==");
 	height: 100%;
 	filter: alpha(opacity=25); /* support: IE8 */
 	opacity: 0.25;
 }
-jquery_form .ui-progressbar-indeterminate .ui-progressbar-value {
+.jquery_form .ui-progressbar-indeterminate .ui-progressbar-value {
 	background-image: none;
 }
-jquery_form .ui-selectmenu-menu {
+.jquery_form .ui-selectmenu-menu {
 	padding: 0;
 	margin: 0;
 	position: absolute;
@@ -691,12 +691,12 @@ jquery_form .ui-selectmenu-menu {
 	left: 0;
 	display: none;
 }
-jquery_form .ui-selectmenu-menu .ui-menu {
+.jquery_form .ui-selectmenu-menu .ui-menu {
 	overflow: auto;
 	overflow-x: hidden;
 	padding-bottom: 1px;
 }
-jquery_form .ui-selectmenu-menu .ui-menu .ui-selectmenu-optgroup {
+.jquery_form .ui-selectmenu-menu .ui-menu .ui-selectmenu-optgroup {
 	font-size: 1em;
 	font-weight: bold;
 	line-height: 1.5;
@@ -705,29 +705,29 @@ jquery_form .ui-selectmenu-menu .ui-menu .ui-selectmenu-optgroup {
 	height: auto;
 	border: 0;
 }
-jquery_form .ui-selectmenu-open {
+.jquery_form .ui-selectmenu-open {
 	display: block;
 }
-jquery_form .ui-selectmenu-text {
+.jquery_form .ui-selectmenu-text {
 	display: block;
 	margin-right: 20px;
 	overflow: hidden;
 	text-overflow: ellipsis;
 }
-jquery_form .ui-selectmenu-button.ui-button {
+.jquery_form .ui-selectmenu-button.ui-button {
 	text-align: left;
 	white-space: nowrap;
 	width: 14em;
 }
-jquery_form .ui-selectmenu-icon.ui-icon {
+.jquery_form .ui-selectmenu-icon.ui-icon {
 	float: right;
 	margin-top: 0;
 }
-jquery_form .ui-slider {
+.jquery_form .ui-slider {
 	position: relative;
 	text-align: left;
 }
-jquery_form .ui-slider .ui-slider-handle {
+.jquery_form .ui-slider .ui-slider-handle {
 	position: absolute;
 	z-index: 2;
 	width: 1.2em;
@@ -736,7 +736,7 @@ jquery_form .ui-slider .ui-slider-handle {
 	-ms-touch-action: none;
 	touch-action: none;
 }
-jquery_form .ui-slider .ui-slider-range {
+.jquery_form .ui-slider .ui-slider-range {
 	position: absolute;
 	z-index: 1;
 	font-size: .7em;
@@ -746,56 +746,56 @@ jquery_form .ui-slider .ui-slider-range {
 }
 
 /* support: IE8 - See #6727 */
-jquery_form .ui-slider.ui-state-disabled .ui-slider-handle,
-jquery_form .ui-slider.ui-state-disabled .ui-slider-range {
+.jquery_form .ui-slider.ui-state-disabled .ui-slider-handle,
+.jquery_form .ui-slider.ui-state-disabled .ui-slider-range {
 	filter: inherit;
 }
 
-jquery_form .ui-slider-horizontal {
+.jquery_form .ui-slider-horizontal {
 	height: .8em;
 }
-jquery_form .ui-slider-horizontal .ui-slider-handle {
+.jquery_form .ui-slider-horizontal .ui-slider-handle {
 	top: -.3em;
 	margin-left: -.6em;
 }
-jquery_form .ui-slider-horizontal .ui-slider-range {
+.jquery_form .ui-slider-horizontal .ui-slider-range {
 	top: 0;
 	height: 100%;
 }
-jquery_form .ui-slider-horizontal .ui-slider-range-min {
+.jquery_form .ui-slider-horizontal .ui-slider-range-min {
 	left: 0;
 }
-jquery_form .ui-slider-horizontal .ui-slider-range-max {
+.jquery_form .ui-slider-horizontal .ui-slider-range-max {
 	right: 0;
 }
 
-jquery_form .ui-slider-vertical {
+.jquery_form .ui-slider-vertical {
 	width: .8em;
 	height: 100px;
 }
-jquery_form .ui-slider-vertical .ui-slider-handle {
+.jquery_form .ui-slider-vertical .ui-slider-handle {
 	left: -.3em;
 	margin-left: 0;
 	margin-bottom: -.6em;
 }
-jquery_form .ui-slider-vertical .ui-slider-range {
+.jquery_form .ui-slider-vertical .ui-slider-range {
 	left: 0;
 	width: 100%;
 }
-jquery_form .ui-slider-vertical .ui-slider-range-min {
+.jquery_form .ui-slider-vertical .ui-slider-range-min {
 	bottom: 0;
 }
-jquery_form .ui-slider-vertical .ui-slider-range-max {
+.jquery_form .ui-slider-vertical .ui-slider-range-max {
 	top: 0;
 }
-jquery_form .ui-spinner {
+.jquery_form .ui-spinner {
 	position: relative;
 	display: inline-block;
 	overflow: hidden;
 	padding: 0;
 	vertical-align: middle;
 }
-jquery_form .ui-spinner-input {
+.jquery_form .ui-spinner-input {
 	border: none;
 	background: none;
 	color: inherit;
@@ -805,7 +805,7 @@ jquery_form .ui-spinner-input {
 	margin-left: .4em;
 	margin-right: 2em;
 }
-jquery_form .ui-spinner-button {
+.jquery_form .ui-spinner-button {
 	width: 1.6em;
 	height: 50%;
 	font-size: .5em;
@@ -819,26 +819,26 @@ jquery_form .ui-spinner-button {
 	right: 0;
 }
 /* more specificity required here to override default borders */
-jquery_form .ui-spinner a.ui-spinner-button {
+.jquery_form .ui-spinner a.ui-spinner-button {
 	border-top-style: none;
 	border-bottom-style: none;
 	border-right-style: none;
 }
-jquery_form .ui-spinner-up {
+.jquery_form .ui-spinner-up {
 	top: 0;
 }
-jquery_form .ui-spinner-down {
+.jquery_form .ui-spinner-down {
 	bottom: 0;
 }
-jquery_form .ui-tabs {
+.jquery_form .ui-tabs {
 	position: relative;/* position: relative prevents IE scroll bug (element with position: relative inside container with overflow: auto appear as "fixed") */
 	padding: .2em;
 }
-jquery_form .ui-tabs .ui-tabs-nav {
+.jquery_form .ui-tabs .ui-tabs-nav {
 	margin: 0;
 	padding: .2em .2em 0;
 }
-jquery_form .ui-tabs .ui-tabs-nav li {
+.jquery_form .ui-tabs .ui-tabs-nav li {
 	list-style: none;
 	float: left;
 	position: relative;
@@ -848,210 +848,210 @@ jquery_form .ui-tabs .ui-tabs-nav li {
 	padding: 0;
 	white-space: nowrap;
 }
-jquery_form .ui-tabs .ui-tabs-nav .ui-tabs-anchor {
+.jquery_form .ui-tabs .ui-tabs-nav .ui-tabs-anchor {
 	float: left;
 	padding: .5em 1em;
 	text-decoration: none;
 }
-jquery_form .ui-tabs .ui-tabs-nav li.ui-tabs-active {
+.jquery_form .ui-tabs .ui-tabs-nav li.ui-tabs-active {
 	margin-bottom: -1px;
 	padding-bottom: 1px;
 }
-jquery_form .ui-tabs .ui-tabs-nav li.ui-tabs-active .ui-tabs-anchor,
-jquery_form .ui-tabs .ui-tabs-nav li.ui-state-disabled .ui-tabs-anchor,
-jquery_form .ui-tabs .ui-tabs-nav li.ui-tabs-loading .ui-tabs-anchor {
+.jquery_form .ui-tabs .ui-tabs-nav li.ui-tabs-active .ui-tabs-anchor,
+.jquery_form .ui-tabs .ui-tabs-nav li.ui-state-disabled .ui-tabs-anchor,
+.jquery_form .ui-tabs .ui-tabs-nav li.ui-tabs-loading .ui-tabs-anchor {
 	cursor: text;
 }
-jquery_form .ui-tabs-collapsible .ui-tabs-nav li.ui-tabs-active .ui-tabs-anchor {
+.jquery_form .ui-tabs-collapsible .ui-tabs-nav li.ui-tabs-active .ui-tabs-anchor {
 	cursor: pointer;
 }
-jquery_form .ui-tabs .ui-tabs-panel {
+.jquery_form .ui-tabs .ui-tabs-panel {
 	display: block;
 	border-width: 0;
 	padding: 1em 1.4em;
 	background: none;
 }
-jquery_form .ui-tooltip {
+.jquery_form .ui-tooltip {
 	padding: 8px;
 	position: absolute;
 	z-index: 9999;
 	max-width: 300px;
 }
-body jquery_form .ui-tooltip {
+body .jquery_form .ui-tooltip {
 	border-width: 2px;
 }
 
 /* Component containers
 ----------------------------------*/
-jquery_form .ui-widget {
+.jquery_form .ui-widget {
 	font-family: Verdana,Arial,sans-serif;
 	font-size: 1.1em;
 }
-jquery_form .ui-widget .ui-widget {
+.jquery_form .ui-widget .ui-widget {
 	font-size: 1em;
 }
-jquery_form .ui-widget input,
-jquery_form .ui-widget select,
-jquery_form .ui-widget textarea,
-jquery_form .ui-widget button {
+.jquery_form .ui-widget input,
+.jquery_form .ui-widget select,
+.jquery_form .ui-widget textarea,
+.jquery_form .ui-widget button {
 	font-family: Verdana,Arial,sans-serif;
 	font-size: 1em;
 }
-jquery_form .ui-widget.ui-widget-content {
+.jquery_form .ui-widget.ui-widget-content {
 	border: 1px solid #d3d3d3;
 }
-jquery_form .ui-widget-content {
+.jquery_form .ui-widget-content {
 	border: 1px solid #aaaaaa;
 	background: #ffffff;
 	color: #222222;
 }
-jquery_form .ui-widget-content a {
+.jquery_form .ui-widget-content a {
 	color: #222222;
 }
-jquery_form .ui-widget-header {
+.jquery_form .ui-widget-header {
 	border: 1px solid #aaaaaa;
 	background: #cccccc url("images/ui-bg_highlight-soft_75_cccccc_1x100.png") 50% 50% repeat-x;
 	color: #222222;
 	font-weight: bold;
 }
-jquery_form .ui-widget-header a {
+.jquery_form .ui-widget-header a {
 	color: #222222;
 }
 
 /* Interaction states
 ----------------------------------*/
-jquery_form .ui-state-default,
-jquery_form .ui-widget-content .ui-state-default,
-jquery_form .ui-widget-header .ui-state-default,
-jquery_form .ui-button,
+.jquery_form .ui-state-default,
+.jquery_form .ui-widget-content .ui-state-default,
+.jquery_form .ui-widget-header .ui-state-default,
+.jquery_form .ui-button,
 
 /* We use html here because we need a greater specificity to make sure disabled
 works properly when clicked or hovered */
-html jquery_form .ui-button.ui-state-disabled:hover,
-html jquery_form .ui-button.ui-state-disabled:active {
+html .jquery_form .ui-button.ui-state-disabled:hover,
+html .jquery_form .ui-button.ui-state-disabled:active {
 	border: 1px solid #d3d3d3;
 	background: #e6e6e6 url("images/ui-bg_glass_75_e6e6e6_1x400.png") 50% 50% repeat-x;
 	font-weight: normal;
 	color: #555555;
 }
-jquery_form .ui-state-default a,
-jquery_form .ui-state-default a:link,
-jquery_form .ui-state-default a:visited,
-ajquery_form .ui-button,
-a:linkjquery_form .ui-button,
-a:visitedjquery_form .ui-button,
-jquery_form .ui-button {
+.jquery_form .ui-state-default a,
+.jquery_form .ui-state-default a:link,
+.jquery_form .ui-state-default a:visited,
+a.jquery_form .ui-button,
+a:link.jquery_form .ui-button,
+a:visited.jquery_form .ui-button,
+.jquery_form .ui-button {
 	color: #555555;
 	text-decoration: none;
 }
-jquery_form .ui-state-hover,
-jquery_form .ui-widget-content .ui-state-hover,
-jquery_form .ui-widget-header .ui-state-hover,
-jquery_form .ui-state-focus,
-jquery_form .ui-widget-content .ui-state-focus,
-jquery_form .ui-widget-header .ui-state-focus,
-jquery_form .ui-button:hover,
-jquery_form .ui-button:focus {
+.jquery_form .ui-state-hover,
+.jquery_form .ui-widget-content .ui-state-hover,
+.jquery_form .ui-widget-header .ui-state-hover,
+.jquery_form .ui-state-focus,
+.jquery_form .ui-widget-content .ui-state-focus,
+.jquery_form .ui-widget-header .ui-state-focus,
+.jquery_form .ui-button:hover,
+.jquery_form .ui-button:focus {
 	border: 1px solid #999999;
 	background: #dadada url("images/ui-bg_glass_75_dadada_1x400.png") 50% 50% repeat-x;
 	font-weight: normal;
 	color: #212121;
 }
-jquery_form .ui-state-hover a,
-jquery_form .ui-state-hover a:hover,
-jquery_form .ui-state-hover a:link,
-jquery_form .ui-state-hover a:visited,
-jquery_form .ui-state-focus a,
-jquery_form .ui-state-focus a:hover,
-jquery_form .ui-state-focus a:link,
-jquery_form .ui-state-focus a:visited,
-ajquery_form .ui-button:hover,
-ajquery_form .ui-button:focus {
+.jquery_form .ui-state-hover a,
+.jquery_form .ui-state-hover a:hover,
+.jquery_form .ui-state-hover a:link,
+.jquery_form .ui-state-hover a:visited,
+.jquery_form .ui-state-focus a,
+.jquery_form .ui-state-focus a:hover,
+.jquery_form .ui-state-focus a:link,
+.jquery_form .ui-state-focus a:visited,
+a.jquery_form .ui-button:hover,
+a.jquery_form .ui-button:focus {
 	color: #212121;
 	text-decoration: none;
 }
 
-jquery_form .ui-visual-focus {
+.jquery_form .ui-visual-focus {
 	box-shadow: 0 0 3px 1px rgb(94, 158, 214);
 }
-jquery_form .ui-state-active,
-jquery_form .ui-widget-content .ui-state-active,
-jquery_form .ui-widget-header .ui-state-active,
-ajquery_form .ui-button:active,
-jquery_form .ui-button:active,
-jquery_form .ui-button.ui-state-active:hover {
+.jquery_form .ui-state-active,
+.jquery_form .ui-widget-content .ui-state-active,
+.jquery_form .ui-widget-header .ui-state-active,
+a.jquery_form .ui-button:active,
+.jquery_form .ui-button:active,
+.jquery_form .ui-button.ui-state-active:hover {
 	border: 1px solid #aaaaaa;
 	background: #ffffff url("images/ui-bg_glass_65_ffffff_1x400.png") 50% 50% repeat-x;
 	font-weight: normal;
 	color: #212121;
 }
-jquery_form .ui-icon-background,
-jquery_form .ui-state-active .ui-icon-background {
+.jquery_form .ui-icon-background,
+.jquery_form .ui-state-active .ui-icon-background {
 	border: #aaaaaa;
 	background-color: #212121;
 }
-jquery_form .ui-state-active a,
-jquery_form .ui-state-active a:link,
-jquery_form .ui-state-active a:visited {
+.jquery_form .ui-state-active a,
+.jquery_form .ui-state-active a:link,
+.jquery_form .ui-state-active a:visited {
 	color: #212121;
 	text-decoration: none;
 }
 
 /* Interaction Cues
 ----------------------------------*/
-jquery_form .ui-state-highlight,
-jquery_form .ui-widget-content .ui-state-highlight,
-jquery_form .ui-widget-header .ui-state-highlight {
+.jquery_form .ui-state-highlight,
+.jquery_form .ui-widget-content .ui-state-highlight,
+.jquery_form .ui-widget-header .ui-state-highlight {
 	border: 1px solid #fcefa1;
 	background: #fbf9ee url("images/ui-bg_glass_55_fbf9ee_1x400.png") 50% 50% repeat-x;
 	color: #363636;
 }
-jquery_form .ui-state-checked {
+.jquery_form .ui-state-checked {
 	border: 1px solid #fcefa1;
 	background: #fbf9ee;
 }
-jquery_form .ui-state-highlight a,
-jquery_form .ui-widget-content .ui-state-highlight a,
-jquery_form .ui-widget-header .ui-state-highlight a {
+.jquery_form .ui-state-highlight a,
+.jquery_form .ui-widget-content .ui-state-highlight a,
+.jquery_form .ui-widget-header .ui-state-highlight a {
 	color: #363636;
 }
-jquery_form .ui-state-error,
-jquery_form .ui-widget-content .ui-state-error,
-jquery_form .ui-widget-header .ui-state-error {
+.jquery_form .ui-state-error,
+.jquery_form .ui-widget-content .ui-state-error,
+.jquery_form .ui-widget-header .ui-state-error {
 	border: 1px solid #cd0a0a;
 	background: #fef1ec url("images/ui-bg_glass_95_fef1ec_1x400.png") 50% 50% repeat-x;
 	color: #cd0a0a;
 }
-jquery_form .ui-state-error a,
-jquery_form .ui-widget-content .ui-state-error a,
-jquery_form .ui-widget-header .ui-state-error a {
+.jquery_form .ui-state-error a,
+.jquery_form .ui-widget-content .ui-state-error a,
+.jquery_form .ui-widget-header .ui-state-error a {
 	color: #cd0a0a;
 }
-jquery_form .ui-state-error-text,
-jquery_form .ui-widget-content .ui-state-error-text,
-jquery_form .ui-widget-header .ui-state-error-text {
+.jquery_form .ui-state-error-text,
+.jquery_form .ui-widget-content .ui-state-error-text,
+.jquery_form .ui-widget-header .ui-state-error-text {
 	color: #cd0a0a;
 }
-jquery_form .ui-priority-primary,
-jquery_form .ui-widget-content .ui-priority-primary,
-jquery_form .ui-widget-header .ui-priority-primary {
+.jquery_form .ui-priority-primary,
+.jquery_form .ui-widget-content .ui-priority-primary,
+.jquery_form .ui-widget-header .ui-priority-primary {
 	font-weight: bold;
 }
-jquery_form .ui-priority-secondary,
-jquery_form .ui-widget-content .ui-priority-secondary,
-jquery_form .ui-widget-header .ui-priority-secondary {
+.jquery_form .ui-priority-secondary,
+.jquery_form .ui-widget-content .ui-priority-secondary,
+.jquery_form .ui-widget-header .ui-priority-secondary {
 	opacity: .7;
 	filter:Alpha(Opacity=70); /* support: IE8 */
 	font-weight: normal;
 }
-jquery_form .ui-state-disabled,
-jquery_form .ui-widget-content .ui-state-disabled,
-jquery_form .ui-widget-header .ui-state-disabled {
+.jquery_form .ui-state-disabled,
+.jquery_form .ui-widget-content .ui-state-disabled,
+.jquery_form .ui-widget-header .ui-state-disabled {
 	opacity: .35;
 	filter:Alpha(Opacity=35); /* support: IE8 */
 	background-image: none;
 }
-jquery_form .ui-state-disabled .ui-icon {
+.jquery_form .ui-state-disabled .ui-icon {
 	filter:Alpha(Opacity=35); /* support: IE8 - See #6059 */
 }
 
@@ -1059,254 +1059,254 @@ jquery_form .ui-state-disabled .ui-icon {
 ----------------------------------*/
 
 /* states and images */
-jquery_form .ui-icon {
+.jquery_form .ui-icon {
 	width: 16px;
 	height: 16px;
 }
-jquery_form .ui-icon,
-jquery_form .ui-widget-content .ui-icon {
+.jquery_form .ui-icon,
+.jquery_form .ui-widget-content .ui-icon {
 	background-image: url("images/ui-icons_222222_256x240.png");
 }
-jquery_form .ui-widget-header .ui-icon {
+.jquery_form .ui-widget-header .ui-icon {
 	background-image: url("images/ui-icons_222222_256x240.png");
 }
-jquery_form .ui-state-hover .ui-icon,
-jquery_form .ui-state-focus .ui-icon,
-jquery_form .ui-button:hover .ui-icon,
-jquery_form .ui-button:focus .ui-icon {
+.jquery_form .ui-state-hover .ui-icon,
+.jquery_form .ui-state-focus .ui-icon,
+.jquery_form .ui-button:hover .ui-icon,
+.jquery_form .ui-button:focus .ui-icon {
 	background-image: url("images/ui-icons_454545_256x240.png");
 }
-jquery_form .ui-state-active .ui-icon,
-jquery_form .ui-button:active .ui-icon {
+.jquery_form .ui-state-active .ui-icon,
+.jquery_form .ui-button:active .ui-icon {
 	background-image: url("images/ui-icons_454545_256x240.png");
 }
-jquery_form .ui-state-highlight .ui-icon,
-jquery_form .ui-button .ui-state-highlight.ui-icon {
+.jquery_form .ui-state-highlight .ui-icon,
+.jquery_form .ui-button .ui-state-highlight.ui-icon {
 	background-image: url("images/ui-icons_2e83ff_256x240.png");
 }
-jquery_form .ui-state-error .ui-icon,
-jquery_form .ui-state-error-text .ui-icon {
+.jquery_form .ui-state-error .ui-icon,
+.jquery_form .ui-state-error-text .ui-icon {
 	background-image: url("images/ui-icons_cd0a0a_256x240.png");
 }
-jquery_form .ui-button .ui-icon {
+.jquery_form .ui-button .ui-icon {
 	background-image: url("images/ui-icons_888888_256x240.png");
 }
 
 /* positioning */
-jquery_form .ui-icon-blank { background-position: 16px 16px; }
-jquery_form .ui-icon-caret-1-n { background-position: 0 0; }
-jquery_form .ui-icon-caret-1-ne { background-position: -16px 0; }
-jquery_form .ui-icon-caret-1-e { background-position: -32px 0; }
-jquery_form .ui-icon-caret-1-se { background-position: -48px 0; }
-jquery_form .ui-icon-caret-1-s { background-position: -65px 0; }
-jquery_form .ui-icon-caret-1-sw { background-position: -80px 0; }
-jquery_form .ui-icon-caret-1-w { background-position: -96px 0; }
-jquery_form .ui-icon-caret-1-nw { background-position: -112px 0; }
-jquery_form .ui-icon-caret-2-n-s { background-position: -128px 0; }
-jquery_form .ui-icon-caret-2-e-w { background-position: -144px 0; }
-jquery_form .ui-icon-triangle-1-n { background-position: 0 -16px; }
-jquery_form .ui-icon-triangle-1-ne { background-position: -16px -16px; }
-jquery_form .ui-icon-triangle-1-e { background-position: -32px -16px; }
-jquery_form .ui-icon-triangle-1-se { background-position: -48px -16px; }
-jquery_form .ui-icon-triangle-1-s { background-position: -65px -16px; }
-jquery_form .ui-icon-triangle-1-sw { background-position: -80px -16px; }
-jquery_form .ui-icon-triangle-1-w { background-position: -96px -16px; }
-jquery_form .ui-icon-triangle-1-nw { background-position: -112px -16px; }
-jquery_form .ui-icon-triangle-2-n-s { background-position: -128px -16px; }
-jquery_form .ui-icon-triangle-2-e-w { background-position: -144px -16px; }
-jquery_form .ui-icon-arrow-1-n { background-position: 0 -32px; }
-jquery_form .ui-icon-arrow-1-ne { background-position: -16px -32px; }
-jquery_form .ui-icon-arrow-1-e { background-position: -32px -32px; }
-jquery_form .ui-icon-arrow-1-se { background-position: -48px -32px; }
-jquery_form .ui-icon-arrow-1-s { background-position: -65px -32px; }
-jquery_form .ui-icon-arrow-1-sw { background-position: -80px -32px; }
-jquery_form .ui-icon-arrow-1-w { background-position: -96px -32px; }
-jquery_form .ui-icon-arrow-1-nw { background-position: -112px -32px; }
-jquery_form .ui-icon-arrow-2-n-s { background-position: -128px -32px; }
-jquery_form .ui-icon-arrow-2-ne-sw { background-position: -144px -32px; }
-jquery_form .ui-icon-arrow-2-e-w { background-position: -160px -32px; }
-jquery_form .ui-icon-arrow-2-se-nw { background-position: -176px -32px; }
-jquery_form .ui-icon-arrowstop-1-n { background-position: -192px -32px; }
-jquery_form .ui-icon-arrowstop-1-e { background-position: -208px -32px; }
-jquery_form .ui-icon-arrowstop-1-s { background-position: -224px -32px; }
-jquery_form .ui-icon-arrowstop-1-w { background-position: -240px -32px; }
-jquery_form .ui-icon-arrowthick-1-n { background-position: 1px -48px; }
-jquery_form .ui-icon-arrowthick-1-ne { background-position: -16px -48px; }
-jquery_form .ui-icon-arrowthick-1-e { background-position: -32px -48px; }
-jquery_form .ui-icon-arrowthick-1-se { background-position: -48px -48px; }
-jquery_form .ui-icon-arrowthick-1-s { background-position: -64px -48px; }
-jquery_form .ui-icon-arrowthick-1-sw { background-position: -80px -48px; }
-jquery_form .ui-icon-arrowthick-1-w { background-position: -96px -48px; }
-jquery_form .ui-icon-arrowthick-1-nw { background-position: -112px -48px; }
-jquery_form .ui-icon-arrowthick-2-n-s { background-position: -128px -48px; }
-jquery_form .ui-icon-arrowthick-2-ne-sw { background-position: -144px -48px; }
-jquery_form .ui-icon-arrowthick-2-e-w { background-position: -160px -48px; }
-jquery_form .ui-icon-arrowthick-2-se-nw { background-position: -176px -48px; }
-jquery_form .ui-icon-arrowthickstop-1-n { background-position: -192px -48px; }
-jquery_form .ui-icon-arrowthickstop-1-e { background-position: -208px -48px; }
-jquery_form .ui-icon-arrowthickstop-1-s { background-position: -224px -48px; }
-jquery_form .ui-icon-arrowthickstop-1-w { background-position: -240px -48px; }
-jquery_form .ui-icon-arrowreturnthick-1-w { background-position: 0 -64px; }
-jquery_form .ui-icon-arrowreturnthick-1-n { background-position: -16px -64px; }
-jquery_form .ui-icon-arrowreturnthick-1-e { background-position: -32px -64px; }
-jquery_form .ui-icon-arrowreturnthick-1-s { background-position: -48px -64px; }
-jquery_form .ui-icon-arrowreturn-1-w { background-position: -64px -64px; }
-jquery_form .ui-icon-arrowreturn-1-n { background-position: -80px -64px; }
-jquery_form .ui-icon-arrowreturn-1-e { background-position: -96px -64px; }
-jquery_form .ui-icon-arrowreturn-1-s { background-position: -112px -64px; }
-jquery_form .ui-icon-arrowrefresh-1-w { background-position: -128px -64px; }
-jquery_form .ui-icon-arrowrefresh-1-n { background-position: -144px -64px; }
-jquery_form .ui-icon-arrowrefresh-1-e { background-position: -160px -64px; }
-jquery_form .ui-icon-arrowrefresh-1-s { background-position: -176px -64px; }
-jquery_form .ui-icon-arrow-4 { background-position: 0 -80px; }
-jquery_form .ui-icon-arrow-4-diag { background-position: -16px -80px; }
-jquery_form .ui-icon-extlink { background-position: -32px -80px; }
-jquery_form .ui-icon-newwin { background-position: -48px -80px; }
-jquery_form .ui-icon-refresh { background-position: -64px -80px; }
-jquery_form .ui-icon-shuffle { background-position: -80px -80px; }
-jquery_form .ui-icon-transfer-e-w { background-position: -96px -80px; }
-jquery_form .ui-icon-transferthick-e-w { background-position: -112px -80px; }
-jquery_form .ui-icon-folder-collapsed { background-position: 0 -96px; }
-jquery_form .ui-icon-folder-open { background-position: -16px -96px; }
-jquery_form .ui-icon-document { background-position: -32px -96px; }
-jquery_form .ui-icon-document-b { background-position: -48px -96px; }
-jquery_form .ui-icon-note { background-position: -64px -96px; }
-jquery_form .ui-icon-mail-closed { background-position: -80px -96px; }
-jquery_form .ui-icon-mail-open { background-position: -96px -96px; }
-jquery_form .ui-icon-suitcase { background-position: -112px -96px; }
-jquery_form .ui-icon-comment { background-position: -128px -96px; }
-jquery_form .ui-icon-person { background-position: -144px -96px; }
-jquery_form .ui-icon-print { background-position: -160px -96px; }
-jquery_form .ui-icon-trash { background-position: -176px -96px; }
-jquery_form .ui-icon-locked { background-position: -192px -96px; }
-jquery_form .ui-icon-unlocked { background-position: -208px -96px; }
-jquery_form .ui-icon-bookmark { background-position: -224px -96px; }
-jquery_form .ui-icon-tag { background-position: -240px -96px; }
-jquery_form .ui-icon-home { background-position: 0 -112px; }
-jquery_form .ui-icon-flag { background-position: -16px -112px; }
-jquery_form .ui-icon-calendar { background-position: -32px -112px; }
-jquery_form .ui-icon-cart { background-position: -48px -112px; }
-jquery_form .ui-icon-pencil { background-position: -64px -112px; }
-jquery_form .ui-icon-clock { background-position: -80px -112px; }
-jquery_form .ui-icon-disk { background-position: -96px -112px; }
-jquery_form .ui-icon-calculator { background-position: -112px -112px; }
-jquery_form .ui-icon-zoomin { background-position: -128px -112px; }
-jquery_form .ui-icon-zoomout { background-position: -144px -112px; }
-jquery_form .ui-icon-search { background-position: -160px -112px; }
-jquery_form .ui-icon-wrench { background-position: -176px -112px; }
-jquery_form .ui-icon-gear { background-position: -192px -112px; }
-jquery_form .ui-icon-heart { background-position: -208px -112px; }
-jquery_form .ui-icon-star { background-position: -224px -112px; }
-jquery_form .ui-icon-link { background-position: -240px -112px; }
-jquery_form .ui-icon-cancel { background-position: 0 -128px; }
-jquery_form .ui-icon-plus { background-position: -16px -128px; }
-jquery_form .ui-icon-plusthick { background-position: -32px -128px; }
-jquery_form .ui-icon-minus { background-position: -48px -128px; }
-jquery_form .ui-icon-minusthick { background-position: -64px -128px; }
-jquery_form .ui-icon-close { background-position: -80px -128px; }
-jquery_form .ui-icon-closethick { background-position: -96px -128px; }
-jquery_form .ui-icon-key { background-position: -112px -128px; }
-jquery_form .ui-icon-lightbulb { background-position: -128px -128px; }
-jquery_form .ui-icon-scissors { background-position: -144px -128px; }
-jquery_form .ui-icon-clipboard { background-position: -160px -128px; }
-jquery_form .ui-icon-copy { background-position: -176px -128px; }
-jquery_form .ui-icon-contact { background-position: -192px -128px; }
-jquery_form .ui-icon-image { background-position: -208px -128px; }
-jquery_form .ui-icon-video { background-position: -224px -128px; }
-jquery_form .ui-icon-script { background-position: -240px -128px; }
-jquery_form .ui-icon-alert { background-position: 0 -144px; }
-jquery_form .ui-icon-info { background-position: -16px -144px; }
-jquery_form .ui-icon-notice { background-position: -32px -144px; }
-jquery_form .ui-icon-help { background-position: -48px -144px; }
-jquery_form .ui-icon-check { background-position: -64px -144px; }
-jquery_form .ui-icon-bullet { background-position: -80px -144px; }
-jquery_form .ui-icon-radio-on { background-position: -96px -144px; }
-jquery_form .ui-icon-radio-off { background-position: -112px -144px; }
-jquery_form .ui-icon-pin-w { background-position: -128px -144px; }
-jquery_form .ui-icon-pin-s { background-position: -144px -144px; }
-jquery_form .ui-icon-play { background-position: 0 -160px; }
-jquery_form .ui-icon-pause { background-position: -16px -160px; }
-jquery_form .ui-icon-seek-next { background-position: -32px -160px; }
-jquery_form .ui-icon-seek-prev { background-position: -48px -160px; }
-jquery_form .ui-icon-seek-end { background-position: -64px -160px; }
-jquery_form .ui-icon-seek-start { background-position: -80px -160px; }
+.jquery_form .ui-icon-blank { background-position: 16px 16px; }
+.jquery_form .ui-icon-caret-1-n { background-position: 0 0; }
+.jquery_form .ui-icon-caret-1-ne { background-position: -16px 0; }
+.jquery_form .ui-icon-caret-1-e { background-position: -32px 0; }
+.jquery_form .ui-icon-caret-1-se { background-position: -48px 0; }
+.jquery_form .ui-icon-caret-1-s { background-position: -65px 0; }
+.jquery_form .ui-icon-caret-1-sw { background-position: -80px 0; }
+.jquery_form .ui-icon-caret-1-w { background-position: -96px 0; }
+.jquery_form .ui-icon-caret-1-nw { background-position: -112px 0; }
+.jquery_form .ui-icon-caret-2-n-s { background-position: -128px 0; }
+.jquery_form .ui-icon-caret-2-e-w { background-position: -144px 0; }
+.jquery_form .ui-icon-triangle-1-n { background-position: 0 -16px; }
+.jquery_form .ui-icon-triangle-1-ne { background-position: -16px -16px; }
+.jquery_form .ui-icon-triangle-1-e { background-position: -32px -16px; }
+.jquery_form .ui-icon-triangle-1-se { background-position: -48px -16px; }
+.jquery_form .ui-icon-triangle-1-s { background-position: -65px -16px; }
+.jquery_form .ui-icon-triangle-1-sw { background-position: -80px -16px; }
+.jquery_form .ui-icon-triangle-1-w { background-position: -96px -16px; }
+.jquery_form .ui-icon-triangle-1-nw { background-position: -112px -16px; }
+.jquery_form .ui-icon-triangle-2-n-s { background-position: -128px -16px; }
+.jquery_form .ui-icon-triangle-2-e-w { background-position: -144px -16px; }
+.jquery_form .ui-icon-arrow-1-n { background-position: 0 -32px; }
+.jquery_form .ui-icon-arrow-1-ne { background-position: -16px -32px; }
+.jquery_form .ui-icon-arrow-1-e { background-position: -32px -32px; }
+.jquery_form .ui-icon-arrow-1-se { background-position: -48px -32px; }
+.jquery_form .ui-icon-arrow-1-s { background-position: -65px -32px; }
+.jquery_form .ui-icon-arrow-1-sw { background-position: -80px -32px; }
+.jquery_form .ui-icon-arrow-1-w { background-position: -96px -32px; }
+.jquery_form .ui-icon-arrow-1-nw { background-position: -112px -32px; }
+.jquery_form .ui-icon-arrow-2-n-s { background-position: -128px -32px; }
+.jquery_form .ui-icon-arrow-2-ne-sw { background-position: -144px -32px; }
+.jquery_form .ui-icon-arrow-2-e-w { background-position: -160px -32px; }
+.jquery_form .ui-icon-arrow-2-se-nw { background-position: -176px -32px; }
+.jquery_form .ui-icon-arrowstop-1-n { background-position: -192px -32px; }
+.jquery_form .ui-icon-arrowstop-1-e { background-position: -208px -32px; }
+.jquery_form .ui-icon-arrowstop-1-s { background-position: -224px -32px; }
+.jquery_form .ui-icon-arrowstop-1-w { background-position: -240px -32px; }
+.jquery_form .ui-icon-arrowthick-1-n { background-position: 1px -48px; }
+.jquery_form .ui-icon-arrowthick-1-ne { background-position: -16px -48px; }
+.jquery_form .ui-icon-arrowthick-1-e { background-position: -32px -48px; }
+.jquery_form .ui-icon-arrowthick-1-se { background-position: -48px -48px; }
+.jquery_form .ui-icon-arrowthick-1-s { background-position: -64px -48px; }
+.jquery_form .ui-icon-arrowthick-1-sw { background-position: -80px -48px; }
+.jquery_form .ui-icon-arrowthick-1-w { background-position: -96px -48px; }
+.jquery_form .ui-icon-arrowthick-1-nw { background-position: -112px -48px; }
+.jquery_form .ui-icon-arrowthick-2-n-s { background-position: -128px -48px; }
+.jquery_form .ui-icon-arrowthick-2-ne-sw { background-position: -144px -48px; }
+.jquery_form .ui-icon-arrowthick-2-e-w { background-position: -160px -48px; }
+.jquery_form .ui-icon-arrowthick-2-se-nw { background-position: -176px -48px; }
+.jquery_form .ui-icon-arrowthickstop-1-n { background-position: -192px -48px; }
+.jquery_form .ui-icon-arrowthickstop-1-e { background-position: -208px -48px; }
+.jquery_form .ui-icon-arrowthickstop-1-s { background-position: -224px -48px; }
+.jquery_form .ui-icon-arrowthickstop-1-w { background-position: -240px -48px; }
+.jquery_form .ui-icon-arrowreturnthick-1-w { background-position: 0 -64px; }
+.jquery_form .ui-icon-arrowreturnthick-1-n { background-position: -16px -64px; }
+.jquery_form .ui-icon-arrowreturnthick-1-e { background-position: -32px -64px; }
+.jquery_form .ui-icon-arrowreturnthick-1-s { background-position: -48px -64px; }
+.jquery_form .ui-icon-arrowreturn-1-w { background-position: -64px -64px; }
+.jquery_form .ui-icon-arrowreturn-1-n { background-position: -80px -64px; }
+.jquery_form .ui-icon-arrowreturn-1-e { background-position: -96px -64px; }
+.jquery_form .ui-icon-arrowreturn-1-s { background-position: -112px -64px; }
+.jquery_form .ui-icon-arrowrefresh-1-w { background-position: -128px -64px; }
+.jquery_form .ui-icon-arrowrefresh-1-n { background-position: -144px -64px; }
+.jquery_form .ui-icon-arrowrefresh-1-e { background-position: -160px -64px; }
+.jquery_form .ui-icon-arrowrefresh-1-s { background-position: -176px -64px; }
+.jquery_form .ui-icon-arrow-4 { background-position: 0 -80px; }
+.jquery_form .ui-icon-arrow-4-diag { background-position: -16px -80px; }
+.jquery_form .ui-icon-extlink { background-position: -32px -80px; }
+.jquery_form .ui-icon-newwin { background-position: -48px -80px; }
+.jquery_form .ui-icon-refresh { background-position: -64px -80px; }
+.jquery_form .ui-icon-shuffle { background-position: -80px -80px; }
+.jquery_form .ui-icon-transfer-e-w { background-position: -96px -80px; }
+.jquery_form .ui-icon-transferthick-e-w { background-position: -112px -80px; }
+.jquery_form .ui-icon-folder-collapsed { background-position: 0 -96px; }
+.jquery_form .ui-icon-folder-open { background-position: -16px -96px; }
+.jquery_form .ui-icon-document { background-position: -32px -96px; }
+.jquery_form .ui-icon-document-b { background-position: -48px -96px; }
+.jquery_form .ui-icon-note { background-position: -64px -96px; }
+.jquery_form .ui-icon-mail-closed { background-position: -80px -96px; }
+.jquery_form .ui-icon-mail-open { background-position: -96px -96px; }
+.jquery_form .ui-icon-suitcase { background-position: -112px -96px; }
+.jquery_form .ui-icon-comment { background-position: -128px -96px; }
+.jquery_form .ui-icon-person { background-position: -144px -96px; }
+.jquery_form .ui-icon-print { background-position: -160px -96px; }
+.jquery_form .ui-icon-trash { background-position: -176px -96px; }
+.jquery_form .ui-icon-locked { background-position: -192px -96px; }
+.jquery_form .ui-icon-unlocked { background-position: -208px -96px; }
+.jquery_form .ui-icon-bookmark { background-position: -224px -96px; }
+.jquery_form .ui-icon-tag { background-position: -240px -96px; }
+.jquery_form .ui-icon-home { background-position: 0 -112px; }
+.jquery_form .ui-icon-flag { background-position: -16px -112px; }
+.jquery_form .ui-icon-calendar { background-position: -32px -112px; }
+.jquery_form .ui-icon-cart { background-position: -48px -112px; }
+.jquery_form .ui-icon-pencil { background-position: -64px -112px; }
+.jquery_form .ui-icon-clock { background-position: -80px -112px; }
+.jquery_form .ui-icon-disk { background-position: -96px -112px; }
+.jquery_form .ui-icon-calculator { background-position: -112px -112px; }
+.jquery_form .ui-icon-zoomin { background-position: -128px -112px; }
+.jquery_form .ui-icon-zoomout { background-position: -144px -112px; }
+.jquery_form .ui-icon-search { background-position: -160px -112px; }
+.jquery_form .ui-icon-wrench { background-position: -176px -112px; }
+.jquery_form .ui-icon-gear { background-position: -192px -112px; }
+.jquery_form .ui-icon-heart { background-position: -208px -112px; }
+.jquery_form .ui-icon-star { background-position: -224px -112px; }
+.jquery_form .ui-icon-link { background-position: -240px -112px; }
+.jquery_form .ui-icon-cancel { background-position: 0 -128px; }
+.jquery_form .ui-icon-plus { background-position: -16px -128px; }
+.jquery_form .ui-icon-plusthick { background-position: -32px -128px; }
+.jquery_form .ui-icon-minus { background-position: -48px -128px; }
+.jquery_form .ui-icon-minusthick { background-position: -64px -128px; }
+.jquery_form .ui-icon-close { background-position: -80px -128px; }
+.jquery_form .ui-icon-closethick { background-position: -96px -128px; }
+.jquery_form .ui-icon-key { background-position: -112px -128px; }
+.jquery_form .ui-icon-lightbulb { background-position: -128px -128px; }
+.jquery_form .ui-icon-scissors { background-position: -144px -128px; }
+.jquery_form .ui-icon-clipboard { background-position: -160px -128px; }
+.jquery_form .ui-icon-copy { background-position: -176px -128px; }
+.jquery_form .ui-icon-contact { background-position: -192px -128px; }
+.jquery_form .ui-icon-image { background-position: -208px -128px; }
+.jquery_form .ui-icon-video { background-position: -224px -128px; }
+.jquery_form .ui-icon-script { background-position: -240px -128px; }
+.jquery_form .ui-icon-alert { background-position: 0 -144px; }
+.jquery_form .ui-icon-info { background-position: -16px -144px; }
+.jquery_form .ui-icon-notice { background-position: -32px -144px; }
+.jquery_form .ui-icon-help { background-position: -48px -144px; }
+.jquery_form .ui-icon-check { background-position: -64px -144px; }
+.jquery_form .ui-icon-bullet { background-position: -80px -144px; }
+.jquery_form .ui-icon-radio-on { background-position: -96px -144px; }
+.jquery_form .ui-icon-radio-off { background-position: -112px -144px; }
+.jquery_form .ui-icon-pin-w { background-position: -128px -144px; }
+.jquery_form .ui-icon-pin-s { background-position: -144px -144px; }
+.jquery_form .ui-icon-play { background-position: 0 -160px; }
+.jquery_form .ui-icon-pause { background-position: -16px -160px; }
+.jquery_form .ui-icon-seek-next { background-position: -32px -160px; }
+.jquery_form .ui-icon-seek-prev { background-position: -48px -160px; }
+.jquery_form .ui-icon-seek-end { background-position: -64px -160px; }
+.jquery_form .ui-icon-seek-start { background-position: -80px -160px; }
 /* ui-icon-seek-first is deprecated, use ui-icon-seek-start instead */
-jquery_form .ui-icon-seek-first { background-position: -80px -160px; }
-jquery_form .ui-icon-stop { background-position: -96px -160px; }
-jquery_form .ui-icon-eject { background-position: -112px -160px; }
-jquery_form .ui-icon-volume-off { background-position: -128px -160px; }
-jquery_form .ui-icon-volume-on { background-position: -144px -160px; }
-jquery_form .ui-icon-power { background-position: 0 -176px; }
-jquery_form .ui-icon-signal-diag { background-position: -16px -176px; }
-jquery_form .ui-icon-signal { background-position: -32px -176px; }
-jquery_form .ui-icon-battery-0 { background-position: -48px -176px; }
-jquery_form .ui-icon-battery-1 { background-position: -64px -176px; }
-jquery_form .ui-icon-battery-2 { background-position: -80px -176px; }
-jquery_form .ui-icon-battery-3 { background-position: -96px -176px; }
-jquery_form .ui-icon-circle-plus { background-position: 0 -192px; }
-jquery_form .ui-icon-circle-minus { background-position: -16px -192px; }
-jquery_form .ui-icon-circle-close { background-position: -32px -192px; }
-jquery_form .ui-icon-circle-triangle-e { background-position: -48px -192px; }
-jquery_form .ui-icon-circle-triangle-s { background-position: -64px -192px; }
-jquery_form .ui-icon-circle-triangle-w { background-position: -80px -192px; }
-jquery_form .ui-icon-circle-triangle-n { background-position: -96px -192px; }
-jquery_form .ui-icon-circle-arrow-e { background-position: -112px -192px; }
-jquery_form .ui-icon-circle-arrow-s { background-position: -128px -192px; }
-jquery_form .ui-icon-circle-arrow-w { background-position: -144px -192px; }
-jquery_form .ui-icon-circle-arrow-n { background-position: -160px -192px; }
-jquery_form .ui-icon-circle-zoomin { background-position: -176px -192px; }
-jquery_form .ui-icon-circle-zoomout { background-position: -192px -192px; }
-jquery_form .ui-icon-circle-check { background-position: -208px -192px; }
-jquery_form .ui-icon-circlesmall-plus { background-position: 0 -208px; }
-jquery_form .ui-icon-circlesmall-minus { background-position: -16px -208px; }
-jquery_form .ui-icon-circlesmall-close { background-position: -32px -208px; }
-jquery_form .ui-icon-squaresmall-plus { background-position: -48px -208px; }
-jquery_form .ui-icon-squaresmall-minus { background-position: -64px -208px; }
-jquery_form .ui-icon-squaresmall-close { background-position: -80px -208px; }
-jquery_form .ui-icon-grip-dotted-vertical { background-position: 0 -224px; }
-jquery_form .ui-icon-grip-dotted-horizontal { background-position: -16px -224px; }
-jquery_form .ui-icon-grip-solid-vertical { background-position: -32px -224px; }
-jquery_form .ui-icon-grip-solid-horizontal { background-position: -48px -224px; }
-jquery_form .ui-icon-gripsmall-diagonal-se { background-position: -64px -224px; }
-jquery_form .ui-icon-grip-diagonal-se { background-position: -80px -224px; }
+.jquery_form .ui-icon-seek-first { background-position: -80px -160px; }
+.jquery_form .ui-icon-stop { background-position: -96px -160px; }
+.jquery_form .ui-icon-eject { background-position: -112px -160px; }
+.jquery_form .ui-icon-volume-off { background-position: -128px -160px; }
+.jquery_form .ui-icon-volume-on { background-position: -144px -160px; }
+.jquery_form .ui-icon-power { background-position: 0 -176px; }
+.jquery_form .ui-icon-signal-diag { background-position: -16px -176px; }
+.jquery_form .ui-icon-signal { background-position: -32px -176px; }
+.jquery_form .ui-icon-battery-0 { background-position: -48px -176px; }
+.jquery_form .ui-icon-battery-1 { background-position: -64px -176px; }
+.jquery_form .ui-icon-battery-2 { background-position: -80px -176px; }
+.jquery_form .ui-icon-battery-3 { background-position: -96px -176px; }
+.jquery_form .ui-icon-circle-plus { background-position: 0 -192px; }
+.jquery_form .ui-icon-circle-minus { background-position: -16px -192px; }
+.jquery_form .ui-icon-circle-close { background-position: -32px -192px; }
+.jquery_form .ui-icon-circle-triangle-e { background-position: -48px -192px; }
+.jquery_form .ui-icon-circle-triangle-s { background-position: -64px -192px; }
+.jquery_form .ui-icon-circle-triangle-w { background-position: -80px -192px; }
+.jquery_form .ui-icon-circle-triangle-n { background-position: -96px -192px; }
+.jquery_form .ui-icon-circle-arrow-e { background-position: -112px -192px; }
+.jquery_form .ui-icon-circle-arrow-s { background-position: -128px -192px; }
+.jquery_form .ui-icon-circle-arrow-w { background-position: -144px -192px; }
+.jquery_form .ui-icon-circle-arrow-n { background-position: -160px -192px; }
+.jquery_form .ui-icon-circle-zoomin { background-position: -176px -192px; }
+.jquery_form .ui-icon-circle-zoomout { background-position: -192px -192px; }
+.jquery_form .ui-icon-circle-check { background-position: -208px -192px; }
+.jquery_form .ui-icon-circlesmall-plus { background-position: 0 -208px; }
+.jquery_form .ui-icon-circlesmall-minus { background-position: -16px -208px; }
+.jquery_form .ui-icon-circlesmall-close { background-position: -32px -208px; }
+.jquery_form .ui-icon-squaresmall-plus { background-position: -48px -208px; }
+.jquery_form .ui-icon-squaresmall-minus { background-position: -64px -208px; }
+.jquery_form .ui-icon-squaresmall-close { background-position: -80px -208px; }
+.jquery_form .ui-icon-grip-dotted-vertical { background-position: 0 -224px; }
+.jquery_form .ui-icon-grip-dotted-horizontal { background-position: -16px -224px; }
+.jquery_form .ui-icon-grip-solid-vertical { background-position: -32px -224px; }
+.jquery_form .ui-icon-grip-solid-horizontal { background-position: -48px -224px; }
+.jquery_form .ui-icon-gripsmall-diagonal-se { background-position: -64px -224px; }
+.jquery_form .ui-icon-grip-diagonal-se { background-position: -80px -224px; }
 
 
 /* Misc visuals
 ----------------------------------*/
 
 /* Corner radius */
-jquery_form .ui-corner-all,
-jquery_form .ui-corner-top,
-jquery_form .ui-corner-left,
-jquery_form .ui-corner-tl {
+.jquery_form .ui-corner-all,
+.jquery_form .ui-corner-top,
+.jquery_form .ui-corner-left,
+.jquery_form .ui-corner-tl {
 	border-top-left-radius: 4px;
 }
-jquery_form .ui-corner-all,
-jquery_form .ui-corner-top,
-jquery_form .ui-corner-right,
-jquery_form .ui-corner-tr {
+.jquery_form .ui-corner-all,
+.jquery_form .ui-corner-top,
+.jquery_form .ui-corner-right,
+.jquery_form .ui-corner-tr {
 	border-top-right-radius: 4px;
 }
-jquery_form .ui-corner-all,
-jquery_form .ui-corner-bottom,
-jquery_form .ui-corner-left,
-jquery_form .ui-corner-bl {
+.jquery_form .ui-corner-all,
+.jquery_form .ui-corner-bottom,
+.jquery_form .ui-corner-left,
+.jquery_form .ui-corner-bl {
 	border-bottom-left-radius: 4px;
 }
-jquery_form .ui-corner-all,
-jquery_form .ui-corner-bottom,
-jquery_form .ui-corner-right,
-jquery_form .ui-corner-br {
+.jquery_form .ui-corner-all,
+.jquery_form .ui-corner-bottom,
+.jquery_form .ui-corner-right,
+.jquery_form .ui-corner-br {
 	border-bottom-right-radius: 4px;
 }
 
 /* Overlays */
-jquery_form .ui-widget-overlay {
+.jquery_form .ui-widget-overlay {
 	background: #aaaaaa;
 	opacity: .3;
 	filter: Alpha(Opacity=30); /* support: IE8 */
 }
-jquery_form .ui-widget-shadow {
+.jquery_form .ui-widget-shadow {
 	-webkit-box-shadow: -8px -8px 8px #aaaaaa;
 	box-shadow: -8px -8px 8px #aaaaaa;
 }

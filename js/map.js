@@ -9,6 +9,40 @@ var addCourtMarker; // a marker for holding the add Court marker
 var courtDisplayMarkers; // an array of markers for holding all court view markers to be displayed
 
 function initMap() {
+  //Create dialog box for adding a court
+  $( "#addCourtDialog" ).dialog({
+
+    dialogClass : "jquery_form",
+  	autoOpen: false,
+  	width: 400,
+  	buttons: [
+  		{
+  			text: "Submit",
+  			click: function() {
+  				$( this ).dialog( "close" );
+          var courtData = [];
+          courtData["CourtName"] = $('#addCourtName').val();
+          courtData["Latitude"] = addCourtMarker.position.lat();
+          courtData["Longitude"] = addCourtMarker.position.lng();
+          addCourtLevelDialog(true, courtData);
+  			}
+  		},
+  		{
+  			text: "Cancel",
+  			click: function() {
+  				$( this ).dialog( "close" );
+          addCourtLevelDialog(false, null);
+  			}
+  		}
+  	]
+  });
+
+  $("#dialog").addClass("jquery_form ui-widget-header")
+
+
+
+
+
   //Create map
   mapDiv = document.getElementById('map');
   map = new google.maps.Map(mapDiv, {
@@ -30,7 +64,6 @@ function initMap() {
   google.maps.event.addListener(map, 'click', function(event) {
     addCourtMarker = placeMarker(event.latLng, true, addCourtMarker);
   });
-console.log("hello3");
 }
 
 
@@ -45,29 +78,46 @@ function addCourt(marker) {
   {
     // display new court pin on map
     //var courtName = prompt("Please enter this new court's name", "Court Name");
-    $( "#dialog" ).dialog();
+    var submit_flag = $("#addCourtDialog").dialog("open");
 
-    marker.location;
-    // call php function databaseFacade-> add court data, with the location data and court name
+  } else
+      alert("Add Court Canceled");
 
-    // Initialize and Display the markers for all courts in database
-    // Since there is now a new court in the database
-    placeCourtMarker(initCourtDisplayMarkers(courtDisplayMarkers));
-    return true;
-  }
+  return;
+}
 
-  return false;
+// When user accepts the alert to add a court
+// A dialog box pops out
+// We add the court if the user presses submit
+// We don't if else
+function addCourtLevelDialog(value, courtData, addCourtMarker){
+
+      if(value)
+      {
+        // call php function databaseFacade-> add court data, with the location data and court name
+
+        // Initialize and Display the markers for all courts in database
+        // Since there is now a new court in the database
+        placeCourtMarker(initCourtDisplayMarkers(courtDisplayMarkers));
+        console.log("new Court Data: ");
+        console.log(courtData);
+      }
+      else{
+        alert("Add Court Canceled");
+      }
 }
 
 // Function that stores all courts
 // currently in the database, as markers
 // in the courtDisplayMarkers array
+// and then adds a listener to each of them
+// returns the arrayOfMarkers made
 function initCourtDisplayMarkers(arrayOfMarkers)
 {
 
 }
 
-// Function that is added as a listener
+// This Function that is added as a listener
 // If a marker is double clicked
 // This function will take the user to that court.php's page
 // Based on the input marker
@@ -95,7 +145,6 @@ function placeMarker(location, courtAddFlag, marker) {
       marker.setPosition(location);
       marker.visible = true;
     } else {
-      console.log("hello\n");
       marker = new google.maps.Marker({
         position: location,
         label: "+",
