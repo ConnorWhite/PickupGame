@@ -1,5 +1,7 @@
 <?php
 
+include 'DatabaseFacade.php';
+
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
     $function = $_POST['function'];
 	$id = $_POST['id'];
@@ -10,8 +12,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 		case('addCourt'):
         break;
 
-    case('getCourt'):
-        break;
+
 
 		case('getChatState'):
 			$chatlog = "chat/logs/$id.txt";
@@ -60,4 +61,30 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 	}
 	echo json_encode($log);
 }
+
+if($_SERVER['REQUEST_METHOD'] == 'GET'){
+    $function = $_GET['function'];
+   	$id = $_GET['id'];
+    $log = array();
+
+      switch($function) {
+        case('getCourt'):
+
+          $userlat = $_GET['lat'];
+          $userlong = $_GET['long'];
+          $range1 = $_GET['rangeLat'];
+          $range2 = $_GET['rangeLong'];
+          $courts = getCourtsInRange( $userlat,$userlong,array($range2,$range1));
+          $courts_array = array();
+          foreach($courts as $court)
+          {
+            array_push($courts_array, $court);
+          }
+          header('Content-type: application/json');
+          echo json_encode($courts_array);
+          break;
+
+      }
+  }
+
 ?>

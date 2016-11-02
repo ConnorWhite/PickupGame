@@ -13,6 +13,7 @@
 	$dateLabel  = "Date   | ";
 	$playerLabel = "Current Player List:";
 	$players = getPlayers($gameviewID);
+	#$players = getCourtsInRange( 30.2849,-97.7341,array(10,10));
 	?>
 
 	<!--Display the Game's court and date, then all the players in that game -->

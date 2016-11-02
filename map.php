@@ -2,6 +2,7 @@
   session_start();
   $title = "Pickup Game";
   include 'header.php';
+  include 'DatabaseFacade.php'
 ?>
 
 <link rel="stylesheet" href="jquery_form/jquery-ui.css">

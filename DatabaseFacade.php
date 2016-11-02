@@ -61,9 +61,9 @@
     }
     return $games;
   }
-  // Input: Name, Longitude, Latitude
+  // Input: Name, Lat, Long, Helpful note: Google maps convention: (lat,long)
   // Output: courtID Test
-  function addCourt($name, $long, $lat){
+  function addCourt($name, $lat, $long){
     return addRow(COURT_TABLE, array("Name", "Longitude", "Latitude"), array($name, $long, $lat));
   }
 
@@ -81,8 +81,8 @@
 
   //Input: longitude, latitude, [lat range, lon range]
   //Output: list of all Courts within range of ($lat, $lon)
-  function getCourtsInRange($longitude, $latitude, $ranges){
-    $cols = ["Longitude", "Latitude"];
-    $vals = [$longitude, $latitude];
+  function getCourtsInRange($latitude, $longitude, $ranges){
+    $cols = array("Longitude", "Latitude");
+    $vals = array($longitude, $latitude);
     return getRowsByRange(COURT_TABLE, $cols, $vals, $ranges);
   }

@@ -6,7 +6,9 @@ var map;
 var labels = '+';
 var labelIndex = 0;
 var addCourtMarker; // a marker for holding the add Court marker
-var courtDisplayMarkers; // an array of markers for holding all court view markers to be displayed
+var courtDisplayMarkers = []; // an array of markers for holding all court view markers to be displayed
+var debug_counter = 0;
+var userCenter = [];
 
 function initMap() {
   //Create dialog box for adding a court
@@ -43,6 +45,8 @@ function initMap() {
 
 
   //Create map
+  userCenter['lat'] = 30.2849;
+  userCenter['long'] = -97.7341;
   mapDiv = document.getElementById('map');
   map = new google.maps.Map(mapDiv, {
     center: {lat: 30.2849, lng: -97.7341},
@@ -113,7 +117,44 @@ function addCourtLevelDialog(value, courtData){
 // returns the arrayOfMarkers made
 function initCourtDisplayMarkers(arrayOfMarkers)
 {
+    var range = [1000,1000];
+  $.ajax({
+    type: "GET",
+    url: "process.php",
+    data: {
+          dataType: 'json',
+         'function': 'getCourt',
+         'id': 'map',
+         'lat' : userCenter['lat'],
+         'long': userCenter['long'],
+         'rangeLat' : 10,
+         'rangeLong': 10
+      },
+    dataType: "json",
+    success: function(data){
+      // Store the court data
+      console.log("Courts in Database: ");
+      console.log(data);
 
+      // Loop through each court,
+      // and store all data from court, e.g.
+      // name, id, ...
+
+      for(var i = 0; i < data.length; i++)
+      {
+        var court = data[i];
+
+        var marker = placeMarker( new google.maps.LatLng(court["Latitude"],court["Longitude"]),
+          false,
+          null);
+          var courtDataAndMarker = [];
+          courtDataAndMarker["CourtData"] = court;
+          courtDataAndMarker["Marker"] = marker;
+          console.log(courtDataAndMarker);
+          courtDisplayMarkers.push(courtDataAndMarker);
+      }
+    },
+});
 }
 
 // This Function that is added as a listener
@@ -127,9 +168,11 @@ function takeUserToTheRequestedCourtPage(marker)
 
 // Function for placing a court marker
 // for displaying all the courts a user can
-function placeCourtMarker(marker)
+function placeCourtMarker(markers)
 {
-
+/*  foreach ($markers as $marker) {
+     placeMarker()
+  }*/
 }
 // Function for placing a marker
 // The marker is either for a potential court to be added as requested by the user
@@ -153,11 +196,18 @@ function placeMarker(location, courtAddFlag, marker) {
       marker.addListener('click', function(){addCourt(marker);});
     }
 
+
   }  // end if(courtAddFlag)
   else { // or else, handle displaying a court to display
     if(marker == null)
     {
-      throw new Error("Why you giving me a Null marker?");
+      marker = new google.maps.Marker({
+        position: location,
+        label: ".",
+        map: map
+      });
+      // TODO: add listeners for dblclick and click
+
     }
     marker.setPosition(location);
     marker.visible = true;
