@@ -292,17 +292,26 @@ function addViewCourtMarkerListeners(marker,courtData)
         } ]
     }).css("font-size", "12px");;
 
+    // Will clean this up later
+    // Didn't realize you could +
+    // strings in js till a bit later
     var courtInfo = getCourtInfo(courtData);
     console.log("<h1>Court Information</h1>");
     console.log(courtInfo);
     $("#dynamicCourtInfoTextCourtInfo").html("<h1>"
     .concat(courtData['Name']
-    .concat("'s Info:").concat("</h1>")));
+    .concat("'s Info:").concat("</h1>"
+    +       "<p>There are ".concat(
+          courtInfo[courtInfo.length -1].toString())
+          .concat(" player(s).</p>")
+        )));
+
+    /*
     $("#dynamicCourtInfoTextCourtPlayerInfo").html(
       "<p>There are ".concat(
       courtInfo[courtInfo.length -1].toString())
       .concat(" player(s).</p>")
-    );
+    ); */
     var games_titles = "";
     // I added more information than necessary,
     // for sake of proof of concept with regards
@@ -311,7 +320,6 @@ function addViewCourtMarkerListeners(marker,courtData)
     for(var i = 0; i < courtInfo.length - 1; i++)
     {
 
-      // Will clean this up later
       games_titles = games_titles.concat("<h3>");
       games_titles = games_titles.concat(courtInfo[i]["GameData"]["Name"].concat("</h3>"));
       games_titles = games_titles.concat("<p>There are " + courtInfo[i]["PlayerData"].length.toString()
