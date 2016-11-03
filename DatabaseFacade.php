@@ -17,9 +17,13 @@
   // Output: array of players associated with GameID
   function getPlayers($gameID)
   {
-    $playerGameMap = getRows(PLAYER_GAME_TABLE, "gameID", $gameID);
+    $chatlog = "chat/logs/map.txt";
+
+    $playerGameMap = getRows(PLAYER_GAME_TABLE, "GameID", $gameID);
+
     $players = array();
     foreach ($playerGameMap as $playerGame){
+
       $player = getPlayerByID($playerGame["PlayerID"]);
       array_push($players, $player);
     }
@@ -70,7 +74,8 @@
   //Input: courtID
   //Ouput: list of games scheduled for that court
   function getGamesByCourtID($courtID){
-    //TODO
+    $games = getRows(GAME_TABLE, "CourtID", $courtID);
+    return $games;
   }
 
   //Input: court ID

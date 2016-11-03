@@ -16,15 +16,16 @@
     <input id="addCourtName" class="myInput" type="text" />
 </div>
 
-<div id="courtInfoDialog" title="New Court Form">
-    <div id="dynamicCourtInfoTextCourtName"></div>
-    <div id="dynamicCourtInfoTextCourtPlayerCount"></div>
-    <div id="dynamicCourtInfoTextCourtGameCount"></div>
+<div id="courtInfoDialog" title="DynamicCourtTitle">
+  <div id="dynamicCourtInfoTextCourtInfo"></div>
+  <div id="dynamicCourtInfoTextCourtGameInfo"></div>
 </div>
 
+
 <div id="map">
-  <!-- TODO: Display all courts -->
-  <!-- TODO: Create plus button for adding a new court -->
+  <!-- Display all courts -->
+  <!-- Create plus button for adding a new court -->
+  <!-- All done in map.js -->
 </div>
 
 

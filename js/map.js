@@ -23,7 +23,7 @@ function initMap() {
   			click: function() {
   				$( this ).dialog( "close" );
           var courtData = [];
-          courtData["CourtName"] = $('#addCourtName').val();
+          courtData["Name"] = $('#addCourtName').val();
           courtData["Latitude"] = addCourtMarker.position.lat();
           courtData["Longitude"] = addCourtMarker.position.lng();
           addCourtLevelDialog(true, courtData);
@@ -38,11 +38,6 @@ function initMap() {
   		}
   	]
   });
-
-
-
-
-
 
   //Create map
   userCenter['lat'] = 30.2849;
@@ -61,7 +56,7 @@ function initMap() {
   //TODO: remove 'Map' from menu
 
   // Initialize and Display the markers for all courts in database
-  placeCourtMarker(initCourtDisplayMarkers(courtDisplayMarkers));
+  initCourtDisplayMarkers(courtDisplayMarkers);
 
   // Ability to place marker for a new court's location
   google.maps.event.addListener(map, 'click', function(event) {
@@ -76,6 +71,11 @@ function initMap() {
 // returns true if user decided to add a court
 // returns false otherwise
 function addCourt(marker) {
+  if(courtAlreadyAdded(marker))
+  {
+    alert("Can't add court here. Court Already Exists!");
+    return;
+  }
 
   if(confirm("Are you sure you want to add a new court here?"))
   {
@@ -89,11 +89,38 @@ function addCourt(marker) {
   return;
 }
 
+// Returns true if court already added
+// False else TODO
+function courtAlreadyAdded(marker) {
+  for(var i = 0; i < courtDisplayMarkers.length; i++)
+  {
+    var addedLong = Math.abs(courtDisplayMarkers[i]["CourtData"]["Longitude"]);
+    var addedLat = Math.abs(courtDisplayMarkers[i]["CourtData"]["Latitude"]);
+
+    var addingLat = Math.abs(marker.position.lat());
+    var addingLong = Math.abs(marker.position.lng());
+
+    if(Math.abs(addedLong-addingLong) <= 0.0003)
+      return true;
+
+    if(Math.abs(addedLat-addingLat) <= 0.0003)
+      return true;
+
+
+  }
+  return false;
+}
 // When user accepts the alert to add a court
 // A dialog box pops out
 // We add the court if the user presses submit
 // We don't if else
 function addCourtLevelDialog(value, courtData){
+/*
+      if(courtAlreadyAdded(courtData))
+      {
+        $( "#addCourtDialog" ).close();
+        alert("Court Already Exists!");
+      }*/
 
       if(value)
       {
@@ -101,13 +128,50 @@ function addCourtLevelDialog(value, courtData){
 
         // Initialize and Display the markers for all courts in database
         // Since there is now a new court in the database
-        placeCourtMarker(initCourtDisplayMarkers(courtDisplayMarkers));
         console.log("new Court Data: ");
         console.log(courtData);
-      }
-      else{
-        alert("Add Court Canceled");
-      }
+
+        $.ajax({
+          type: "POST",
+          url: "process.php",
+          data: {
+                dataType: 'json',
+               'function': 'addCourt',
+               'id': 'map',
+               'name': courtData['Name'],
+               'lat' : courtData['Latitude'],
+               'long': courtData['Longitude'],
+
+            },
+            success: function(data){
+                console.log("database add Success");
+                console.log(data);
+                courtDisplayMarkers = [];
+                addCourtMarker.visible = false;
+                initCourtDisplayMarkers(courtDisplayMarkers);
+            }
+      });
+/*
+      var location = new google.maps.LatLng(
+        courtData['Latitude'], courtData['Longitude']);
+
+      var  marker = new google.maps.Marker({
+          position: location,
+          label: ".",
+          map: map
+        });
+
+      addCourtMarker.visible = false;
+
+      // Add the court the the array that contains all the courts
+      var courtDataAndMarker = [];
+      courtDataAndMarker["CourtData"] = courtData;
+      courtDataAndMarker["Marker"] = addViewCourtMarkerListeners(marker,courtData);
+      courtDisplayMarkers.push(courtDataAndMarker) */
+      } // end if(value)
+    else{
+      alert("Add Court Canceled");
+    }
 }
 
 // Function that stores all courts
@@ -146,7 +210,8 @@ function initCourtDisplayMarkers(arrayOfMarkers)
 
         var marker = placeMarker( new google.maps.LatLng(court["Latitude"],court["Longitude"]),
           false,
-          null);
+          null,
+          court);
           var courtDataAndMarker = [];
           courtDataAndMarker["CourtData"] = court;
           courtDataAndMarker["Marker"] = marker;
@@ -161,25 +226,17 @@ function initCourtDisplayMarkers(arrayOfMarkers)
 // If a marker is double clicked
 // This function will take the user to that court.php's page
 // Based on the input marker
-function takeUserToTheRequestedCourtPage(marker)
+function takeUserToTheRequestedCourtPage(courtData)
 {
-
+    window.location = "court.php"; //TODO
 }
 
-// Function for placing a court marker
-// for displaying all the courts a user can
-function placeCourtMarker(markers)
-{
-/*  foreach ($markers as $marker) {
-     placeMarker()
-  }*/
-}
 // Function for placing a marker
 // The marker is either for a potential court to be added as requested by the user
 // Or, the marker is for having a court's
 // The two use cases is determined by the courtAddFlag
 // Returns the marker, for use for adding a court
-function placeMarker(location, courtAddFlag, marker) {
+function placeMarker(location, courtAddFlag, marker,courtData) {
 
   if(courtAddFlag) // handle placing a add court marker
   {
@@ -211,7 +268,130 @@ function placeMarker(location, courtAddFlag, marker) {
     }
     marker.setPosition(location);
     marker.visible = true;
+    marker = addViewCourtMarkerListeners(marker,courtData);
   }
 
   return marker;
+}
+// TODO: I will add more comments for the new functions- ziping
+function addViewCourtMarkerListeners(marker,courtData)
+{
+  marker.addListener('click', function(){
+    $( "#courtInfoDialog" ).dialog({
+
+      dialogClass : "jquery_form",
+      title : "Court | ".concat(courtData['Name']),
+      autoOpen: false,
+      width: 400,
+      buttons: [
+        {
+          text: "Go to Court",
+          click: function() {
+            takeUserToTheRequestedCourtPage(courtData);
+          }
+        } ]
+    }).css("font-size", "12px");;
+
+    var courtInfo = getCourtInfo(courtData);
+    console.log("<h1>Court Information</h1>");
+    console.log(courtInfo);
+    $("#dynamicCourtInfoTextCourtInfo").html("<h1>"
+    .concat(courtData['Name']
+    .concat("'s Info:").concat("</h1>")));
+    $("#dynamicCourtInfoTextCourtPlayerInfo").html(
+      "<p>There are ".concat(
+      courtInfo[courtInfo.length -1].toString())
+      .concat(" player(s).</p>")
+    );
+    var games_titles = "";
+    // I added more information than necessary,
+    // for sake of proof of concept with regards
+    // to using ajax in implementing
+    // process.php
+    for(var i = 0; i < courtInfo.length - 1; i++)
+    {
+
+      // Will clean this up later
+      games_titles = games_titles.concat("<h3>");
+      games_titles = games_titles.concat(courtInfo[i]["GameData"]["Name"].concat("</h3>"));
+      games_titles = games_titles.concat("<p>There are " + courtInfo[i]["PlayerData"].length.toString()
+    + " Total Player(s) for " + courtInfo[i]["GameData"]["Name"] + ":<br>");
+      for(var j = 0; j < courtInfo[i]["PlayerData"].length; j++)
+      {
+      games_titles = games_titles.concat(courtInfo[i]["PlayerData"][j]["Name"].concat("<br>"));
+      }
+    }
+    $("#dynamicCourtInfoTextCourtGameInfo").html("<h2>Games:<h2>"
+      .concat(games_titles));
+
+    $("#courtInfoDialog").dialog("open");
+  });
+  marker.addListener('dblclick', function(){takeUserToTheRequestedCourtPage(courtData);});
+  return marker;
+}
+
+function getCourtInfo(courtData) {
+  var returnData =[];
+  var data_games;
+
+data_games = getCourtGames(courtData);
+var player_count = 0;
+for(var i = 0; i < data_games.length; i++)
+{
+  var gpdata = [];
+
+gpdata['PlayerData'] = getPlayersData(data_games[i]);
+player_count += gpdata['PlayerData'].length;
+gpdata['GameData'] = data_games[i];
+returnData.push(gpdata);
+}
+returnData.push(player_count);
+return returnData;
+}
+
+function getCourtGames(courtData){
+  var data_games;
+  $.ajax({
+    type: "GET",
+    url: "process.php",
+    data: {
+          dataType: 'json',
+         'function': 'getCourtGames',
+         'id': 'map',
+         'courtID' : courtData["ID"],
+      },
+      dataType: "json",
+      success: function(data){
+          console.log("getGames success!");
+          console.log(data);
+          data_games = data;
+          console.log(data_games);
+      },
+      async: false
+});
+  return data_games;
+}
+
+function getPlayersData(gameData)
+{
+  var playerData;
+  $.ajax({
+    type: "GET",
+    url: "process.php",
+    data: {
+          dataType: 'json',
+         'function': 'getPlayersByGameID',
+         'id': 'map',
+         'gameID' : gameData["ID"]
+      },
+      dataType: "json",
+      success: function(data){
+          console.log("getPlayers success!");
+          console.log(data);
+      playerData = data;
+    },
+    async: false
+});
+
+return playerData;
 }

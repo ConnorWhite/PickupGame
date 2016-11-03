@@ -10,7 +10,14 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     switch($function) {
 
 		case('addCourt'):
-        break;
+    $name = $_POST['name'];
+    $userlat = $_POST['lat'];
+    $userlong = $_POST['long'];
+    $courtID = addCourt($name,$userlat,$userlong);
+
+    echo $courtID;
+    break;
+
 
 
 
@@ -66,6 +73,7 @@ if($_SERVER['REQUEST_METHOD'] == 'GET'){
     $function = $_GET['function'];
    	$id = $_GET['id'];
     $log = array();
+    $chatlog = "chat/logs/$id.txt";
 
       switch($function) {
         case('getCourt'):
@@ -80,8 +88,37 @@ if($_SERVER['REQUEST_METHOD'] == 'GET'){
           {
             array_push($courts_array, $court);
           }
+
           header('Content-type: application/json');
           echo json_encode($courts_array);
+          break;
+
+        case('getCourtGames'):
+          $courtID = $_GET['courtID'];
+          $games = getGamesByCourtID($courtID);
+          $games_array = array();
+          foreach($games as $game)
+          {
+
+            array_push($games_array, $game);
+          }
+
+          header('Content-type: application/json');
+          echo json_encode($games_array);
+          break;
+
+        case('getPlayersByGameID'):
+          $gameID = $_GET['gameID'];
+          $players = getPlayers($gameID);
+
+          $players_array = array();
+          foreach($players as $player)
+          {
+
+            array_push($players_array, $player);
+          }
+          header('Content-type: application/json');
+          echo json_encode($players);
           break;
 
       }
