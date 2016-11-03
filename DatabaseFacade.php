@@ -17,7 +17,6 @@
   // Output: array of players associated with GameID
   function getPlayers($gameID)
   {
-    $chatlog = "chat/logs/map.txt";
 
     $playerGameMap = getRows(PLAYER_GAME_TABLE, "GameID", $gameID);
 

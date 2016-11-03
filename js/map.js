@@ -228,7 +228,19 @@ function initCourtDisplayMarkers(arrayOfMarkers)
 // Based on the input marker
 function takeUserToTheRequestedCourtPage(courtData)
 {
-    window.location = "court.php"; //TODO
+  $.ajax({
+    type: "POST",
+    url: "map.php",
+    data: {
+          dataType: 'json',
+         'function': 'setCourtSession',
+         'CourtID' : courtData['ID']
+      },
+      success: function(data){
+        console.log("court session: " +data);
+        window.location = "court.php"; //TODO
+    },
+});
 }
 
 // Function for placing a marker

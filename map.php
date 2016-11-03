@@ -1,8 +1,23 @@
 <?php
   session_start();
+
   $title = "Pickup Game";
   include 'header.php';
-  include 'DatabaseFacade.php'
+  include 'DatabaseFacade.php';
+
+  #for the _SESSION_ID
+  if($_SERVER['REQUEST_METHOD'] == 'POST'){
+      $function = $_POST['function'];
+      switch($function) {
+
+  		case('setCourtSession'):
+      $CourtID = $_POST['CourtID'];
+      $_SESSION['CourtID']  = $CourtID;
+      echo $_SESSION['CourtID'];
+      break;
+    }
+  }
+
 ?>
 
 <link rel="stylesheet" href="jquery_form/jquery-ui.css">
