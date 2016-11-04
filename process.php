@@ -10,10 +10,13 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     switch($function) {
 
 		case('addCourt'):
+
     $name = $_POST['name'];
     $userlat = $_POST['lat'];
     $userlong = $_POST['long'];
     $courtID = addCourt($name,$userlat,$userlong);
+
+
 
     echo $courtID;
     break;
@@ -77,6 +80,7 @@ if($_SERVER['REQUEST_METHOD'] == 'GET'){
 
       switch($function) {
         case('getCourt'):
+        $chatlog = "chat/logs/$id.txt";
 
           $userlat = $_GET['lat'];
           $userlong = $_GET['long'];
@@ -88,7 +92,8 @@ if($_SERVER['REQUEST_METHOD'] == 'GET'){
           {
             array_push($courts_array, $court);
           }
-
+          #fwrite(fopen("$chatlog", 'a'), $userlat);
+          #fwrite(fopen("$chatlog", 'a'), $userlong);
           header('Content-type: application/json');
           echo json_encode($courts_array);
           break;

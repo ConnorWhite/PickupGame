@@ -11,7 +11,7 @@ var debug_counter = 0;
 var userCenter = [];
 
 function initMap() {
-  //Create dialog box for adding a court
+  //Initial flaoting jquery ui dialog box for adding a court
   $( "#addCourtDialog" ).dialog({
 
     dialogClass : "jquery_form",
@@ -39,14 +39,39 @@ function initMap() {
   	]
   });
 
-  //Create map
-  userCenter['lat'] = 30.2849;
-  userCenter['long'] = -97.7341;
+
   mapDiv = document.getElementById('map');
   map = new google.maps.Map(mapDiv, {
     center: {lat: 30.2849, lng: -97.7341},
     zoom: 16
-  });//TODO: center on user's location
+  });
+      var infoWindow = new google.maps.InfoWindow({map: map});
+  // find the users location if possible with HTML5 geolocation.
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(function(position) {
+            var pos = {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude
+            };
+
+            infoWindow.setPosition(pos);
+            infoWindow.setContent('You are here');
+            // Initialize and Display the markers for all courts in database
+            //Create map
+            userCenter['lat'] = pos['lat'];
+            userCenter['long'] = pos['lng'];
+            initCourtDisplayMarkers(courtDisplayMarkers);
+            map.setCenter(pos);
+          }, function() {
+            handleLocationError(true, infoWindow, map.getCenter());
+          });
+        } else {
+          // Browser doesn't support Geolocation
+          handleLocationError(false, infoWindow, map.getCenter());
+        }
+
+console.log("usercenter"+userCenter);
+
   //Set map height to fit between header and footer
   var headerHeight = document.getElementById("header").clientHeight;
   var footerHeight = document.getElementById("footer").clientHeight;
@@ -55,14 +80,21 @@ function initMap() {
   document.getElementById("header").style.position = "fixed";
   //TODO: remove 'Map' from menu
 
-  // Initialize and Display the markers for all courts in database
-  initCourtDisplayMarkers(courtDisplayMarkers);
+
 
   // Ability to place marker for a new court's location
   google.maps.event.addListener(map, 'click', function(event) {
     addCourtMarker = placeMarker(event.latLng, true, addCourtMarker);
   });
 }
+
+
+      function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+        infoWindow.setPosition(pos);
+        infoWindow.setContent(browserHasGeolocation ?
+                              'Error: The Geolocation service failed.' :
+                              'Error: Your browser doesn\'t support geolocation.');
+      }
 
 
 // Function for handling a add court REQUEST
@@ -178,10 +210,15 @@ function addCourtLevelDialog(value, courtData){
 // currently in the database, as markers
 // in the courtDisplayMarkers array
 // and then adds a listener to each of them
+// and places them on the map
 // returns the arrayOfMarkers made
+// called in initMap() and
+// called whenever a new court is added
 function initCourtDisplayMarkers(arrayOfMarkers)
 {
-    var range = [1000,1000];
+    // range in which to find the courts
+    // in the database
+    var range = [1,1];
   $.ajax({
     type: "GET",
     url: "process.php",
@@ -245,9 +282,10 @@ function takeUserToTheRequestedCourtPage(courtData)
 
 // Function for placing a marker
 // The marker is either for a potential court to be added as requested by the user
-// Or, the marker is for having a court's
+// Or, the marker is for an existing court to be
+// shown on the map
 // The two use cases is determined by the courtAddFlag
-// Returns the marker, for use for adding a court
+// Returns the marker
 function placeMarker(location, courtAddFlag, marker,courtData) {
 
   if(courtAddFlag) // handle placing a add court marker
@@ -262,6 +300,8 @@ function placeMarker(location, courtAddFlag, marker,courtData) {
         map: map
       });
 
+      // add listeners to the add court marker
+      // click on it to add a court
       marker.addListener('click', function(){addCourt(marker);});
     }
 
@@ -285,7 +325,19 @@ function placeMarker(location, courtAddFlag, marker,courtData) {
 
   return marker;
 }
-// TODO: I will add more comments for the new functions- ziping
+
+// function that takes in a court's marker,
+// and its data pertaining to the court
+// and adds a listener to the court's marker
+// which listens for a click for that marker
+// when clicked, the listener will set up
+// a jquery UI dialog
+// for the court, that will float above the map
+// which contains info pertaining to the court
+// and it retrieves the info of the court
+// from the database everytime the
+// marker is clicked, to insure the court's
+// info is up to date
 function addViewCourtMarkerListeners(marker,courtData)
 {
   marker.addListener('click', function(){
@@ -297,17 +349,21 @@ function addViewCourtMarkerListeners(marker,courtData)
       width: 400,
       buttons: [
         {
-          text: "Go to Court",
+          text: "Go to " + courtData['Name'],
           click: function() {
             takeUserToTheRequestedCourtPage(courtData);
           }
         } ]
     }).css("font-size", "12px");;
 
-    // Will clean this up later
-    // Didn't realize you could +
-    // strings in js till a bit later
+    // retrieve the court's info
+    // from the database
     var courtInfo = getCourtInfo(courtData);
+
+
+        // Will clean this up later
+        // Didn't realize you could +
+        // strings in js till a bit later
     console.log("<h1>Court Information</h1>");
     console.log(courtInfo);
     $("#dynamicCourtInfoTextCourtInfo").html("<h1>"
@@ -350,6 +406,32 @@ function addViewCourtMarkerListeners(marker,courtData)
   return marker;
 }
 
+// func getCourtInfo(courtData):
+// Retrieves all the player
+// and game data of a specific
+// court specificed by the input
+// and returns it as a multi dimensional array
+// thus each element in the returned
+// array represents the complete
+// game info of that court
+// so returnData[0] represents a game
+// the element in returnData[0]
+// then has two more arrays
+// returnData[0]["PlayerData"]
+// returnData[0]["GameData"]
+// PlayerData array has
+// all the players in that game
+// and GameData has all
+// the information for the game
+// returnData[0]["PlayerData"][0]
+// would represent one players info
+// returnData[0]["GameData"]
+// would represent one games info
+// you can then use them with
+// "ID", "Name", ...
+// in the same way
+// the data base has it done
+
 function getCourtInfo(courtData) {
   var returnData =[];
   var data_games;
@@ -369,6 +451,9 @@ returnData.push(player_count);
 return returnData;
 }
 
+// function used by getCourtInfo
+// that actually requests the
+// data from the database
 function getCourtGames(courtData){
   var data_games;
   $.ajax({
@@ -392,6 +477,9 @@ function getCourtGames(courtData){
   return data_games;
 }
 
+// function used by getCourtInfo
+// that actually requests the
+// data from the database
 function getPlayersData(gameData)
 {
   var playerData;
