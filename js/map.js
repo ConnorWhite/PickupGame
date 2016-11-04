@@ -47,6 +47,10 @@ function initMap() {
   });
       var infoWindow = new google.maps.InfoWindow({map: map});
   // find the users location if possible with HTML5 geolocation.
+
+  var ua = navigator.userAgent.toLowerCase(),
+    isAndroid = ua.indexOf("android") > -1,
+    geoTimeout = '15000';
         if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition(function(position) {
             var pos = {
@@ -341,6 +345,57 @@ function placeMarker(location, courtAddFlag, marker,courtData) {
 function addViewCourtMarkerListeners(marker,courtData)
 {
   marker.addListener('click', function(){
+    var courtInfo = getCourtInfo(courtData);
+
+
+
+// Will clean this up later
+// Didn't realize you could +
+// strings in js till a bit later
+console.log("<h1>Court Information</h1>");
+console.log(courtInfo);
+var courtTitle = "<h1>"
+.concat(courtData['Name']
+.concat("'s Info:").concat("</h1>"
++       "<p>There are ".concat(
+  courtInfo[courtInfo.length -1].toString())
+  .concat(" player(s).</p>")
+));
+
+var games_titles = "";
+// I added more information than necessary,
+// for sake of proof of concept with regards
+// to using ajax in implementing
+// process.php
+for(var i = 0; i < courtInfo.length - 1; i++)
+{
+
+games_titles = games_titles.concat("<h3>");
+games_titles = games_titles.concat(courtInfo[i]["GameData"]["Name"].concat("</h3>"));
+games_titles = games_titles.concat("<p>There are " + courtInfo[i]["PlayerData"].length.toString()
++ " Total Player(s) for " + courtInfo[i]["GameData"]["Name"] + ":<br>");
+for(var j = 0; j < courtInfo[i]["PlayerData"].length; j++)
+{
+games_titles = games_titles.concat(courtInfo[i]["PlayerData"][j]["Name"].concat("<br>"));
+}
+}
+var gamesInfo = "<h2>Games:<h2>".concat(games_titles);
+var infoText = courtTitle+ gamesInfo;
+infowindow = new google.maps.InfoWindow({
+  content: " "
+});
+var buttonFun =
+'\"<script type="text/javascript">' + "takeUserToTheRequestedCourtPage(courtData)"
++ '</script>\"';
+infowindow.setContent(infoText +
+  '<button id = courtButt>' + 'Go to ' + courtData['Name'] + '</button>');
+
+infowindow.open(map, this);
+
+$("#courtButt")[0].addEventListener("click", function(){takeUserToTheRequestedCourtPage(courtData);} );
+
+});
+    /*
     $( "#courtInfoDialog" ).dialog({
 
       dialogClass : "jquery_form",
@@ -380,6 +435,7 @@ function addViewCourtMarkerListeners(marker,courtData)
       courtInfo[courtInfo.length -1].toString())
       .concat(" player(s).</p>")
     ); */
+    /*
     var games_titles = "";
     // I added more information than necessary,
     // for sake of proof of concept with regards
@@ -402,7 +458,7 @@ function addViewCourtMarkerListeners(marker,courtData)
 
     $("#courtInfoDialog").dialog("open");
   });
-  marker.addListener('dblclick', function(){takeUserToTheRequestedCourtPage(courtData);});
+  marker.addListener('dblclick', function(){takeUserToTheRequestedCourtPage(courtData);}); */
   return marker;
 }
 

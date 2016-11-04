@@ -5,6 +5,8 @@
   include 'header.php';
   include 'DatabaseFacade.php';
 
+
+
   #for the _SESSION_ID
   if($_SERVER['REQUEST_METHOD'] == 'POST'){
       $function = $_POST['function'];
@@ -49,4 +51,4 @@
   include('footer.php');
 ?>
   <script src="/PickupGame/js/map.js"></script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBwnIsjQZQW9yw5-Bw5ZRejW4_smZbdwPQ&callback=initMap" async defer></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBwnIsjQZQW9yw5-Bw5ZRejW4_smZbdwPQ&sensor=true&callback=initMap" async defer></script>
