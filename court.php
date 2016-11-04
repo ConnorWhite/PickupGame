@@ -1,9 +1,12 @@
 <?php
+  include 'DatabaseFacade.php';
   session_start();
-  $title = "Gregory Gym Court"; //TODO change to a session variable
+  $CourtID = $_SESSION["CourtID"];
+  $court = getCourtByID($CourtID);
+  $title = $court['Name'];
   include 'header.php';
-  
- 
+
+
   $stack = array("orange", "banana");
   array_push($stack, "apple", "raspberry");
   print_r($stack);
