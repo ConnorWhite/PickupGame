@@ -117,7 +117,28 @@ function addCourt(marker) {
   {
     // display new court pin on map
     //var courtName = prompt("Please enter this new court's name", "Court Name");
-    var submit_flag = $("#addCourtDialog").dialog("open");
+
+    var courtNameIn = '<input id = "CourtName" type="text" name="FirstName" value="Court Name"><br>';
+    var courtSubmit = '<button id = SubmitCourt>Submit</button>';
+    infowindow = new google.maps.InfoWindow({
+      content: "Enter Court Name: " + courtNameIn +
+      courtSubmit
+    });
+
+    infowindow.open(map, marker);
+
+
+    $("#SubmitCourt")[0].addEventListener("click", function(){
+      var courtData = [];
+      courtData["Name"] = $('#CourtName').val();
+      console.log("infow window add court: " + courtData['Name']);
+      courtData["Latitude"] = addCourtMarker.position.lat();
+      courtData["Longitude"] = addCourtMarker.position.lng();
+      addCourtLevelDialog(true, courtData);
+      infowindow.close();
+      marker.visible = false;});
+
+
 
   } else
       alert("Add Court Canceled");
