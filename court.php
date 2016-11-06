@@ -5,6 +5,7 @@
   $court = getCourtByID($CourtID);
   $title =  "Games for " + $court['Name'];
   include 'header.php';
+//comment
 ?>
 
 <div style="color:#0000FF">
