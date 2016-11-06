@@ -3,14 +3,8 @@
   session_start();
   $CourtID = $_SESSION["CourtID"];
   $court = getCourtByID($CourtID);
-  $title = $court['Name'];
+  $title =  "Games for " + $court['Name'];
   include 'header.php';
-
-
-  $stack = array("orange", "banana");
-  array_push($stack, "apple", "raspberry");
-  print_r($stack);
-
 ?>
 
 <div style="color:#0000FF">
