@@ -5,16 +5,36 @@
   $court = getCourtByID($_SESSION["CourtID"]);
   $title =  "Games for " . $court['Name'];
   
-  var_dump(getGamesByCourtID($_SESSION['CourtID']));
+  $games = getGamesByCourtID($_SESSION["CourtID"]);
   
+  var_dump($games);
   include 'header.php';
-//comment
 
-for ($x = 0; $x <= 6; $x++) {
+  foreach ($games as $game) {
     echo "<div class= \"game\">
-	<h3>Game " . $x ."</h3><p>This is a paragraph.</p>
-	</div>";
-	}
-	
+    <h3>Game " . $game['ID'] . "</h3>"
+    . "<p>" . $game['Date'] . "</p>
+    </div>";
+  }
+?>
+<html>
+<body>
+<form method="post" action="court.php">
+    Court Name <br>
+    <input type="text" name="txt"/> <br>
+    Date <br>
+    <input type="date" name="date"/> <br>
+    <input type="submit" name="select" value="select" onclick="select()" />
+</form>
+</body>
+</html>
+<?php
+  function display() {
+    addGame($_POST["txt"], $_POST["date"], $_SESSION["CourtID"]);
+    echo "Added Game <br>";
+  }
+  if(isset($_POST['select'])) {
+    display();
+  } 
   include 'footer.php';
 ?>
