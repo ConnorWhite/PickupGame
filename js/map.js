@@ -278,7 +278,9 @@ function initCourtDisplayMarkers(arrayOfMarkers)
           courtDataAndMarker["CourtData"] = court;
           courtDataAndMarker["Marker"] = marker;
           console.log(courtDataAndMarker);
-          courtDisplayMarkers.push(courtDataAndMarker);
+          couQUnit.test( "Court Info Test", function( assert ) {
+  assert.ok( 1 == "1", "Passed!" );
+});rtDisplayMarkers.push(courtDataAndMarker);
       }
     },
 });
@@ -580,3 +582,26 @@ function getPlayersData(gameData)
 
 return playerData;
 }
+
+
+/* QUnit Tests */
+
+QUnit.test( "Add New Court Test", function( assert ) {
+  assert.ok( 1 == "1", "Passed!" );
+});
+
+QUnit.test( "Add Existing Court Test", function( assert ) {
+  assert.ok( 1 == "1", "Passed!" );
+});
+
+QUnit.test( "Courts Range Test", function( assert ) {
+  assert.ok( 1 == "1", "Passed!" );
+});
+
+QUnit.test( "Court Info Test", function( assert ) {
+  assert.ok( 1 == "1", "Passed!" );
+});
+
+QUnit.test( "Court Info Test", function( assert ) {
+  assert.ok( 1 == "1", "Passed!" );
+});
