@@ -7,7 +7,7 @@
   
   $games = getGamesByCourtID($_SESSION["CourtID"]);
   
-  var_dump($games);
+  //var_dump($games);
   include 'header.php';
 
   foreach ($games as $game) {
@@ -19,22 +19,14 @@
 ?>
 <html>
 <body>
-<form method="post" action="court.php">
-    Court Name <br>
-    <input type="text" name="txt"/> <br>
-    Date <br>
-    <input type="date" name="date"/> <br>
-    <input type="submit" name="select" value="select" onclick="select()" />
+<form method="post" action="">
+    <input type="submit" name="addgame" value="Add Game"/>
 </form>
 </body>
 </html>
 <?php
-  function display() {
-    addGame($_POST["txt"], $_POST["date"], $_SESSION["CourtID"]);
-    echo "Added Game <br>";
-  }
-  if(isset($_POST['select'])) {
-    display();
+  if(isset($_POST['addgame'])) {
+    header('Location: addcourt.php');
   } 
   include 'footer.php';
 ?>
