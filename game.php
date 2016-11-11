@@ -1,13 +1,11 @@
 <?php
-
-
 	session_start();
 	//include 'pattern/Observer.php';
 	include 'DatabaseFacade.php';
 
 	// Set in gameID
 	//$gameID = $_SESSION['gameID'];
-	$gameviewID = 2;
+	$gameviewID = $_GET["id"];
 	$gameview = getGameById($gameviewID);
 	$courtLabel = "Court  | ";
 	$dateLabel  = "Date   | ";

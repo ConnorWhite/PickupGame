@@ -12,8 +12,12 @@
 
   foreach ($games as $game) {
     echo "<div class= \"game\">
-    <h3>Game " . $game['ID'] . "</h3>"
+    <h3><a href=\"game.php?id=" . $game['ID']
+    . "\">Game " . $game['ID'] . "</a></h3>"
     . "<p>" . $game['Date'] . "</p>
+    <form method=\"post\" action=\"\">
+    <input type=\"submit\" name=\"joingame\" value=\"Join Game\"/>
+    </form>
     </div>";
   }
 ?>
@@ -27,6 +31,9 @@
 <?php
   if(isset($_POST['addgame'])) {
     header('Location: addcourt.php');
-  } 
+  }
+  if(isset($_POST['joingame'])) {
+    header('Location: addcourt.php');
+  }
   include 'footer.php';
 ?>
