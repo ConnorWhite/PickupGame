@@ -11,12 +11,15 @@
   include 'header.php';
 
   foreach ($games as $game) {
+
+    $numPlayers = count(getPlayers($game['ID']));
     echo "<div class= \"game\">
     <h3><a href=\"game.php?id=" . $game['ID']
     . "\">Game " . $game['ID'] . "</a></h3>"
-    . "<p>" . $game['Date'] . "</p>
+    . "<p>" . $game['Date'] . "</p>"
+    . "<p>" . $numPlayers . " / 10 players</p>
     <form method=\"post\" action=\"\">
-    <input type=\"submit\" name=\"joingame\" value=\"Join Game\"/>
+    <!-- <input type=\"submit\" name=\"joingame\" value=\"Join Game\"/> -->
     </form>
     </div>";
   }
@@ -33,7 +36,6 @@
     header('Location: addcourt.php');
   }
   if(isset($_POST['joingame'])) {
-    header('Location: addcourt.php');
   }
   include 'footer.php';
 ?>

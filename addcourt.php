@@ -12,7 +12,6 @@
 <?php
   include 'DatabaseFacade.php';
   session_start();
-  $_SESSION['CourtID'] = 1;
   function display() {
     addGame($_POST["txt"], $_POST["date"], $_SESSION["CourtID"]);
     echo "Added Game <br>";
