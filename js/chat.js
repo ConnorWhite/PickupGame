@@ -15,6 +15,7 @@ function Chat () {
 
 //gets the state of the chat
 function getStateOfChat(){
+	id = get('id');
 	if(!instanse){
 		 instanse = true;
 		 $.ajax({
@@ -22,7 +23,7 @@ function getStateOfChat(){
 			   url: "process.php",
 			   data: {  
 			   			'function': 'getChatState',
-						'id': 'chat'
+						'id': id
 						},
 			   dataType: "json",
 			
@@ -36,7 +37,8 @@ function getStateOfChat(){
 
 //Updates the chat
 function updateChat(){
-	 if(!instanse){
+	id = get('id');
+	if(!instanse){
 		 instanse = true;
 	     $.ajax({
 			   type: "POST",
@@ -68,6 +70,7 @@ function updateChat(){
 //send the message
 function sendChat(message, nickname){       
     updateChat();
+	id = get('id');
      $.ajax({
 		   type: "POST",
 		   url: "process.php",
@@ -75,7 +78,7 @@ function sendChat(message, nickname){
 		   			'function': 'sendChat',
 					'message': message,
 					'nickname': nickname,
-					'id': 'chat'
+					'id': id
 				 },
 		   dataType: "json",
 		   success: function(data){
@@ -84,3 +87,12 @@ function sendChat(message, nickname){
 		});
 }
 
+function get(name){
+	if(name=(new RegExp(
+		'[?&]'+encodeURIComponent(name)+'=([^&]*)'))
+		.exec(location.search))
+    	return decodeURIComponent(name[1]);
+	else{
+		return 'chat';
+	}
+}
