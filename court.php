@@ -21,13 +21,13 @@
     <h3><a href=\"game.php?id=" . $game['ID']
     . "\">Game " . $game['ID'] . "</a></h3>"
     . "<p>" . $game['Date'] . "</p>"
-    . "<p>" . $numPlayers . " / 10 players</p>
+    . "<p>" . $numPlayers . "</p>
     <form method=\"post\" action=\"\">";
 
     //check if the numPlayers is less than 10 and make sure currentPlayer is not in game before
     //letting player join
 
-    if ($numPlayers < 10 and !in_array(getPlayerById($_SESSION['playerID']), getPlayers($game['ID']))) {
+    if (!in_array(getPlayerById($_SESSION['playerID']), getPlayers($game['ID']))) {
         echo "<input type=\"hidden\" name=\"secret\" value=\"" .
             $game['ID'] . "\"/>";
         echo "<input type=\"submit\" name=\"joingame\" value=\"Join Game\"/>";
