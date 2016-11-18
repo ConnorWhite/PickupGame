@@ -97,3 +97,10 @@
     $vals = array($longitude, $latitude);
     return getRowsByRange(COURT_TABLE, $cols, $vals, $ranges);
   }
+
+  //TODO
+  function deleteGame($gameId){
+    //Delete game from game table
+    //Delete game from playergame linking table
+    //Delete messages from chat
+  }

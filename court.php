@@ -5,11 +5,14 @@
   $_SESSION['CourtID'] = 1;
   $court = getCourtByID($_SESSION["CourtID"]);
   $title =  "Games for " . $court['Name'];
-  
+
   $games = getGamesByCourtID($_SESSION["CourtID"]);
-  
+
   //var_dump($games);
   include 'header.php';
+  ?>
+    <div class="wrap">
+  <?php
 
   foreach ($games as $game) {
 
@@ -24,7 +27,7 @@
     //check if the numPlayers is less than 10 and make sure currentPlayer is not in game before
     //letting player join
 
-    if ($numPlayers < 10 and !in_array(getPlayerById($_SESSION['playerID']), getPlayers($game['ID']))) { 
+    if ($numPlayers < 10 and !in_array(getPlayerById($_SESSION['playerID']), getPlayers($game['ID']))) {
         echo "<input type=\"hidden\" name=\"secret\" value=\"" .
             $game['ID'] . "\"/>";
         echo "<input type=\"submit\" name=\"joingame\" value=\"Join Game\"/>";
@@ -33,13 +36,10 @@
     </div>";
   }
 ?>
-<html>
-<body>
-<form method="post" action="">
-    <input type="submit" name="addgame" value="Add Game"/>
-</form>
-</body>
-</html>
+  <form method="post" action="">
+      <input type="submit" name="addgame" value="Add Game"/>
+  </form>
+</div>
 <?php
   if(isset($_POST['addgame'])) {
     header('Location: addcourt.php');
