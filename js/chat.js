@@ -46,7 +46,7 @@ function updateChat(){
 			   data: {  
 			   			'function': 'updateChat',
 						'state': state,
-						'id': 'chat'
+						'id': id
 						},
 			   dataType: "json",
 			   success: function(data){
