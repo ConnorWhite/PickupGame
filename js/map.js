@@ -8,8 +8,8 @@ var labelIndex = 0;
 var addCourtMarker; // a marker for holding the add Court marker
 var courtDisplayMarkers = []; // an array of markers for holding all court view markers to be displayed
 var debug_counter = 0;
-var userCenter = [];
-
+var userCenter = {lat: 30.2849, lng: -97.7341};
+ 
 function initMap() {
   //Initial flaoting jquery ui dialog box for adding a court
   $( "#addCourtDialog" ).dialog({
@@ -383,6 +383,9 @@ var courtTitle = "<h1>"
   .concat(" player(s).</p>")
 ));
 
+courtTitle = "<h1>" + courtData['Name'] + "</h1>"
+                +"<p>Games: " + (courtInfo.length-1).toString() + "</p>";
+
 var games_titles = "";
 // I added more information than necessary,
 // for sake of proof of concept with regards
@@ -394,15 +397,15 @@ for(var i = 0; i < courtInfo.length - 1; i++)
 games_titles = games_titles.concat("<h3>");
 games_titles = games_titles.concat(courtInfo[i]["GameData"]["Name"].concat("</h3>"));
 games_titles = games_titles.concat("<p>There are " + courtInfo[i]["PlayerData"].length.toString()
-+ " Total Player(s) for " + courtInfo[i]["GameData"]["Name"] + ":<br>");
-for(var j = 0; j < courtInfo[i]["PlayerData"].length; j++)
-{
-  if(courtInfo[i]["PlayerData"][j] != null)
-games_titles = games_titles.concat(courtInfo[i]["PlayerData"][j]["Name"].concat("<br>"));
-}
++ " Total Player(s) for " + courtInfo[i]["GameData"]["Name"] + ":</p><br>");
+//for(var j = 0; j < courtInfo[i]["PlayerData"].length; j++)
+//{
+ // if(courtInfo[i]["PlayerData"][j] != null)
+//games_titles = games_titles.concat(courtInfo[i]["PlayerData"][j]["Name"].concat("<br>"));/
+//}
 }
 var gamesInfo = "<h2>Games:<h2>".concat(games_titles);
-var infoText = courtTitle+ gamesInfo;
+var infoText = courtTitle; //+ gamesInfo;
 infowindow = new google.maps.InfoWindow({
   content: " "
 });
@@ -410,7 +413,7 @@ var buttonFun =
 '\"<script type="text/javascript">' + "takeUserToTheRequestedCourtPage(courtData)"
 + '</script>\"';
 infowindow.setContent(infoText +
-  '<button id = courtButt>' + 'Go to ' + courtData['Name'] + '</button>');
+  '<button id = courtButt>' + 'View Court' + '</button>');
 
 infowindow.open(map, this);
 
