@@ -383,6 +383,9 @@ var courtTitle = "<h1>"
   .concat(" player(s).</p>")
 ));
 
+courtTitle = "<h1>" + courtData['Name'] + "</h1>"
+                +"<p>Games: " + (courtInfo.length-1).toString() + "</p>";
+
 var games_titles = "";
 // I added more information than necessary,
 // for sake of proof of concept with regards
@@ -402,7 +405,7 @@ games_titles = games_titles.concat("<p>There are " + courtInfo[i]["PlayerData"].
 //}
 }
 var gamesInfo = "<h2>Games:<h2>".concat(games_titles);
-var infoText = courtTitle+ gamesInfo;
+var infoText = courtTitle; //+ gamesInfo;
 infowindow = new google.maps.InfoWindow({
   content: " "
 });
