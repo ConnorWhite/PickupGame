@@ -2,8 +2,13 @@
   include 'DatabaseFacade.php';
   session_start();
   $_SESSION['playerID'] = 2;
-  $_SESSION['CourtID'] = 1;
-  $court = getCourtByID($_SESSION["CourtID"]);
+  //$_SESSION['CourtID'] = 1;
+  $court = null;
+  if(isset($_GET["courtID"]))
+      $court = getCourtByID($_GET["courtID"]); // http set in mygames.php
+  else
+    $court = getCourtByID($_SESSION["CourtID"]); // session set in map.js
+
   $title =  "Games for " . $court['Name'];
 
   $games = getGamesByCourtID($_SESSION["CourtID"]);
@@ -18,8 +23,8 @@
 
     $numPlayers = count(getPlayers($game['ID']));
     echo "<div class= \"game\">
-    <h3><a href=\"game.php?id=" . $game['ID']
-    . "\">Game " . $game['ID'] . "</a></h3>"
+    <h3><a href=\"game.php?gameID=" . $game['ID']
+    . "\">Game: " . $game['Name'] . "</a></h3>"
     . "<p>" . $game['Date'] . "</p>"
     . "<p>Players: " . $numPlayers . "</p>
     <form method=\"post\" action=\"\">";

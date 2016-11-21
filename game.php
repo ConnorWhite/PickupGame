@@ -5,7 +5,9 @@
 
 	// Set in gameID
 	//$gameID = $_SESSION['gameID'];
-	$gameviewID = $_GET["id"];
+
+	$gameviewID = $_GET['gameID'];
+	//$gameviewID = $_SESSION['gameID'];
 	$gameview = getGameById($gameviewID);
 	$courtLabel = "Court  | ";
 	$dateLabel  = "Date   | ";
