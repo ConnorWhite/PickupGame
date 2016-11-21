@@ -159,8 +159,8 @@ function addCourt(marker) {
 
 
 
-  } else
-      alert("Add Court Canceled");
+  } /* else
+      alert("Add Court Canceled");*/
 
   return;
 }
@@ -178,10 +178,10 @@ function courtAlreadyAdded(marker) {
     var addingLat = Math.abs(marker.position.lat());
     var addingLong = Math.abs(marker.position.lng());
 
-    if(Math.abs(addedLong-addingLong) <= 0.0003)
+    if(Math.abs(addedLong-addingLong) <= 0.00015)
       return true;
 
-    if(Math.abs(addedLat-addingLat) <= 0.0003)
+    if(Math.abs(addedLat-addingLat) <= 0.00015)
       return true;
 
 
@@ -247,9 +247,9 @@ function addCourtLevelDialog(value, courtData){
       courtDataAndMarker["Marker"] = addViewCourtMarkerListeners(marker,courtData);
       courtDisplayMarkers.push(courtDataAndMarker) */
       } // end if(value)
-    else{
+   /* else{
       alert("Add Court Canceled");
-    }
+    }*/
 }
 
 // Function that stores all courts
@@ -274,8 +274,8 @@ function initCourtDisplayMarkers(arrayOfMarkers)
          'id': 'map',
          'lat' : userCenter['lat'],
          'long': userCenter['long'],
-         'rangeLat' : 10,
-         'rangeLong': 10
+         'rangeLat' : range[0],
+         'rangeLong': range[1]
       },
     dataType: "json",
     success: function(data){
