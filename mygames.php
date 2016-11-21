@@ -6,13 +6,13 @@
   //$playerID = 1;
   $games = getGamesByPlayerID($playerID);
 
-  $title = "My Games";
+  $title = "My Games | Pickup Game";
   include 'header.php';
 ?>
   <div class="content">
     <div class="wrap">
-      <div class="games"> 
-        <?php foreach($games as $game){ 
+      <div class="games">
+        <?php foreach($games as $game){
           $court_of_game = getCourtByID($game["CourtID"]);
           echo "<div class= \"game\">
           <h2 class =\"game-title\"><a href=\"game.php?gameID=" . $game['ID']
