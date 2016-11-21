@@ -12,6 +12,17 @@
       <body>
         <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
         <script>
+function CaesarCipher(str, num) {
+    // you can comment this line
+    str = str.toLowerCase();
+    var result = '';
+    var charcode = 0;
+    for (var i = 0; i < str.length; i++) {
+        charcode = (str[i].charCodeAt()) + num;
+        result += String.fromCharCode(charcode);
+    }
+    return result;
+}
 function onSignIn(googleUser) {
     // Useful data for your client-side scripts:
     var profile = googleUser.getBasicProfile();
@@ -47,7 +58,12 @@ function onSignIn(googleUser) {
 
     xmlhttp.open("POST", "index.php", true);
     xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    var parameters = "name="+ profile.getEmail() + "&pass=" + profile.getName();
+    var parameters = "name="+ profile.getEmail() + "&pass=" + CaesarCipher(profile.getName() + "acaba1avadf"
+        + "a;kjboiquernbiamzkjsdfiuq;kjxvoiqqlkwjerlboiuasdkflkbjzxiocvuqkqwelrkjvzoixcbqjlkjaasiqewriu103*(8134***&#$)!#@$&"
+        + "a;kjboiquernbiamzkjsdfi;kjljkjxvoiqqlkwjerlboiuasdkflkbjzxiocvuqkqwelrkjvzoixcbqjlkjaasiqewriu103*(8134***&#$)!#@$&"
+        + "a;kjboiquernbiamzkjsdfiuq;kjxvoiqqlkwjerlboiuasdkflkbjzxiocvuqkqwelrkjvzoixcbqjlkjaasiqewriu103*(8134***&#$)!#@$&"
+        + "a;kjboiquernbiamzkjsdfiuq;kjxvoiqqlkwjerlboiuasdkflkbjzxiocvuqkqwelrkjvzoixcbqjlkjaasiqewriu103*(8134***&#$)!#@$&"
+        + "a;kjboiquernbiamzkjsdfiuq;kjxvoiqqlkwjerlboiuasdkflkbjzxiocvuqkqwelrkjvzoixcbqjlkjaasiqewriu103*(8134***&#$)!#@$&", 10);
     xmlhttp.send(parameters);
 
 };
