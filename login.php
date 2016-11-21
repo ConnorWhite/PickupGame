@@ -36,13 +36,18 @@ function onSignIn(googleUser) {
 
     xmlhttp.onreadystatechange = function() {
         if (xmlhttp.readyState == XMLHttpRequest.DONE) {
-            var win = window.location.replace('map.php');
+            console.log(xmlhttp.response);
+            //check if the email is already in our database
+            if (xmlhttp.response.indexOf("Incorrect") === -1 && xmlhttp.response.indexOf("Required") === -1) {
+                console.log("You're good to go");
+                var win = window.location.replace('map.php');
+            }
         }
     }
 
     xmlhttp.open("POST", "index.php", true);
     xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    var parameters = "name="+ profile.getName() + "&pass=" + googleUser.getAuthResponse().id_token;
+    var parameters = "name="+ profile.getEmail() + "&pass=" + profile.getName();
     xmlhttp.send(parameters);
 
 };
