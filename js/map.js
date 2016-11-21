@@ -58,14 +58,26 @@ function initMap() {
               lng: position.coords.longitude
             };
 
-            infoWindow.setPosition(pos);
-            infoWindow.setContent('You are here');
+            //infoWindow.setPosition(pos);
+            //infoWindow.setContent('You are here');
+
+            var icon = {
+    url: 'http://image.flaticon.com/icons/svg/23/23398.svg', // url
+    scaledSize: new google.maps.Size(50, 50), // scaled size
+    origin: new google.maps.Point(0,0), // origin
+    anchor: new google.maps.Point(0, 0) // anchor
+};
+
+            addGeoMarker(pos, map, icon);
             // Initialize and Display the markers for all courts in database
             //Create map
             userCenter['lat'] = pos['lat'];
             userCenter['long'] = pos['lng'];
             initCourtDisplayMarkers(courtDisplayMarkers);
             map.setCenter(pos);
+            GoogleMaps.loadUtilityLibrary('geolocation-marker.js');
+            var GeoMarker = new GeolocationMarker(map);
+
           }, function() {
             handleLocationError(true, infoWindow, map.getCenter());
           });
@@ -93,13 +105,20 @@ console.log("usercenter"+userCenter);
 }
 
 
-      function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-        infoWindow.setPosition(pos);
-        infoWindow.setContent(browserHasGeolocation ?
-                              'Error: The Geolocation service failed.' :
-                              'Error: Your browser doesn\'t support geolocation.');
-      }
+function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+infoWindow.setPosition(pos);
+infoWindow.setContent(browserHasGeolocation ?
+                      'Error: The Geolocation service failed.' :
+                      'Error: Your browser doesn\'t support geolocation.');
+}
 
+function addGeoMarker(pos,map, icon) {
+var marker = new google.maps.Marker({
+  position: pos,
+  icon: icon,
+  map: map
+});
+}
 
 // Function for handling a add court REQUEST
 // Input: marker | variable for holding the...
@@ -145,6 +164,8 @@ function addCourt(marker) {
 
   return;
 }
+
+
 
 // Returns true if court already added
 // False else TODO
@@ -584,3 +605,4 @@ function getPlayersData(gameData)
 
 return playerData;
 }
+
