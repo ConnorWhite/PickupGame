@@ -2,8 +2,8 @@
   session_start();
 
   include "DatabaseFacade.php";
-  //$playerID = $_SESSION['playerID'];
-  $playerID = 1;
+  $playerID = $_SESSION['playerID'];
+  //$playerID = 1;
   $games = getGamesByPlayerID($playerID);
 
   $title = "My Games";

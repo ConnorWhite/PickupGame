@@ -1,8 +1,7 @@
 <?php
   include 'DatabaseFacade.php';
   session_start();
-  $_SESSION['playerID'] = 2;
-  //$_SESSION['CourtID'] = 1;
+  //$_SESSION['playerID'] = 2; // set in login.php
   $court = null;
   if(isset($_GET["courtID"]))
   {
