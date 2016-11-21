@@ -5,13 +5,17 @@
   //$_SESSION['CourtID'] = 1;
   $court = null;
   if(isset($_GET["courtID"]))
+  {
       $court = getCourtByID($_GET["courtID"]); // http set in mygames.php
+  }
   else
+  {
     $court = getCourtByID($_SESSION["CourtID"]); // session set in map.js
+  }
 
   $title =  "Games for " . $court['Name'];
 
-  $games = getGamesByCourtID($_SESSION["CourtID"]);
+  $games = getGamesByCourtID($court['ID']);
 
   //var_dump($games);
   include 'header.php';

@@ -3,9 +3,7 @@
 	//include 'pattern/Observer.php';
 	include 'DatabaseFacade.php';
 
-	// Set in gameID
-	//$gameID = $_SESSION['gameID'];
-
+	// Set in mygames.php or court.php ONLY
 	$gameviewID = $_GET['gameID'];
 	//$gameviewID = $_SESSION['gameID'];
 	$gameview = getGameById($gameviewID);
