@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 include 'DatabaseFacade.php';
 
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
@@ -124,6 +124,12 @@ if($_SERVER['REQUEST_METHOD'] == 'GET'){
           }
           header('Content-type: application/json');
           echo json_encode($players);
+          break;
+
+        case('getPlayerByID'):
+          $playerID = $_SESSION['playerID'];
+          $player = getPlayerByID($playerID);
+          echo json_encode($player);
           break;
 
       }
