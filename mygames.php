@@ -2,19 +2,25 @@
   session_start();
 
   include "DatabaseFacade.php";
-  $games = getGamesByPlayerID($_SESSION['playerID']);
+  //$playerID = $_SESSION['playerID'];
+  $playerID = 1;
+  $games = getGamesByPlayerID($playerID);
 
   $title = "My Games";
   include 'header.php';
 ?>
   <div class="content">
     <div class="wrap">
-      <div class="games"> <!-- TODO: make game title a link to game.php. Pass game ID as a session variable. -->
-        <?php foreach($games as $game){ ?>
-          <h2 class="game-title"><a><?php echo $game["Name"]; ?></a></h2>
-          <?php $court = getCourtByID($game["CourtID"]); ?>
-          <h3 class="date"><a><?php echo $court["Name"] ?></a>, <?php echo $game["Date"]; ?></h3><!-- TODO: make court a link to court.php. Pass court ID as a session variable. -->
-        <?php } ?>
+      <div class="games"> 
+        <?php foreach($games as $game){ 
+          $court_of_game = getCourtByID($game["CourtID"]);
+          echo "<div class= \"game\">
+          <h2 class =\"game-title\"><a href=\"game.php?gameID=" . $game['ID']
+          . "\">". $game['Name'] . "</a></h2>"
+          . "<h3 class =\"game-title\"><a href=\"court.php?courtID=" . $court_of_game['ID']
+          . "\">". $court_of_game["Name"] . ", " . $game['Date'] . "</a></h3>"
+          . "<form method=\"post\" action=\"\"></div>";
+         } ?>
       </div>
     </div>
   </div>
