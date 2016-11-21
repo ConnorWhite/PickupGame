@@ -12,7 +12,7 @@ var userCenter = {lat: 30.2849, lng: -97.7341};
  
 function initMap() {
   //Initial flaoting jquery ui dialog box for adding a court
-  $( "#addCourtDialog" ).dialog({
+ /* $( "#addCourtDialog" ).dialog({
 
     dialogClass : "jquery_form",
     autoOpen: false,
@@ -37,7 +37,7 @@ function initMap() {
         }
       }
     ]
-  });
+  }); */
 
 
   mapDiv = document.getElementById('map');
@@ -45,7 +45,7 @@ function initMap() {
     center: {lat: 30.2849, lng: -97.7341},
     zoom: 16
   });
-      var infoWindow = new google.maps.InfoWindow({map: map});
+    //  var infoWindow = new google.maps.InfoWindow({map: map});
   // find the users location if possible with HTML5 geolocation.
 
   var ua = navigator.userAgent.toLowerCase(),
@@ -73,8 +73,6 @@ function initMap() {
             userCenter['long'] = pos['lng'];
             initCourtDisplayMarkers(courtDisplayMarkers);
             map.setCenter(pos);
-            GoogleMaps.loadUtilityLibrary('geolocation-marker.js');
-            var GeoMarker = new GeolocationMarker(map);
 
           }, function() {
             handleLocationError(true, infoWindow, map.getCenter());
@@ -354,11 +352,16 @@ function placeMarker(location, courtAddFlag, marker,courtData) {
   else { // or else, handle displaying a court to display
     if(marker == null)
     {
-      marker = new google.maps.Marker({
-        position: location,
-        label: ".",
-        map: map
-      });
+
+  var icon = {
+    url: 'https://cdn0.iconfinder.com/data/icons/elite-sports/512/basketball-court-512.png', // url
+    scaledSize: new google.maps.Size(50, 34), // scaled size
+    };
+var marker = new google.maps.Marker({
+  position: location,
+  icon: icon,
+  map: map
+});
       // TODO: add listeners for dblclick and click
 
     }
