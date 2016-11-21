@@ -1,7 +1,7 @@
 <?php
   session_start();
 
-  $title = "Pickup Game";
+  $title = "Map | Pickup Game";
   include 'header.php';
   include 'DatabaseFacade.php';
 

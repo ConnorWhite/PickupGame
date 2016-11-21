@@ -12,7 +12,7 @@
     $court = getCourtByID($_SESSION["CourtID"]); // session set in map.js
   }
 
-  $title =  "Games for " . $court['Name'];
+  $title =  $court['Name'] . " | Pickup Game";
 
   $games = getGamesByCourtID($court['ID']);
 
