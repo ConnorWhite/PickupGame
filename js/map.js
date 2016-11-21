@@ -64,8 +64,6 @@ function initMap() {
             var icon = {
     url: 'http://image.flaticon.com/icons/svg/23/23398.svg', // url
     scaledSize: new google.maps.Size(50, 50), // scaled size
-    origin: new google.maps.Point(0,0), // origin
-    anchor: new google.maps.Point(0, 0) // anchor
 };
 
             addGeoMarker(pos, map, icon);
@@ -461,7 +459,7 @@ $("#courtButt")[0].addEventListener("click", function(){takeUserToTheRequestedCo
     // from the database
     var courtInfo = getCourtInfo(courtData);
 
-
+Add Court Canc
         // Will clean this up later
         // Didn't realize you could +
         // strings in js till a bit later
