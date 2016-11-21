@@ -17,7 +17,7 @@
           echo "<div class= \"game\">
           <h2 class =\"game-title\"><a href=\"game.php?gameID=" . $game['ID']
           . "\">". $game['Name'] . "</a></h2>"
-          . "<h3 class =\"game-title\"><a href=\"court.php?courtID=" . $court_of_game['ID']
+          . "<h3 class =\"game-date\"><a href=\"court.php?courtID=" . $court_of_game['ID']
           . "\">". $court_of_game["Name"] . ", " . $game['Date'] . "</a></h3>"
           . "<form method=\"post\" action=\"\"></div>";
          } ?>
