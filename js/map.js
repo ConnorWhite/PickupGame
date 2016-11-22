@@ -562,7 +562,7 @@ function getCourtGames(courtData){
   var data_games;
   $.ajax({
     type: "GET",
-    url: "process.php",
+    url: "/PickupGame/process.php",
     data: {
           dataType: 'json',
          'function': 'getCourtGames',
@@ -589,7 +589,7 @@ function getPlayersData(gameData)
   var playerData;
   $.ajax({
     type: "GET",
-    url: "process.php",
+    url: "/PickupGame/process.php",
     data: {
           dataType: 'json',
          'function': 'getPlayersByGameID',
@@ -693,5 +693,20 @@ QUnit.test( "Courts Range Test", function( assert ) {
   }
 
   assert.ok( success, "Passed!" );
+});
+
+QUnit.test("Court Info Test", function(assert) {
+  var data = mapSetup();
+
+  var games = getCourtGames(data[0]);
+
+  console.log(games);
+
+  assert.ok(games.length == 1, "Passed!");
+
+  var players = getPlayersData(games[0]);
+
+  assert.ok(players.length = 3, "Passed!");
+
 });
 
