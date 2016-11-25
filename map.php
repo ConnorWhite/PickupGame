@@ -27,7 +27,7 @@
 <script src="jquery_form/jquery-ui.js"></script>
 
 
-
+<?php /*
 <div id="addCourtDialog" title="New Court Form">
     <p>Input court name</p>
     <input id="addCourtName" class="myInput" type="text" />
@@ -36,7 +36,7 @@
 <div id="courtInfoDialog" title="DynamicCourtTitle">
   <div id="dynamicCourtInfoTextCourtInfo"></div>
   <div id="dynamicCourtInfoTextCourtGameInfo"></div>
-</div>
+</div> */ ?>
 
 
 <div id="map">

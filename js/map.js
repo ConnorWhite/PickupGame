@@ -12,7 +12,7 @@ var userCenter = {lat: 30.2849, lng: -97.7341};
 
 function initMap() {
   //Initial flaoting jquery ui dialog box for adding a court
-  $( "#addCourtDialog" ).dialog({
+ /* $( "#addCourtDialog" ).dialog({
 
     dialogClass : "jquery_form",
     autoOpen: false,
@@ -37,7 +37,7 @@ function initMap() {
         }
       }
     ]
-  });
+  }); */
 
 
   mapDiv = document.getElementById('map');
@@ -46,7 +46,7 @@ function initMap() {
     zoom: 16,
     mapTypeId: 'satellite'
   });
-      var infoWindow = new google.maps.InfoWindow({map: map});
+    //  var infoWindow = new google.maps.InfoWindow({map: map});
   // find the users location if possible with HTML5 geolocation.
 
   var ua = navigator.userAgent.toLowerCase(),
@@ -59,14 +59,22 @@ function initMap() {
               lng: position.coords.longitude
             };
 
-            infoWindow.setPosition(pos);
-            infoWindow.setContent('You are here');
+            //infoWindow.setPosition(pos);
+            //infoWindow.setContent('You are here');
+
+            var icon = {
+    url: 'http://image.flaticon.com/icons/svg/23/23398.svg', // url
+    scaledSize: new google.maps.Size(50, 50), // scaled size
+};
+
+            addGeoMarker(pos, map, icon);
             // Initialize and Display the markers for all courts in database
             //Create map
             userCenter['lat'] = pos['lat'];
             userCenter['long'] = pos['lng'];
             initCourtDisplayMarkers(courtDisplayMarkers);
             map.setCenter(pos);
+
           }, function() {
             handleLocationError(true, infoWindow, map.getCenter());
           });
@@ -94,13 +102,20 @@ console.log("usercenter"+userCenter);
 }
 
 
-      function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-        infoWindow.setPosition(pos);
-        infoWindow.setContent(browserHasGeolocation ?
-                              'Error: The Geolocation service failed.' :
-                              'Error: Your browser doesn\'t support geolocation.');
-      }
+function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+infoWindow.setPosition(pos);
+infoWindow.setContent(browserHasGeolocation ?
+                      'Error: The Geolocation service failed.' :
+                      'Error: Your browser doesn\'t support geolocation.');
+}
 
+function addGeoMarker(pos,map, icon) {
+var marker = new google.maps.Marker({
+  position: pos,
+  icon: icon,
+  map: map
+});
+}
 
 // Function for handling a add court REQUEST
 // Input: marker | variable for holding the...
@@ -141,11 +156,13 @@ function addCourt(marker) {
 
 
 
-  } else
-      alert("Add Court Canceled");
+  } /* else
+      alert("Add Court Canceled");*/
 
   return;
 }
+
+
 
 // Returns true if court already added
 // False else TODO
@@ -158,10 +175,10 @@ function courtAlreadyAdded(marker) {
     var addingLat = Math.abs(marker.position.lat());
     var addingLong = Math.abs(marker.position.lng());
 
-    if(Math.abs(addedLong-addingLong) <= 0.0003)
+    if(Math.abs(addedLong-addingLong) <= 0.00015)
       return true;
 
-    if(Math.abs(addedLat-addingLat) <= 0.0003)
+    if(Math.abs(addedLat-addingLat) <= 0.00015)
       return true;
 
 
@@ -227,9 +244,9 @@ function addCourtLevelDialog(value, courtData){
       courtDataAndMarker["Marker"] = addViewCourtMarkerListeners(marker,courtData);
       courtDisplayMarkers.push(courtDataAndMarker) */
       } // end if(value)
-    else{
+   /* else{
       alert("Add Court Canceled");
-    }
+    }*/
 }
 
 // Function that stores all courts
@@ -254,8 +271,8 @@ function initCourtDisplayMarkers(arrayOfMarkers)
          'id': 'map',
          'lat' : userCenter['lat'],
          'long': userCenter['long'],
-         'rangeLat' : 10,
-         'rangeLong': 10
+         'rangeLat' : range[0],
+         'rangeLong': range[1]
       },
     dataType: "json",
     success: function(data){
@@ -282,6 +299,7 @@ function initCourtDisplayMarkers(arrayOfMarkers)
           courtDisplayMarkers.push(courtDataAndMarker);
       }
     },
+
 });
 }
 
@@ -336,11 +354,16 @@ function placeMarker(location, courtAddFlag, marker,courtData) {
   else { // or else, handle displaying a court to display
     if(marker == null)
     {
-      marker = new google.maps.Marker({
-        position: location,
-        label: ".",
-        map: map
-      });
+
+  var icon = {
+    url: 'https://cdn0.iconfinder.com/data/icons/elite-sports/512/basketball-court-512.png', // url
+    scaledSize: new google.maps.Size(50, 34), // scaled size
+    };
+var marker = new google.maps.Marker({
+  position: location,
+  icon: icon,
+  map: map
+});
       // TODO: add listeners for dblclick and click
 
     }
@@ -441,7 +464,7 @@ $("#courtButt")[0].addEventListener("click", function(){takeUserToTheRequestedCo
     // from the database
     var courtInfo = getCourtInfo(courtData);
 
-
+Add Court Canc
         // Will clean this up later
         // Didn't realize you could +
         // strings in js till a bit later
@@ -540,7 +563,7 @@ function getCourtGames(courtData){
   var data_games;
   $.ajax({
     type: "GET",
-    url: "process.php",
+    url: "/PickupGame/process.php",
     data: {
           dataType: 'json',
          'function': 'getCourtGames',
@@ -567,7 +590,7 @@ function getPlayersData(gameData)
   var playerData;
   $.ajax({
     type: "GET",
-    url: "process.php",
+    url: "/PickupGame/process.php",
     data: {
           dataType: 'json',
          'function': 'getPlayersByGameID',
