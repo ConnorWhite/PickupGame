@@ -9,7 +9,7 @@ var addCourtMarker; // a marker for holding the add Court marker
 var courtDisplayMarkers = []; // an array of markers for holding all court view markers to be displayed
 var debug_counter = 0;
 var userCenter = {lat: 30.2849, lng: -97.7341};
- 
+
 function initMap() {
   //Initial flaoting jquery ui dialog box for adding a court
   $( "#addCourtDialog" ).dialog({
@@ -43,7 +43,8 @@ function initMap() {
   mapDiv = document.getElementById('map');
   map = new google.maps.Map(mapDiv, {
     center: {lat: 30.2849, lng: -97.7341},
-    zoom: 16
+    zoom: 16,
+    mapTypeId: 'satellite'
   });
       var infoWindow = new google.maps.InfoWindow({map: map});
   // find the users location if possible with HTML5 geolocation.

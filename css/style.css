@@ -1,23 +1,51 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans");
 html, body {
   height: 100%;
   margin: 0;
-  padding: 0; }
+  padding: 0;
+  font-family: "Open Sans", sans-serif; }
 
 body {
-  min-height: 100%; }
+  min-height: 100%;
+  background: #eee; }
 
 header {
   background-color: #fff;
   height: 48px;
   width: 100%;
-  z-index: 10; }
+  z-index: 10;
+  border-bottom: 1px solid #ccc; }
   header h1 {
     color: #333;
-    display: inline-block; }
-  header ul {
     display: inline-block;
+    font-size: 1.3rem;
+    line-height: 48px; }
+    @media (min-width: 720px) {
+      header h1 {
+        font-size: 1.5rem; } }
+  header #menu {
+    display: none;
+    background-color: #fff;
+    position: fixed;
+    text-align: right;
+    top: 49px;
+    right: 0px;
+    padding: 10px 20px 20px;
+    line-height: 2rem; }
+    header #menu ul {
+      display: inline-block;
+      float: right;
+      list-style-type: none;
+      margin: 0px;
+      padding: 0px; }
+      header #menu ul li a {
+        text-decoration: none;
+        color: #333; }
+        header #menu ul li a:hover {
+          color: #777; }
+  header #hamburger {
     float: right;
-    list-style-type: none; }
+    margin-top: 14px; }
 
 footer {
   position: fixed;
@@ -26,29 +54,115 @@ footer {
   bottom: 0px;
   z-index: 9;
   width: 100%; }
+  footer p {
+    line-height: 48px;
+    margin: 0px;
+    text-align: center;
+    color: #ccc;
+    font-size: 0.875rem; }
 
 h1 {
   margin: 0; }
 
 .wrap {
-  width: 80%;
+  width: 90%;
   margin: 0 auto; }
+  @media (min-width: 720px) {
+    .wrap {
+      width: 80%; } }
 
-#login {
+#background {
   background-image: url("/PickupGame/img/basketball.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
-  height: 100%;
-  width: 100%; }
+  position: fixed;
+  left: 0px;
+  right: 0px;
+  z-index: 1;
+  height: 104%;
+  width: 104%;
+  margin-top: -2%;
+  margin-left: -2%;
+  -webkit-filter: blur(2px);
+  -moz-filter: blur(2px);
+  -o-filter: blur(2px);
+  -ms-filter: blur(2px);
+  filter: blur(2px); }
+
+#login {
+  text-align: center;
+  z-index: 999;
+  left: 0px;
+  right: 0px;
+  position: fixed; }
   #login h1 {
-    color: #fff; }
+    color: #fff;
+    padding: 5rem 0 2rem;
+    font-size: 2.5rem; }
+    @media (min-width: 400px) {
+      #login h1 {
+        padding: 5rem 0 3rem; } }
+    @media (min-width: 720px) {
+      #login h1 {
+        padding: 8rem 0 5rem; } }
+  #login form {
+    margin: 0 auto;
+    padding: 10px 20px;
+    width: 230px;
+    background-color: rgba(48, 48, 48, 0.7); }
+    #login form input {
+      font-size: 1rem;
+      margin: 10px 0px; }
+      #login form input[type="text"], #login form input[type="password"] {
+        background-color: rgba(0, 0, 0, 0.5);
+        color: #fff;
+        border: none;
+        padding: 10px; }
+      #login form input[type="submit"] {
+        background-color: #08c;
+        border: none;
+        border-radius: 1px;
+        padding: 8px 15px;
+        color: #fff;
+        transition: all 0.2s ease; }
+        #login form input[type="submit"]:hover {
+          background-color: #004f76;
+          color: #ccc; }
   #login .error {
-    color: red;
-    padding-left: 10px; }
+    background-color: rgba(48, 48, 48, 0.7);
+    margin: 10px auto 0px;
+    width: 263px;
+    color: #ccc;
+    border-left: 5px solid red; }
+    #login .error p {
+      padding: 10px 20px 10px 15px; }
 
 #map {
   width: 100%;
   top: 48px; }
+
+.game {
+  text-decoration: none;
+  color: #fff;
+  transition: all 0.2s ease; }
+  .game:hover {
+    color: #ccc; }
+  .game div {
+    background: #08c;
+    margin: 15px 0px;
+    border-radius: 2px;
+    transition: all 0.2s ease; }
+    .game div:hover {
+      background: #004f76; }
+    .game div h2 {
+      font-size: 1.25rem;
+      margin: 0px;
+      padding: 10px 15px 5px; }
+    .game div h3 {
+      font-size: 0.875rem;
+      margin: 0px;
+      padding: 0px 15px 10px;
+      font-weight: 300; }
 
 /*# sourceMappingURL=style.css.map */

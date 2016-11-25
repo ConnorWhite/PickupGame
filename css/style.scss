@@ -1,8 +1,14 @@
 //Styles
 
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
 $barHeight: 48px;
-$lightColor: #fff;
+$white: #fff;
+$lightColor: #ccc;
+$medColor: #777;
 $darkColor: #333;
+$blue: #08c;
+$darkBlue: #004f76;
 
 //TODO: CSS reset (check all other browsers)
 
@@ -10,26 +16,61 @@ html, body {
   height: 100%;
   margin: 0;
   padding: 0;
+  font-family: "Open Sans", sans-serif;
 }
 
 body {
   min-height: 100%;
+  background: #eee;
 }
 
 header {
-  background-color: $lightColor;
+  background-color: $white;
   height: $barHeight;
   width: 100%;
   z-index: 10;
+  border-bottom: 1px solid $lightColor;
 
   h1 {
     color: $darkColor;
     display: inline-block;
+    font-size: 1.3rem;
+    line-height: $barHeight;
+
+    @media(min-width: 720px){
+      font-size: 1.5rem;
+    }
   }
-  ul {
-    display: inline-block;
+  #menu{
+    display: none;
+    background-color: $white;
+    position: fixed;
+    text-align: right;
+    top: $barHeight + 1px;
+    right: 0px;
+    padding: 10px 20px 20px;
+    line-height: 2rem;
+
+    ul {
+      display: inline-block;
+      float: right;
+      list-style-type: none;
+      margin: 0px;
+      padding: 0px;
+      li {
+        a {
+          text-decoration: none;
+          color: $darkColor;
+          &:hover{
+            color:$medColor;
+          }
+        }
+      }
+    }
+  }
+  #hamburger{
     float: right;
-    list-style-type: none;
+    margin-top: 14px;
   }
 }
 
@@ -40,6 +81,14 @@ footer {
   bottom: 0px;
   z-index: 9;
   width: 100%;
+
+  p {
+    line-height: 48px;
+    margin: 0px;
+    text-align: center;
+    color: $lightColor;
+    font-size: 0.875rem;
+  }
 }
 
 h1 {
@@ -47,28 +96,127 @@ h1 {
 }
 
 .wrap {
-  width: 80%;
+  width: 90%;
   margin: 0 auto;
+  @media(min-width: 720px){
+    width: 80%;
+  }
 }
 
-#login {
+#background {
   background-image: url("/PickupGame/img/basketball.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
-  height: 100%;
-  width: 100%;
+  position:fixed;
+  left: 0px;
+  right: 0px;
+  z-index: 1;
+  height:104%;
+  width: 104%;
+  margin-top: -2%;
+  margin-left: -2%;
+  -webkit-filter: blur(2px);
+  -moz-filter: blur(2px);
+  -o-filter: blur(2px);
+  -ms-filter: blur(2px);
+  filter: blur(2px);
+}
+
+#login {
+  text-align: center;
+  z-index: 999;
+  left: 0px;
+  right: 0px;
+  position: fixed;
 
   h1 {
-    color: $lightColor;
+    color: $white;
+    padding: 5rem 0 2rem;
+    font-size: 2.5rem;
+
+    @media(min-width: 400px){
+      padding: 5rem 0 3rem;
+    }
+    @media(min-width: 720px){
+      padding: 8rem 0 5rem;
+    }
+  }
+  form {
+    margin: 0 auto;
+    padding: 10px 20px;
+    width: 230px;
+    background-color: rgba(48, 48, 48, 0.7);
+
+    input {
+      font-size: 1rem;
+      margin: 10px 0px;
+
+      &[type="text"], &[type="password"]{
+        background-color: rgba(0,0,0,0.5);
+        color: $white;
+        border: none;
+        padding: 10px;
+      }
+      &[type="submit"]{
+        background-color: $blue;
+        border: none;
+        border-radius: 1px;
+        padding: 8px 15px;
+        color: $white;
+        transition: all 0.2s ease;
+
+        &:hover {
+          background-color: $darkBlue;
+          color: $lightColor
+        }
+      }
+    }
   }
   .error {
-    color: red;
-    padding-left: 10px;
+    background-color: rgba(48, 48, 48, 0.7);
+    margin: 10px auto 0px;
+    width: 263px;
+    color: #ccc;
+    border-left: 5px solid red;
+
+    p{
+      padding: 10px 20px 10px 15px;
+    }
   }
 }
 
 #map {
   width: 100%;
   top: $barHeight;
+}
+
+.game {
+  text-decoration: none;
+  color: $white;
+  transition: all 0.2s ease;
+  &:hover{
+    color:$lightColor;
+  }
+  div{
+    background: $blue;
+    margin: 15px 0px;
+    border-radius: 2px;
+    transition: all 0.2s ease;
+    &:hover{
+      background: $darkBlue;
+    }
+    h2 {
+      font-size: 1.25rem;
+      margin: 0px;
+      padding: 10px 15px 5px;
+    }
+    h3 {
+      font-size: 0.875rem;
+      margin: 0px;
+      padding: 0px 15px 10px;
+      font-weight: 300;
+
+    }
+  }
 }
