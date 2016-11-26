@@ -12,42 +12,30 @@
     $court = getCourtByID($_SESSION["CourtID"]); // session set in map.js
   }
 
-  $title =  $court['Name'] . " | Pickup Game";
+  $title =  $court['Name'];
 
   $games = getGamesByCourtID($court['ID']);
 
   //var_dump($games);
   include 'header.php';
   ?>
-    <div class="wrap">
-  <?php
+  <div class="wrap">
 
-  foreach ($games as $game) {
+    <?php foreach ($games as $game) {
+      include 'gameButton.php';
+      //check if the numPlayers is less than 10 and make sure currentPlayer is not in game before
+      //letting player join
 
-    $numPlayers = count(getPlayers($game['ID']));
-    echo "<div class= \"game\">
-    <h3><a href=\"game.php?gameID=" . $game['ID']
-    . "\">Game: " . $game['Name'] . "</a></h3>"
-    . "<p>" . $game['Date'] . "</p>"
-    . "<p>Players: " . $numPlayers . "</p>
-    <form method=\"post\" action=\"\">";
-
-    //check if the numPlayers is less than 10 and make sure currentPlayer is not in game before
-    //letting player join
-
-    if (!in_array(getPlayerById($_SESSION['playerID']), getPlayers($game['ID']))) {
-        echo "<input type=\"hidden\" name=\"secret\" value=\"" .
-            $game['ID'] . "\"/>";
-        echo "<input type=\"submit\" name=\"joingame\" value=\"Join Game\"/>";
-    }
-    echo "</form>
-    </div>";
-  }
-?>
-  <form method="post" action="">
-      <input type="submit" name="addgame" value="Add New Game"/>
-  </form>
-</div>
+      if (!in_array(getPlayerById($_SESSION['playerID']), getPlayers($game['ID']))) { ?>
+          <input type="hidden" name="secret" value="<?php $game['ID']; ?>"/>
+          <input type="submit" name="joingame" value="Join Game"/>
+      <?php } ?>
+        </form>
+    <?php } ?>
+    <form method="post" action="">
+        <input type="submit" name="addgame" value="Add New Game"/>
+    </form>
+  </div>
 <?php
   if(isset($_POST['addgame'])) {
     header('Location: addcourt.php');
