@@ -1,68 +1,31 @@
 <?php
 	session_start();
-	//include 'pattern/Observer.php';
 	include 'DatabaseFacade.php';
 
-	// Set in mygames.php or court.php ONLY
-	$gameviewID = $_GET['gameID'];
-	//$gameviewID = $_SESSION['gameID'];
-	$gameview = getGameById($gameviewID);
-	$courtLabel = "Court  | ";
-	$dateLabel  = "Date   | ";
-	$playerLabel = "Current Player List:";
-	$players = getPlayers($gameviewID);
-	#$players = getCourtsInRange( 30.2849,-97.7341,array(10,10));
-	$title = $gameview["Name"] . " | Pickup Game";
+	$gameID = $_GET['gameID'];
+	$game = getGameById($gameID);
+	$players = getPlayers($gameID);
+	$title = $game["Name"];
 	include 'header.php';
 	?>
 
 	<!--Display the Game's court and date, then all the players in that game -->
-	<div class="displayGame">
-		  <h1 class="game-title"><a><?php echo $gameview["Name"]; ?></a></h2><br />
-			<?php $court = getCourtByID($gameview["CourtID"]); ?>
-			<h2 class="court"><a><?php echo$courtLabel;echo$court["Name"];?></a>
-			<h2 class="date"><a><?php echo$dateLabel;echo$gameview["Date"];?></a>
-			<h2 class="players"><a><?php echo$playerLabel;?></a>
-				<?php foreach($players as $player){ ?>
-					<h3 class="player"><a><?php echo $player["Name"];?></a>
-				<?php } ?>
-			</h2><br />			</h2><br />
-
+	<div id="content">
+		<div class="wrap">
+				<?php $court = getCourtByID($game["CourtID"]); ?>
+				<h2 class="court">Court: <a href="court.php?courtID="<?php echo $court["ID"]; ?>><?php echo $court["Name"]; ?></a>
+				<h2 class="date">Time: <i><?php echo $game["Date"];?></i></h2>
+				<h2 class="players">Current Players:</h2>
+					<p>
+						<?php foreach($players as $player){
+							echo $player["Name"];
+							if($player !== end($players))
+								echo ", ";
+						} ?>
+					</p>
+				<?php include 'chat.php'; ?>
+		</div>
 	</div>
-
-	<?php include 'chat.php';
-	include 'footer.php';
-
-
-/*
-	class Game implements Subject {
-		private $id = -1; // uninitialized
-		private $name;
-
-		private $court;
-		private $time;
-		private $players = array();
-
-		// constructor
-		public function __construct($_name, $_court, $_time){
-			$name = $_name;
-			$court = $_court;
-			$time = $_time;
-		}
-		public function register(Observer player) {
-			$players[$player->id] = $player;
-		}
-
-		public function unregister(Observer player) {
-			unset($players[$player->id];
-		}
-
-		public function notify(){
-			foreach($players as $player){
-				$player->update();
-			}
-		}
-
-	} */
-
-	?>
+	
+	<?php
+		include 'footer.php';

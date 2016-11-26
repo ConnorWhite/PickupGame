@@ -8,7 +8,7 @@
   $title = "My Games";
   include 'header.php';
 ?>
-  <div class="content">
+  <div id="content">
     <div class="wrap">
       <div class="games">
         <?php foreach($games as $game){

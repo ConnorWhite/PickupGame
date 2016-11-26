@@ -10,6 +10,9 @@ $darkColor: #333;
 $blue: #08c;
 $darkBlue: #004f76;
 
+$gutter320: 5%;
+$gutter720: 10%;
+
 //TODO: CSS reset (check all other browsers)
 
 html, body {
@@ -48,8 +51,11 @@ header {
     text-align: right;
     top: $barHeight + 1px;
     right: 0px;
-    padding: 10px 20px 20px;
     line-height: 2rem;
+    padding: 10px $gutter320 20px;
+    @media(min-width: 720px){
+      margin-right: $gutter720 - $gutter320;
+    }
 
     ul {
       display: inline-block;
@@ -59,7 +65,6 @@ header {
       padding: 0px;
       li {
         a {
-          text-decoration: none;
           color: $darkColor;
           &:hover{
             color:$medColor;
@@ -84,7 +89,6 @@ footer {
 
   p {
     line-height: 48px;
-    margin: 0px;
     text-align: center;
     color: $lightColor;
     font-size: 0.875rem;
@@ -95,11 +99,45 @@ h1 {
   margin: 0;
 }
 
+h2 {
+  font-size: 1.25rem;
+  margin: 0.75rem 0;
+}
+
+a {
+  color: $blue;
+  text-decoration: none;
+  margin: 0;
+  &:hover {
+    color: $darkBlue;
+  }
+}
+
+p {
+  margin: 0;
+}
+
+input{
+  &[type="submit"]{
+    background-color: $blue;
+    border: none;
+    border-radius: 1px;
+    padding: 8px 15px;
+    color: $white;
+    transition: all 0.2s ease;
+
+    &:hover {
+      background-color: $darkBlue;
+      color: $lightColor
+    }
+  }
+}
+
 .wrap {
-  width: 90%;
+  width: 100%-(2*$gutter320);
   margin: 0 auto;
   @media(min-width: 720px){
-    width: 80%;
+    width: 100%-(2*$gutter720);
   }
 }
 
@@ -158,19 +196,6 @@ h1 {
         border: none;
         padding: 10px;
       }
-      &[type="submit"]{
-        background-color: $blue;
-        border: none;
-        border-radius: 1px;
-        padding: 8px 15px;
-        color: $white;
-        transition: all 0.2s ease;
-
-        &:hover {
-          background-color: $darkBlue;
-          color: $lightColor
-        }
-      }
     }
   }
   .error {
@@ -192,7 +217,6 @@ h1 {
 }
 
 .game {
-  text-decoration: none;
   color: $white;
   transition: all 0.2s ease;
   &:hover{
@@ -207,7 +231,6 @@ h1 {
       background: $darkBlue;
     }
     h2 {
-      font-size: 1.25rem;
       margin: 0px;
       padding: 10px 15px 5px;
     }
@@ -218,5 +241,44 @@ h1 {
       font-weight: 300;
 
     }
+  }
+}
+
+#content {
+  margin-bottom: $barHeight + 24px;
+}
+
+#chat-wrap {
+  height: 300px;
+  background-color: $white;
+  border: 1px solid #979797;
+  overflow-y: scroll;
+
+  p {
+    padding: 15px 0;
+    margin: 0 10px;
+    border-bottom: 1px solid $lightColor;
+
+    span {
+      background-color: $darkColor;
+      border-radius: 3px;
+      color: $white;
+      margin-right: 10px;
+      padding: 5px 10px;
+    }
+  }
+}
+#send-message-area{
+  padding-right: 90px;
+  #sendie {
+    height: 36px;
+    margin-top: 15px;
+    width: 100%;
+  }
+  input {
+    float: right;
+    margin-top: 15px;
+    font-size: 1rem;
+    margin-right: -90px;
   }
 }
