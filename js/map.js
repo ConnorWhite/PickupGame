@@ -63,8 +63,8 @@ function initMap() {
             //infoWindow.setContent('You are here');
 
             var icon = {
-    url: 'http://image.flaticon.com/icons/svg/23/23398.svg', // url
-    scaledSize: new google.maps.Size(50, 50), // scaled size
+    url: '/PickupGame/img/blue_dot.png', // url
+    scaledSize: new google.maps.Size(15, 15), // scaled size
 };
 
             addGeoMarker(pos, map, icon);
