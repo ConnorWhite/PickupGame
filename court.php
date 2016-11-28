@@ -18,25 +18,24 @@
 
   //var_dump($games);
   include 'header.php';
-  ?>
-  <div class="wrap">
+  echo "<div class=\"wrap\">";
 
-    <?php foreach ($games as $game) {
+
+    foreach ($games as $game) {
       include 'gameButton.php';
       //check if the numPlayers is less than 10 and make sure currentPlayer is not in game before
       //letting player join
 
-      if (!in_array(getPlayerById($_SESSION['playerID']), getPlayers($game['ID']))) { ?>
-          <input type="hidden" name="secret" value="<?php $game['ID']; ?>"/>
-          <input type="submit" name="joingame" value="Join Game"/>
-      <?php } ?>
-        </form>
-    <?php } ?>
-    <form method="post" action="">
-        <input type="submit" name="addgame" value="Add New Game"/>
-    </form>
-  </div>
-<?php
+      if (!in_array(getPlayerById($_SESSION['playerID']), getPlayers($game['ID']))) {
+          echo "<input type=\"hidden\" name=\"secret\" value=\"<?php" . $game['ID'] . "; ?>\"/>";
+          echo "<input type=\"submit\" name=\"joingame\" value=\"Join Game\"/>";
+      }
+      echo "</form>";
+    }
+    echo "<form method=\"post\" action=\"\">";
+    echo    "<input type=\"submit\" name=\"addgame\" value=\"Add New Game\"/>";
+    echo "</form>";
+    echo "</div>";
   if(isset($_POST['addgame'])) {
     header('Location: addcourt.php');
   }
