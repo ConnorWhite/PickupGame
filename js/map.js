@@ -9,7 +9,7 @@ var addCourtMarker; // a marker for holding the add Court marker
 var courtDisplayMarkers = []; // an array of markers for holding all court view markers to be displayed
 var debug_counter = 0;
 var userCenter = {lat: 30.2849, lng: -97.7341};
-
+ 
 function initMap() {
   //Initial flaoting jquery ui dialog box for adding a court
  /* $( "#addCourtDialog" ).dialog({
@@ -43,8 +43,7 @@ function initMap() {
   mapDiv = document.getElementById('map');
   map = new google.maps.Map(mapDiv, {
     center: {lat: 30.2849, lng: -97.7341},
-    zoom: 16,
-    mapTypeId: 'satellite'
+    zoom: 16
   });
     //  var infoWindow = new google.maps.InfoWindow({map: map});
   // find the users location if possible with HTML5 geolocation.
@@ -63,8 +62,8 @@ function initMap() {
             //infoWindow.setContent('You are here');
 
             var icon = {
-    url: '/PickupGame/img/blue_dot.png', // url
-    scaledSize: new google.maps.Size(15, 15), // scaled size
+    url: 'http://image.flaticon.com/icons/svg/23/23398.svg', // url
+    scaledSize: new google.maps.Size(50, 50), // scaled size
 };
 
             addGeoMarker(pos, map, icon);
@@ -608,3 +607,106 @@ function getPlayersData(gameData)
 
 return playerData;
 }
+
+/* QUnit Tests */
+
+function mapSetup(){
+
+  data = [];
+
+data[0] = { ID: 1,  Name: 'Gregory Gym', Longitude: -97.7365,  Latitude: 30.2842 };
+data[1] = { ID: 2,  Name: 'Clark Field', Longitude: -97.7355,  Latitude: 30.2814 };
+data[2] = { ID: 3,  Name:  'UT Rec Sports Center',Longitude:  -97.7328,  Latitude: 30.2823 };
+data[3] = { ID: 6,  Name: 'Adams-Hemphill Park',Longitude:  -97.7389,  Latitude: 30.2945 };
+data[4] = { ID: 12, Name: 'Toyota Center',Longitude:  -95.3621,  Latitude: 29.7506};
+data[5] = { ID: 13, Name: 'HEB',Longitude: -97.72, Latitude: 30.2999};
+
+
+      for(var i = 0; i < data.length; i++)
+      {
+        var court = data[i];
+
+        var marker = placeMarker( new google.maps.LatLng(court["Latitude"],court["Longitude"]),
+          false,
+          null,
+          court);
+          var courtDataAndMarker = [];
+          courtDataAndMarker["CourtData"] = court;
+          courtDataAndMarker["Marker"] = marker;
+          console.log(courtDataAndMarker);
+          courtDisplayMarkers.push(courtDataAndMarker);
+      }
+
+      return data;
+}
+
+QUnit.test("Map Init Marker Logic Test", function(assert) {
+  mapSetup();
+  assert.ok(courtDisplayMarkers.length == 6, "Passed!");
+});
+
+QUnit.test( "Add Existing Court Test", function( assert ) {
+
+
+        mapSetup();
+
+
+        var location = new google.maps.LatLng(
+         30.283775,  -97.736574);
+
+
+
+        var  marker = new google.maps.Marker({
+          position: location,
+          label: ".",
+          map: map
+        });
+
+        assert.ok(courtAlreadyAdded(marker) == true, "Passed!");
+
+
+
+});
+
+
+QUnit.test( "Courts Range Test", function( assert ) {
+  var data = mapSetup();
+  var range = [1,1];
+  var success = true;
+  for(var i = 0; i < data.length; i++)
+  {
+    var addedLong = Math.abs(data[i]["Longitude"]);
+    var addedLat = Math.abs(data[i]["Latitude"]);
+
+    var addingLat = Math.abs(userCenter["lat"]); 
+    var addingLong = Math.abs(userCenter["lng"]);
+
+    console.log(Math.abs(addedLat - addingLat));
+
+    console.log(Math.abs(addedLong - addingLong));
+
+    if(data[i]["Name"] === "Toyota Center" && 
+       ( Math.abs(addedLat - addingLat) < range[0] &&
+        Math.abs(addedLong - addingLong) < range[1]))
+      success = false;
+      
+  }
+
+  assert.ok( success, "Passed!" );
+});
+
+QUnit.test("Court Info Test", function(assert) {
+  var data = mapSetup();
+
+  var games = getCourtGames(data[0]);
+
+  console.log(games);
+
+  assert.ok(games.length == 1, "Passed!");
+
+  var players = getPlayersData(games[0]);
+
+  assert.ok(players.length = 3, "Passed!");
+
+});
+
