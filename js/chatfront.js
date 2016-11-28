@@ -1,16 +1,20 @@
 // ask user for name with popup prompt    
 var name = prompt("Enter your chat name:", "Guest");
 // get the user name from sessionID instead (works)
-/*
 
-  var name = null;
+
+id = get('id');
+if(!id){
+	id = 'chat';
+}
+var name = null;
   $.ajax({
     type: "GET",
     url: "process.php",
     data: {
           dataType: 'json',
          'function': 'getPlayerByID',
-         'id': 'chat'
+         'id': id
       },
       dataType: "json",
       success: function(data){
@@ -19,7 +23,8 @@ var name = prompt("Enter your chat name:", "Guest");
       name = data["Name"];
     },
     async: false
-}); */
+});
+
 
 // default name is 'Guest'
 if (!name || name === ' ') {
