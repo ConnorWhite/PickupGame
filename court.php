@@ -30,6 +30,6 @@
     </form>
   </div>
   <?php if(isset($_POST['addgame'])) {
-    header('Location: addgame.php');
+    header('Location: addgame.php?courtID='.$_GET["courtID"]);
   }
   include 'footer.php';
