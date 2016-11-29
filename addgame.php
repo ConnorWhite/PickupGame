@@ -10,13 +10,13 @@
     header('Location: court.php?courtID='.$_SESSION["CourtID"]);
   }
 
-  $title = 'Add Court';
+  $title = 'Add Game';
   include 'header.php'
 ?>
 <div class="content">
   <div class="wrap">
     <form id="addGameForm" method="post" action="">
-      <p>Court Name</p>
+      <p>Game Name</p>
       <input type="text" name="name"/><br>
       <p>Date</p>
       <input type="datetime" name="datetime"/><br>
