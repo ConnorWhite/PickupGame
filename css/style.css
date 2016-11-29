@@ -80,6 +80,14 @@ a {
 p {
   margin: 0; }
 
+#addGameForm {
+  margin-top: 15px; }
+  #addGameForm p,
+  #addGameForm input {
+    margin-top: 10px; }
+  #addGameForm input[type="submit"] {
+    margin-top: 20px; }
+
 #addgame,
 #join {
   margin-top: 15px;

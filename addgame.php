@@ -2,24 +2,27 @@
   include 'DatabaseFacade.php';
   session_start();
   function display() {
-    addGame($_POST["txt"], $_POST["date"], $_SESSION["CourtID"]);
+    addGame($_POST["name"], $_POST["datetime"], $_SESSION["CourtID"]);
     echo "Added Game <br>";
   }
   if(isset($_POST['submit'])) {
     display();
     header('Location: court.php');
   }
+
+  $title = 'Add Court';
+  include 'header.php'
 ?>
-<html>
-  <body>
-    <form method="post" action="">
-      Court Name<br>
-      <input type="text" name="txt"/><br>
-      Date<br>
-      <input type="date" name="date"/><br>
+<div class="content">
+  <div class="wrap">
+    <form id="addGameForm" method="post" action="">
+      <p>Court Name</p>
+      <input type="text" name="name"/><br>
+      <p>Date</p>
+      <input type="datetime" name="datetime"/><br>
       <input type="submit" name="submit" value="Submit"/>
     </form>
-  </body>
-</html>
+  </div>
+</div>
 <?php
   include 'footer.php';

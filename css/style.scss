@@ -118,6 +118,17 @@ p {
   margin: 0;
 }
 
+#addGameForm{
+  margin-top: 15px;
+  p,
+  input{
+    margin-top:10px;
+  }
+  input[type="submit"]{
+    margin-top: 20px;
+  }
+}
+
 #addgame,
 #join {
   margin-top: 15px;
