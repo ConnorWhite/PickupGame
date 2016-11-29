@@ -7,7 +7,7 @@
   }
   if(isset($_POST['submit'])) {
     display();
-    header('Location: court.php');
+    header('Location: court.php?courtID='.$_SESSION["CourtID"]);
   }
 
   $title = 'Add Court';
