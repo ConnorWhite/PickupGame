@@ -1,5 +1,3 @@
-// ask user for name with popup prompt    
-var name = prompt("Enter your chat name:", "Guest");
 // get the user name from sessionID instead (works)
 
 
@@ -20,16 +18,18 @@ var name = null;
       success: function(data){
           console.log("get player name success!");
           console.log(data);
-      name = data["Name"];
+		  if(data){ name = data["Name"]; }
     },
     async: false
 });
 
-
 // default name is 'Guest'
-if (!name || name === ' ') {
+if (!name || name === ' ' || name === 'null') {
    name = "Guest";	
 }
+
+// ask user for name with popup prompt    
+name = prompt("Enter your chat name:", name);
 
 // strip tags
 name = name.replace(/(<([^>]+)>)/ig,"");
