@@ -343,7 +343,7 @@ function addViewCourtMarkerListeners(marker,courtData)
       infowindow = new google.maps.InfoWindow({
         content: " "
     });
-    infowindow.setContent(infoText + '<a class="courtButt" href=/PickupGame/court.php?id=' + courtData['ID'] + '>View Court</a>')
+    infowindow.setContent(infoText + '<a class="courtButt" href=/PickupGame/court.php?courtID=' + courtData['ID'] + '>View Court</a>')
     infowindow.open(map, this);
   });
   return marker;
