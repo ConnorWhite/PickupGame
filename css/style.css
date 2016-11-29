@@ -80,6 +80,7 @@ a {
 p {
   margin: 0; }
 
+#addgame,
 #join {
   margin-top: 15px;
   font-size: 1rem; }
@@ -170,7 +171,7 @@ input[type="submit"] {
     color: #ccc; }
   .game div {
     background: #08c;
-    margin: 15px 0px;
+    margin: 15px 0px 0px 0px;
     border-radius: 2px;
     transition: all 0.2s ease; }
     .game div:hover {

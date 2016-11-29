@@ -5,7 +5,7 @@
   $court = null;
   if(isset($_GET["courtID"]))
   {
-      $court = getCourtByID($_GET["courtID"]); // http set in mygames.php
+    $court = getCourtByID($_GET["courtID"]); // http set in mygames.php
   }
   else
   {
@@ -25,7 +25,7 @@
       include 'gameButton.php';
     }?>
 
-    <form method="post" action="">
+    <form id="addgame" method="post" action="">
       <input type="submit" name="addgame" value="Add New Game"/>
     </form>
   </div>
