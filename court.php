@@ -37,7 +37,7 @@
     </form>
   </div>
   <?php if(isset($_POST['addgame'])) {
-    header('Location: addcourt.php');
+    header('Location: addgame.php');
   }
   if(isset($_POST['joingame'])) {
     joinGame($_SESSION['playerID'], $_POST["secret"]);
