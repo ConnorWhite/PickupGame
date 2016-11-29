@@ -9,7 +9,7 @@ var addCourtMarker; // a marker for holding the add Court marker
 var courtDisplayMarkers = []; // an array of markers for holding all court view markers to be displayed
 var debug_counter = 0;
 var userCenter = {lat: 30.2849, lng: -97.7341};
- 
+
 function initMap() {
   //Initial flaoting jquery ui dialog box for adding a court
  /* $( "#addCourtDialog" ).dialog({
@@ -62,9 +62,11 @@ function initMap() {
             //infoWindow.setContent('You are here');
 
             var icon = {
-    url: 'http://image.flaticon.com/icons/svg/23/23398.svg', // url
-    scaledSize: new google.maps.Size(50, 50), // scaled size
-};
+              //url: 'http://image.flaticon.com/icons/svg/23/23398.svg',
+              //scaledSize: new google.maps.Size(50, 50), // scaled size
+              url: '/PickupGame/img/placeholder.png',
+              scaledSize: new google.maps.Size(32, 32),
+            };
 
             addGeoMarker(pos, map, icon);
             // Initialize and Display the markers for all courts in database
@@ -355,9 +357,13 @@ function placeMarker(location, courtAddFlag, marker,courtData) {
     {
 
   var icon = {
-    url: 'https://cdn0.iconfinder.com/data/icons/elite-sports/512/basketball-court-512.png', // url
-    scaledSize: new google.maps.Size(50, 34), // scaled size
-    };
+    //url: '/PickupGame/img/pin.svg',
+    //scaledSize: new google.maps.Size(20,20),
+    url: '/PickupGame/img/pin.png',
+    scaledSize: new google.maps.Size(32, 32),
+    //url: 'https://cdn0.iconfinder.com/data/icons/elite-sports/512/basketball-court-512.png', // url
+    //scaledSize: new google.maps.Size(50, 34), // scaled size
+  };
 var marker = new google.maps.Marker({
   position: location,
   icon: icon,
@@ -678,18 +684,18 @@ QUnit.test( "Courts Range Test", function( assert ) {
     var addedLong = Math.abs(data[i]["Longitude"]);
     var addedLat = Math.abs(data[i]["Latitude"]);
 
-    var addingLat = Math.abs(userCenter["lat"]); 
+    var addingLat = Math.abs(userCenter["lat"]);
     var addingLong = Math.abs(userCenter["lng"]);
 
     console.log(Math.abs(addedLat - addingLat));
 
     console.log(Math.abs(addedLong - addingLong));
 
-    if(data[i]["Name"] === "Toyota Center" && 
+    if(data[i]["Name"] === "Toyota Center" &&
        ( Math.abs(addedLat - addingLat) < range[0] &&
         Math.abs(addedLong - addingLong) < range[1]))
       success = false;
-      
+
   }
 
   assert.ok( success, "Passed!" );
@@ -709,4 +715,3 @@ QUnit.test("Court Info Test", function(assert) {
   assert.ok(players.length = 3, "Passed!");
 
 });
-
