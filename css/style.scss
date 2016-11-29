@@ -118,8 +118,9 @@ p {
   margin: 0;
 }
 
-input{
-  &[type="submit"]{
+
+input {
+  &[type="submit"] {
     background-color: $blue;
     border: none;
     border-radius: 1px;
@@ -129,7 +130,7 @@ input{
 
     &:hover {
       background-color: $darkBlue;
-      color: $lightColor
+      color: $lightColor;
     }
   }
 }
@@ -243,6 +244,11 @@ input{
 
     }
   }
+}
+
+.numGames {
+  padding-top: 5px;
+  padding-bottom: 7px;
 }
 
 #content {

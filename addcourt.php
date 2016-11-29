@@ -1,6 +1,14 @@
 <?php
   include 'DatabaseFacade.php';
   session_start();
+  function display() {
+    addGame($_POST["txt"], $_POST["date"], $_SESSION["CourtID"]);
+    echo "Added Game <br>";
+  }
+  if(isset($_POST['submit'])) {
+    display();
+    header('Location: court.php');
+  }
 ?>
 <html>
   <body>
@@ -14,13 +22,4 @@
   </body>
 </html>
 <?php
-  function display() {
-    addGame($_POST["txt"], $_POST["date"], $_SESSION["CourtID"]);
-    echo "Added Game <br>";
-  }
-  if(isset($_POST['submit'])) {
-    display();
-    header('Location: court.php');
-  }
   include 'footer.php';
-?>

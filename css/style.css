@@ -180,6 +180,10 @@ input[type="submit"] {
       padding: 0px 15px 10px;
       font-weight: 300; }
 
+.numGames {
+  padding-top: 5px;
+  padding-bottom: 7px; }
+
 #content {
   margin-bottom: 72px; }
 

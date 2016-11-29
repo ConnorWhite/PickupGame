@@ -323,7 +323,7 @@ function addViewCourtMarkerListeners(marker,courtData)
       .concat(" player(s).</p>")
     ));
 
-    courtTitle = "<h1>" + courtData['Name'] + "</h1>"+"<p>Games: " + (courtInfo.length-1).toString() + "</p>";
+    courtTitle = "<h1>" + courtData['Name'] + "</h1>"+"<p class=numGames>Games: " + (courtInfo.length-1).toString() + "</p>";
 
     var games_titles = "";
     // I added more information than necessary,
@@ -337,27 +337,14 @@ function addViewCourtMarkerListeners(marker,courtData)
       games_titles = games_titles.concat(courtInfo[i]["GameData"]["Name"].concat("</h3>"));
       games_titles = games_titles.concat("<p>There are " + courtInfo[i]["PlayerData"].length.toString()
       + " Total Player(s) for " + courtInfo[i]["GameData"]["Name"] + ":</p><br>");
-      //for(var j = 0; j < courtInfo[i]["PlayerData"].length; j++)
-      //{
-       // if(courtInfo[i]["PlayerData"][j] != null)
-      //games_titles = games_titles.concat(courtInfo[i]["PlayerData"][j]["Name"].concat("<br>"));/
-      //}
     }
     var gamesInfo = "<h2>Games:<h2>".concat(games_titles);
     var infoText = courtTitle; //+ gamesInfo;
-    infowindow = new google.maps.InfoWindow({
-      content: " "
+      infowindow = new google.maps.InfoWindow({
+        content: " "
     });
-    var buttonFun =
-    '\"<script type="text/javascript">' + "takeUserToTheRequestedCourtPage(courtData)"
-    + '</script>\"';
-    infowindow.setContent(infoText +
-      '<button id = courtButt>' + 'View Court' + '</button>');
-
+    infowindow.setContent(infoText + '<a class="courtButt" href=/PickupGame/court.php?id=' + courtData['ID'] + '>View Court</a>')
     infowindow.open(map, this);
-
-    $("#courtButt")[0].addEventListener("click", function(){takeUserToTheRequestedCourtPage(courtData);} );
-
   });
   return marker;
 }
