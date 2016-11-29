@@ -67,8 +67,8 @@
 
   // Input: playerId, gameId
   // Output: sql query
-  function joinGame($playerID, $gameId){
-    return addRow(PLAYER_GAME_TABLE, array("PlayerID", "GameID"), array($playerID, $gameId));
+  function joinGame($playerID, $gameID){
+    return addRow(PLAYER_GAME_TABLE, array("PlayerID", "GameID"), array($playerID, $gameID));
   }
 
   // Input: Name, Lat, Long, Helpful note: Google maps convention: (lat,long)
