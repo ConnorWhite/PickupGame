@@ -11,41 +11,11 @@ var debug_counter = 0;
 var userCenter = {lat: 30.2849, lng: -97.7341};
 
 function initMap() {
-  //Initial flaoting jquery ui dialog box for adding a court
- /* $( "#addCourtDialog" ).dialog({
-
-    dialogClass : "jquery_form",
-    autoOpen: false,
-    width: 400,
-    buttons: [
-      {
-        text: "Submit",
-        click: function() {
-          $( this ).dialog( "close" );
-          var courtData = [];
-          courtData["Name"] = $('#addCourtName').val();
-          courtData["Latitude"] = addCourtMarker.position.lat();
-          courtData["Longitude"] = addCourtMarker.position.lng();
-          addCourtLevelDialog(true, courtData);
-        }
-      },
-      {
-        text: "Cancel",
-        click: function() {
-          $( this ).dialog( "close" );
-          addCourtLevelDialog(false, null);
-        }
-      }
-    ]
-  }); */
-
-
   mapDiv = document.getElementById('map');
   map = new google.maps.Map(mapDiv, {
     center: {lat: 30.2849, lng: -97.7341},
     zoom: 16
   });
-    //  var infoWindow = new google.maps.InfoWindow({map: map});
   // find the users location if possible with HTML5 geolocation.
 
   var ua = navigator.userAgent.toLowerCase(),
@@ -62,8 +32,6 @@ function initMap() {
             //infoWindow.setContent('You are here');
 
             var icon = {
-              //url: 'http://image.flaticon.com/icons/svg/23/23398.svg',
-              //scaledSize: new google.maps.Size(50, 50), // scaled size
               url: '/PickupGame/img/placeholder.png',
               scaledSize: new google.maps.Size(32, 32),
             };
@@ -92,10 +60,6 @@ console.log("usercenter"+userCenter);
   document.getElementById('map').style.height = (window.innerHeight - headerHeight - footerHeight) + 'px';
   //Set header position to fixed
   document.getElementById("header").style.position = "fixed";
-  //TODO: remove 'Map' from menu
-
-
-
   // Ability to place marker for a new court's location
   google.maps.event.addListener(map, 'click', function(event) {
     addCourtMarker = placeMarker(event.latLng, true, addCourtMarker);
@@ -104,18 +68,16 @@ console.log("usercenter"+userCenter);
 
 
 function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-infoWindow.setPosition(pos);
-infoWindow.setContent(browserHasGeolocation ?
-                      'Error: The Geolocation service failed.' :
-                      'Error: Your browser doesn\'t support geolocation.');
+  infoWindow.setPosition(pos);
+  infoWindow.setContent(browserHasGeolocation ? 'Error: The Geolocation service failed.' : 'Error: Your browser doesn\'t support geolocation.');
 }
 
 function addGeoMarker(pos,map, icon) {
-var marker = new google.maps.Marker({
-  position: pos,
-  icon: icon,
-  map: map
-});
+  var marker = new google.maps.Marker({
+    position: pos,
+    icon: icon,
+    map: map
+  });
 }
 
 // Function for handling a add court REQUEST
@@ -131,10 +93,8 @@ function addCourt(marker) {
   }
 
   if(confirm("Are you sure you want to add a new court here?"))
-  {
-    // display new court pin on map
+  { // display new court pin on map
     //var courtName = prompt("Please enter this new court's name", "Court Name");
-
     var courtNameIn = '<input id = "CourtName" type="text" name="FirstName" value="Court Name"><br>';
     var courtSubmit = '<button id = SubmitCourt>Submit</button>';
     infowindow = new google.maps.InfoWindow({
@@ -143,7 +103,6 @@ function addCourt(marker) {
     });
 
     infowindow.open(map, marker);
-
 
     $("#SubmitCourt")[0].addEventListener("click", function(){
       var courtData = [];
@@ -154,16 +113,9 @@ function addCourt(marker) {
       addCourtLevelDialog(true, courtData);
       infowindow.close();
       marker.visible = false;});
-
-
-
-  } /* else
-      alert("Add Court Canceled");*/
-
+  }
   return;
 }
-
-
 
 // Returns true if court already added
 // False else TODO
@@ -178,11 +130,8 @@ function courtAlreadyAdded(marker) {
 
     if(Math.abs(addedLong-addingLong) <= 0.00015)
       return true;
-
     if(Math.abs(addedLat-addingLat) <= 0.00015)
       return true;
-
-
   }
   return false;
 }
@@ -191,17 +140,9 @@ function courtAlreadyAdded(marker) {
 // We add the court if the user presses submit
 // We don't if else
 function addCourtLevelDialog(value, courtData){
-/*
-      if(courtAlreadyAdded(courtData))
-      {
-        $( "#addCourtDialog" ).close();
-        alert("Court Already Exists!");
-      }*/
-
       if(value)
       {
         // call php function databaseFacade-> add court data, with the location data and court name
-
         // Initialize and Display the markers for all courts in database
         // Since there is now a new court in the database
         console.log("new Court Data: ");
@@ -226,29 +167,9 @@ function addCourtLevelDialog(value, courtData){
                 addCourtMarker.visible = false;
                 initCourtDisplayMarkers(courtDisplayMarkers);
             }
-      });
-/*
-      var location = new google.maps.LatLng(
-        courtData['Latitude'], courtData['Longitude']);
-
-      var  marker = new google.maps.Marker({
-          position: location,
-          label: ".",
-          map: map
         });
-
-      addCourtMarker.visible = false;
-
-      // Add the court the the array that contains all the courts
-      var courtDataAndMarker = [];
-      courtDataAndMarker["CourtData"] = courtData;
-      courtDataAndMarker["Marker"] = addViewCourtMarkerListeners(marker,courtData);
-      courtDisplayMarkers.push(courtDataAndMarker) */
-      } // end if(value)
-   /* else{
-      alert("Add Court Canceled");
-    }*/
-}
+      }
+    }
 
 // Function that stores all courts
 // currently in the database, as markers
@@ -300,8 +221,7 @@ function initCourtDisplayMarkers(arrayOfMarkers)
           courtDisplayMarkers.push(courtDataAndMarker);
       }
     },
-
-});
+  });
 }
 
 // This Function that is added as a listener
@@ -332,7 +252,6 @@ function takeUserToTheRequestedCourtPage(courtData)
 // The two use cases is determined by the courtAddFlag
 // Returns the marker
 function placeMarker(location, courtAddFlag, marker,courtData) {
-
   if(courtAddFlag) // handle placing a add court marker
   {
     if ( marker ) {
@@ -349,34 +268,28 @@ function placeMarker(location, courtAddFlag, marker,courtData) {
       // click on it to add a court
       marker.addListener('click', function(){addCourt(marker);});
     }
-
-
   }  // end if(courtAddFlag)
   else { // or else, handle displaying a court to display
     if(marker == null)
     {
-
-  var icon = {
-    //url: '/PickupGame/img/pin.svg',
-    //scaledSize: new google.maps.Size(20,20),
-    url: '/PickupGame/img/pin.png',
-    scaledSize: new google.maps.Size(32, 32),
-    //url: 'https://cdn0.iconfinder.com/data/icons/elite-sports/512/basketball-court-512.png', // url
-    //scaledSize: new google.maps.Size(50, 34), // scaled size
-  };
-var marker = new google.maps.Marker({
-  position: location,
-  icon: icon,
-  map: map
-});
-      // TODO: add listeners for dblclick and click
-
+      var icon = {
+        //url: '/PickupGame/img/pin.svg',
+        //scaledSize: new google.maps.Size(20,20),
+        url: '/PickupGame/img/pin.png',
+        scaledSize: new google.maps.Size(32, 32),
+        //url: 'https://cdn0.iconfinder.com/data/icons/elite-sports/512/basketball-court-512.png', // url
+        //scaledSize: new google.maps.Size(50, 34), // scaled size
+      };
+      var marker = new google.maps.Marker({
+        position: location,
+        icon: icon,
+        map: map
+      });
     }
     marker.setPosition(location);
     marker.visible = true;
     marker = addViewCourtMarkerListeners(marker,courtData);
   }
-
   return marker;
 }
 
@@ -397,99 +310,21 @@ function addViewCourtMarkerListeners(marker,courtData)
   marker.addListener('click', function(){
     var courtInfo = getCourtInfo(courtData);
 
-
-
-// Will clean this up later
-// Didn't realize you could +
-// strings in js till a bit later
-console.log("<h1>Court Information</h1>");
-console.log(courtInfo);
-var courtTitle = "<h1>"
-.concat(courtData['Name']
-.concat("'s Info:").concat("</h1>"
-+       "<p>There are ".concat(
-  courtInfo[courtInfo.length -1].toString())
-  .concat(" player(s).</p>")
-));
-
-courtTitle = "<h1>" + courtData['Name'] + "</h1>"
-                +"<p>Games: " + (courtInfo.length-1).toString() + "</p>";
-
-var games_titles = "";
-// I added more information than necessary,
-// for sake of proof of concept with regards
-// to using ajax in implementing
-// process.php
-for(var i = 0; i < courtInfo.length - 1; i++)
-{
-
-games_titles = games_titles.concat("<h3>");
-games_titles = games_titles.concat(courtInfo[i]["GameData"]["Name"].concat("</h3>"));
-games_titles = games_titles.concat("<p>There are " + courtInfo[i]["PlayerData"].length.toString()
-+ " Total Player(s) for " + courtInfo[i]["GameData"]["Name"] + ":</p><br>");
-//for(var j = 0; j < courtInfo[i]["PlayerData"].length; j++)
-//{
- // if(courtInfo[i]["PlayerData"][j] != null)
-//games_titles = games_titles.concat(courtInfo[i]["PlayerData"][j]["Name"].concat("<br>"));/
-//}
-}
-var gamesInfo = "<h2>Games:<h2>".concat(games_titles);
-var infoText = courtTitle; //+ gamesInfo;
-infowindow = new google.maps.InfoWindow({
-  content: " "
-});
-var buttonFun =
-'\"<script type="text/javascript">' + "takeUserToTheRequestedCourtPage(courtData)"
-+ '</script>\"';
-infowindow.setContent(infoText +
-  '<button id = courtButt>' + 'View Court' + '</button>');
-
-infowindow.open(map, this);
-
-$("#courtButt")[0].addEventListener("click", function(){takeUserToTheRequestedCourtPage(courtData);} );
-
-});
-    /*
-    $( "#courtInfoDialog" ).dialog({
-
-      dialogClass : "jquery_form",
-      title : "Court | ".concat(courtData['Name']),
-      autoOpen: false,
-      width: 400,
-      buttons: [
-        {
-          text: "Go to " + courtData['Name'],
-          click: function() {
-            takeUserToTheRequestedCourtPage(courtData);
-          }
-        } ]
-    }).css("font-size", "12px");;
-
-    // retrieve the court's info
-    // from the database
-    var courtInfo = getCourtInfo(courtData);
-
-Add Court Canc
-        // Will clean this up later
-        // Didn't realize you could +
-        // strings in js till a bit later
+    // Will clean this up later
+    // Didn't realize you could +
+    // strings in js till a bit later
     console.log("<h1>Court Information</h1>");
     console.log(courtInfo);
-    $("#dynamicCourtInfoTextCourtInfo").html("<h1>"
+    var courtTitle = "<h1>"
     .concat(courtData['Name']
     .concat("'s Info:").concat("</h1>"
     +       "<p>There are ".concat(
-          courtInfo[courtInfo.length -1].toString())
-          .concat(" player(s).</p>")
-        )));
-
-    /*
-    $("#dynamicCourtInfoTextCourtPlayerInfo").html(
-      "<p>There are ".concat(
       courtInfo[courtInfo.length -1].toString())
       .concat(" player(s).</p>")
-    ); */
-    /*
+    ));
+
+    courtTitle = "<h1>" + courtData['Name'] + "</h1>"+"<p>Games: " + (courtInfo.length-1).toString() + "</p>";
+
     var games_titles = "";
     // I added more information than necessary,
     // for sake of proof of concept with regards
@@ -501,18 +336,29 @@ Add Court Canc
       games_titles = games_titles.concat("<h3>");
       games_titles = games_titles.concat(courtInfo[i]["GameData"]["Name"].concat("</h3>"));
       games_titles = games_titles.concat("<p>There are " + courtInfo[i]["PlayerData"].length.toString()
-    + " Total Player(s) for " + courtInfo[i]["GameData"]["Name"] + ":<br>");
-      for(var j = 0; j < courtInfo[i]["PlayerData"].length; j++)
-      {
-      games_titles = games_titles.concat(courtInfo[i]["PlayerData"][j]["Name"].concat("<br>"));
-      }
+      + " Total Player(s) for " + courtInfo[i]["GameData"]["Name"] + ":</p><br>");
+      //for(var j = 0; j < courtInfo[i]["PlayerData"].length; j++)
+      //{
+       // if(courtInfo[i]["PlayerData"][j] != null)
+      //games_titles = games_titles.concat(courtInfo[i]["PlayerData"][j]["Name"].concat("<br>"));/
+      //}
     }
-    $("#dynamicCourtInfoTextCourtGameInfo").html("<h2>Games:<h2>"
-      .concat(games_titles));
+    var gamesInfo = "<h2>Games:<h2>".concat(games_titles);
+    var infoText = courtTitle; //+ gamesInfo;
+    infowindow = new google.maps.InfoWindow({
+      content: " "
+    });
+    var buttonFun =
+    '\"<script type="text/javascript">' + "takeUserToTheRequestedCourtPage(courtData)"
+    + '</script>\"';
+    infowindow.setContent(infoText +
+      '<button id = courtButt>' + 'View Court' + '</button>');
 
-    $("#courtInfoDialog").dialog("open");
+    infowindow.open(map, this);
+
+    $("#courtButt")[0].addEventListener("click", function(){takeUserToTheRequestedCourtPage(courtData);} );
+
   });
-  marker.addListener('dblclick', function(){takeUserToTheRequestedCourtPage(courtData);}); */
   return marker;
 }
 
@@ -546,19 +392,19 @@ function getCourtInfo(courtData) {
   var returnData =[];
   var data_games;
 
-data_games = getCourtGames(courtData);
-var player_count = 0;
-for(var i = 0; i < data_games.length; i++)
-{
-  var gpdata = [];
+  data_games = getCourtGames(courtData);
+  var player_count = 0;
+  for(var i = 0; i < data_games.length; i++)
+  {
+    var gpdata = [];
 
-gpdata['PlayerData'] = getPlayersData(data_games[i]);
-player_count += gpdata['PlayerData'].length;
-gpdata['GameData'] = data_games[i];
-returnData.push(gpdata);
-}
-returnData.push(player_count);
-return returnData;
+    gpdata['PlayerData'] = getPlayersData(data_games[i]);
+    player_count += gpdata['PlayerData'].length;
+    gpdata['GameData'] = data_games[i];
+    returnData.push(gpdata);
+  }
+  returnData.push(player_count);
+  return returnData;
 }
 
 // function used by getCourtInfo
@@ -583,7 +429,7 @@ function getCourtGames(courtData){
           console.log(data_games);
       },
       async: false
-});
+  });
   return data_games;
 }
 
@@ -609,9 +455,8 @@ function getPlayersData(gameData)
       playerData = data;
     },
     async: false
-});
-
-return playerData;
+  });
+  return playerData;
 }
 
 /* QUnit Tests */
@@ -619,31 +464,27 @@ return playerData;
 function mapSetup(){
 
   data = [];
+  data[0] = { ID: 1,  Name: 'Gregory Gym', Longitude: -97.7365,  Latitude: 30.2842 };
+  data[1] = { ID: 2,  Name: 'Clark Field', Longitude: -97.7355,  Latitude: 30.2814 };
+  data[2] = { ID: 3,  Name:  'UT Rec Sports Center',Longitude:  -97.7328,  Latitude: 30.2823 };
+  data[3] = { ID: 6,  Name: 'Adams-Hemphill Park',Longitude:  -97.7389,  Latitude: 30.2945 };
+  data[4] = { ID: 12, Name: 'Toyota Center',Longitude:  -95.3621,  Latitude: 29.7506};
+  data[5] = { ID: 13, Name: 'HEB',Longitude: -97.72, Latitude: 30.2999};
 
-data[0] = { ID: 1,  Name: 'Gregory Gym', Longitude: -97.7365,  Latitude: 30.2842 };
-data[1] = { ID: 2,  Name: 'Clark Field', Longitude: -97.7355,  Latitude: 30.2814 };
-data[2] = { ID: 3,  Name:  'UT Rec Sports Center',Longitude:  -97.7328,  Latitude: 30.2823 };
-data[3] = { ID: 6,  Name: 'Adams-Hemphill Park',Longitude:  -97.7389,  Latitude: 30.2945 };
-data[4] = { ID: 12, Name: 'Toyota Center',Longitude:  -95.3621,  Latitude: 29.7506};
-data[5] = { ID: 13, Name: 'HEB',Longitude: -97.72, Latitude: 30.2999};
-
-
-      for(var i = 0; i < data.length; i++)
-      {
-        var court = data[i];
-
-        var marker = placeMarker( new google.maps.LatLng(court["Latitude"],court["Longitude"]),
-          false,
-          null,
-          court);
-          var courtDataAndMarker = [];
-          courtDataAndMarker["CourtData"] = court;
-          courtDataAndMarker["Marker"] = marker;
-          console.log(courtDataAndMarker);
-          courtDisplayMarkers.push(courtDataAndMarker);
-      }
-
-      return data;
+  for(var i = 0; i < data.length; i++)
+  {
+    var court = data[i];
+    var marker = placeMarker( new google.maps.LatLng(court["Latitude"],court["Longitude"]),
+      false,
+      null,
+      court);
+      var courtDataAndMarker = [];
+      courtDataAndMarker["CourtData"] = court;
+      courtDataAndMarker["Marker"] = marker;
+      console.log(courtDataAndMarker);
+      courtDisplayMarkers.push(courtDataAndMarker);
+  }
+  return data;
 }
 
 QUnit.test("Map Init Marker Logic Test", function(assert) {
@@ -652,28 +493,16 @@ QUnit.test("Map Init Marker Logic Test", function(assert) {
 });
 
 QUnit.test( "Add Existing Court Test", function( assert ) {
+  mapSetup();
+  var location = new google.maps.LatLng(30.283775,  -97.736574);
 
-
-        mapSetup();
-
-
-        var location = new google.maps.LatLng(
-         30.283775,  -97.736574);
-
-
-
-        var  marker = new google.maps.Marker({
-          position: location,
-          label: ".",
-          map: map
-        });
-
-        assert.ok(courtAlreadyAdded(marker) == true, "Passed!");
-
-
-
+  var  marker = new google.maps.Marker({
+    position: location,
+    label: ".",
+    map: map
+  });
+  assert.ok(courtAlreadyAdded(marker) == true, "Passed!");
 });
-
 
 QUnit.test( "Courts Range Test", function( assert ) {
   var data = mapSetup();
