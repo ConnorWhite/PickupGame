@@ -27,6 +27,7 @@
 		}
 	}
 
+
 ?>
 
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
@@ -34,6 +35,7 @@
 <script type="text/javascript" src="js/chatfront.js"></script>
 <body onload="setInterval('chat.update()', 1000)">
     <div id="chat">
+	<input type="hidden" id="chatPlayerID" name="chatPlayerID" value="<?php $_SESSION['playerID'];?>"></input>
         <h2>Chat</h2>
         <p id="name-area"></p>
         <div id="chat-wrap"><div id="chat-area"></div></div>

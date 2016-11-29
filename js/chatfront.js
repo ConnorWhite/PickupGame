@@ -5,6 +5,7 @@ id = get('id');
 if(!id){
 	id = 'chat';
 }
+playerID = $("#chatPlayerID").attr("value");
 var name = null;
   $.ajax({
     type: "GET",
@@ -12,7 +13,7 @@ var name = null;
     data: {
           dataType: 'json',
          'function': 'getPlayerByID',
-         'id': id
+         'id': playerID;
       },
       dataType: "json",
       success: function(data){
