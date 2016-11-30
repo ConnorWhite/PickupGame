@@ -1,5 +1,3 @@
-
-
 var map;
 // In the following example, markers appear when the user clicks on the map.
 // Each marker is labeled with a single alphabetical character.
@@ -17,43 +15,34 @@ function initMap() {
     zoom: 16
   });
   // find the users location if possible with HTML5 geolocation.
+  var ua = navigator.userAgent.toLowerCase(), isAndroid = ua.indexOf("android") > -1, geoTimeout = '15000';
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      var pos = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude
+      };
+      //infoWindow.setPosition(pos);
+      //infoWindow.setContent('You are here');
+      var icon = {
+        url: '/PickupGame/img/placeholder.png',
+        scaledSize: new google.maps.Size(32, 32),
+      };
+      addGeoMarker(pos, map, icon);
+      // Initialize and Display the markers for all courts in database
+      //Create map
+      userCenter['lat'] = pos['lat'];
+      userCenter['long'] = pos['lng'];
+      initCourtDisplayMarkers(courtDisplayMarkers);
+      map.setCenter(pos);
 
-  var ua = navigator.userAgent.toLowerCase(),
-    isAndroid = ua.indexOf("android") > -1,
-    geoTimeout = '15000';
-        if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(function(position) {
-            var pos = {
-              lat: position.coords.latitude,
-              lng: position.coords.longitude
-            };
-
-            //infoWindow.setPosition(pos);
-            //infoWindow.setContent('You are here');
-
-            var icon = {
-              url: '/PickupGame/img/placeholder.png',
-              scaledSize: new google.maps.Size(32, 32),
-            };
-
-            addGeoMarker(pos, map, icon);
-            // Initialize and Display the markers for all courts in database
-            //Create map
-            userCenter['lat'] = pos['lat'];
-            userCenter['long'] = pos['lng'];
-            initCourtDisplayMarkers(courtDisplayMarkers);
-            map.setCenter(pos);
-
-          }, function() {
-            handleLocationError(true, infoWindow, map.getCenter());
-          });
-        } else {
-          // Browser doesn't support Geolocation
-          handleLocationError(false, infoWindow, map.getCenter());
-        }
-
-console.log("usercenter"+userCenter);
-
+    }, function() {
+      handleLocationError(true, infoWindow, map.getCenter());
+    });
+  } else { // Browser doesn't support Geolocation
+    handleLocationError(false, infoWindow, map.getCenter());
+  }
+  console.log("usercenter" + userCenter);
   //Set map height to fit between header and footer
   var headerHeight = document.getElementById("header").clientHeight;
   var footerHeight = document.getElementById("footer").clientHeight;
@@ -65,7 +54,6 @@ console.log("usercenter"+userCenter);
     addCourtMarker = placeMarker(event.latLng, true, addCourtMarker);
   });
 }
-
 
 function handleLocationError(browserHasGeolocation, infoWindow, pos) {
   infoWindow.setPosition(pos);
@@ -100,7 +88,6 @@ function addCourt(marker) {
     infowindow = new google.maps.InfoWindow({
       content: "<form action=" + url + " method='post'>" + courtNameInput + courtSubmit + "</form>"
     });
-
     infowindow.open(map, marker);
   }
   return;
