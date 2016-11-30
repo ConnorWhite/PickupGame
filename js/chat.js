@@ -15,7 +15,7 @@ function Chat () {
 
 //gets the state of the chat
 function getStateOfChat(){
-	id = get('id');
+	id = get('gameID');
 	if(!instanse){
 		 instanse = true;
 		 $.ajax({
@@ -37,7 +37,7 @@ function getStateOfChat(){
 
 //Updates the chat
 function updateChat(){
-	id = get('id');
+	id = get('gameID');
 	if(!instanse){
 		 instanse = true;
 	     $.ajax({
@@ -70,7 +70,7 @@ function updateChat(){
 //send the message
 function sendChat(message, nickname){       
     updateChat();
-	id = get('id');
+	id = get('gameID');
      $.ajax({
 		   type: "POST",
 		   url: "process.php",

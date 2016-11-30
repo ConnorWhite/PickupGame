@@ -1,7 +1,7 @@
 // get the user name from sessionID instead (works)
 
 
-id = get('id');
+id = get('gameID');
 if(!id){
 	id = 'chat';
 }
