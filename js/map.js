@@ -1,5 +1,3 @@
-
-
 var map;
 // In the following example, markers appear when the user clicks on the map.
 // Each marker is labeled with a single alphabetical character.
@@ -17,43 +15,34 @@ function initMap() {
     zoom: 16
   });
   // find the users location if possible with HTML5 geolocation.
+  var ua = navigator.userAgent.toLowerCase(), isAndroid = ua.indexOf("android") > -1, geoTimeout = '15000';
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      var pos = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude
+      };
+      //infoWindow.setPosition(pos);
+      //infoWindow.setContent('You are here');
+      var icon = {
+        url: '/PickupGame/img/placeholder.png',
+        scaledSize: new google.maps.Size(32, 32),
+      };
+      addGeoMarker(pos, map, icon);
+      // Initialize and Display the markers for all courts in database
+      //Create map
+      userCenter['lat'] = pos['lat'];
+      userCenter['long'] = pos['lng'];
+      initCourtDisplayMarkers(courtDisplayMarkers);
+      map.setCenter(pos);
 
-  var ua = navigator.userAgent.toLowerCase(),
-    isAndroid = ua.indexOf("android") > -1,
-    geoTimeout = '15000';
-        if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(function(position) {
-            var pos = {
-              lat: position.coords.latitude,
-              lng: position.coords.longitude
-            };
-
-            //infoWindow.setPosition(pos);
-            //infoWindow.setContent('You are here');
-
-            var icon = {
-              url: '/PickupGame/img/placeholder.png',
-              scaledSize: new google.maps.Size(32, 32),
-            };
-
-            addGeoMarker(pos, map, icon);
-            // Initialize and Display the markers for all courts in database
-            //Create map
-            userCenter['lat'] = pos['lat'];
-            userCenter['long'] = pos['lng'];
-            initCourtDisplayMarkers(courtDisplayMarkers);
-            map.setCenter(pos);
-
-          }, function() {
-            handleLocationError(true, infoWindow, map.getCenter());
-          });
-        } else {
-          // Browser doesn't support Geolocation
-          handleLocationError(false, infoWindow, map.getCenter());
-        }
-
-console.log("usercenter"+userCenter);
-
+    }, function() {
+      handleLocationError(true, infoWindow, map.getCenter());
+    });
+  } else { // Browser doesn't support Geolocation
+    handleLocationError(false, infoWindow, map.getCenter());
+  }
+  console.log("usercenter" + userCenter);
   //Set map height to fit between header and footer
   var headerHeight = document.getElementById("header").clientHeight;
   var footerHeight = document.getElementById("footer").clientHeight;
@@ -65,7 +54,6 @@ console.log("usercenter"+userCenter);
     addCourtMarker = placeMarker(event.latLng, true, addCourtMarker);
   });
 }
-
 
 function handleLocationError(browserHasGeolocation, infoWindow, pos) {
   infoWindow.setPosition(pos);
@@ -86,33 +74,21 @@ function addGeoMarker(pos,map, icon) {
 // returns true if user decided to add a court
 // returns false otherwise
 function addCourt(marker) {
-  if(courtAlreadyAdded(marker))
-  {
+  if(courtAlreadyAdded(marker)){
     alert("Can't add court here. Court Already Exists!");
     return;
   }
 
-  if(confirm("Are you sure you want to add a new court here?"))
-  { // display new court pin on map
+  if(confirm("Are you sure you want to add a new court here?")){
+    // display new court pin on map
     //var courtName = prompt("Please enter this new court's name", "Court Name");
-    var courtNameIn = '<input id = "CourtName" type="text" name="FirstName" value="Court Name"><br>';
-    var courtSubmit = '<button id = SubmitCourt>Submit</button>';
+    var courtNameInput = "<p>Court Name: <input type='text' name='courtName' value='Court Name'></p>";
+    var courtSubmit = "<input class='submitCourt' type='submit' value='Submit'>";
+    var url = "addcourt.php?lat=" + addCourtMarker.position.lat() + "lon=" + addCourtMarker.position.lng();
     infowindow = new google.maps.InfoWindow({
-      content: "Enter Court Name: " + courtNameIn +
-      courtSubmit
+      content: "<form action=" + url + " method='post'>" + courtNameInput + courtSubmit + "</form>"
     });
-
     infowindow.open(map, marker);
-
-    $("#SubmitCourt")[0].addEventListener("click", function(){
-      var courtData = [];
-      courtData["Name"] = $('#CourtName').val();
-      console.log("infow window add court: " + courtData['Name']);
-      courtData["Latitude"] = addCourtMarker.position.lat();
-      courtData["Longitude"] = addCourtMarker.position.lng();
-      addCourtLevelDialog(true, courtData);
-      infowindow.close();
-      marker.visible = false;});
   }
   return;
 }
@@ -140,36 +116,35 @@ function courtAlreadyAdded(marker) {
 // We add the court if the user presses submit
 // We don't if else
 function addCourtLevelDialog(value, courtData){
-      if(value)
-      {
-        // call php function databaseFacade-> add court data, with the location data and court name
-        // Initialize and Display the markers for all courts in database
-        // Since there is now a new court in the database
-        console.log("new Court Data: ");
-        console.log(courtData);
+  if(value)
+  {
+    // call php function databaseFacade-> add court data, with the location data and court name
+    // Initialize and Display the markers for all courts in database
+    // Since there is now a new court in the database
+    console.log("new Court Data: ");
+    console.log(courtData);
 
-        $.ajax({
-          type: "POST",
-          url: "process.php",
-          data: {
-                dataType: 'json',
-               'function': 'addCourt',
-               'id': 'map',
-               'name': courtData['Name'],
-               'lat' : courtData['Latitude'],
-               'long': courtData['Longitude'],
-
-            },
-            success: function(data){
-                console.log("database add Success");
-                console.log(data);
-                courtDisplayMarkers = [];
-                addCourtMarker.visible = false;
-                initCourtDisplayMarkers(courtDisplayMarkers);
-            }
-        });
+    $.ajax({
+      type: "POST",
+      url: "process.php",
+      data: {
+            dataType: 'json',
+           'function': 'addCourt',
+           'id': 'map',
+           'name': courtData['Name'],
+           'lat' : courtData['Latitude'],
+           'long': courtData['Longitude'],
+      },
+      success: function(data){
+          console.log("database add Success");
+          console.log(data);
+          courtDisplayMarkers = [];
+          addCourtMarker.visible = false;
+          initCourtDisplayMarkers(courtDisplayMarkers);
       }
-    }
+    });
+  }
+}
 
 // Function that stores all courts
 // currently in the database, as markers
@@ -183,7 +158,7 @@ function initCourtDisplayMarkers(arrayOfMarkers)
 {
     // range in which to find the courts
     // in the database
-    var range = [1,1];
+  var range = [1,1];
   $.ajax({
     type: "GET",
     url: "process.php",
@@ -195,21 +170,17 @@ function initCourtDisplayMarkers(arrayOfMarkers)
          'long': userCenter['long'],
          'rangeLat' : range[0],
          'rangeLong': range[1]
-      },
+    },
     dataType: "json",
     success: function(data){
       // Store the court data
       console.log("Courts in Database: ");
       console.log(data);
-
       // Loop through each court,
       // and store all data from court, e.g.
       // name, id, ...
-
-      for(var i = 0; i < data.length; i++)
-      {
+      for(var i = 0; i < data.length; i++){
         var court = data[i];
-
         var marker = placeMarker( new google.maps.LatLng(court["Latitude"],court["Longitude"]),
           false,
           null,
@@ -323,7 +294,7 @@ function addViewCourtMarkerListeners(marker,courtData)
       .concat(" player(s).</p>")
     ));
 
-    courtTitle = "<h1>" + courtData['Name'] + "</h1>"+"<p class=numGames>Games: " + (courtInfo.length-1).toString() + "</p>";
+    courtTitle = "<h2 class=courtTitle>" + courtData['Name'] + "</h2>"+"<p class=numGames>Games: " + (courtInfo.length-1).toString() + "</p>";
 
     var games_titles = "";
     // I added more information than necessary,

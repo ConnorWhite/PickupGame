@@ -5,6 +5,7 @@
 	$gameID = $_GET['gameID'];
 	$game = getGameById($gameID);
 	$players = getPlayers($gameID);
+
 	$title = $game["Name"];
 	include 'header.php';
 	?>
@@ -24,8 +25,8 @@
 						} ?>
 					</p>
 				<?php if (!in_array(getPlayerById($_SESSION['playerID']), getPlayers($game['ID']))) { ?>
-					<form id="join" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-	          <input type="hidden" name="gameID" value="<?php echo $game['ID']; ?>"/>
+					<form id="join" method="post" action="joingame.php?gameID=<?php echo $gameID; ?>">
+	          <input type="hidden" name="gameID" value="gameID" />
 	          <input type="submit" name="joingame" value="Join Game"/>
 					</form>
 	      <?php } else {
@@ -35,8 +36,4 @@
 	</div>
 
 	<?php
-		if(isset($_POST['joingame'])) {
-			joinGame($_SESSION['playerID'], $_POST["gameID"]);
-			header('Location: game.php?gameID='.$_POST["gameID"]);
-		}
 		include 'footer.php';

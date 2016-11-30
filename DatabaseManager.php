@@ -59,7 +59,6 @@
 			$vals = arrayToVar($vals);
 			$sql = $sql . "`" . $cols . "`) VALUES ('" . $vals . "')";
 		}
-		echo($sql);
 
 		mysqli_query($conn, $sql);
 		$pid = mysqli_insert_id($conn);

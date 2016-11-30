@@ -135,19 +135,26 @@ p {
   font-size: 1rem;
 }
 
-input {
-  &[type="submit"] {
-    background-color: $blue;
-    border: none;
-    border-radius: 1px;
-    padding: 8px 15px;
-    color: $white;
-    transition: all 0.2s ease;
+.courtTitle{
+  margin: 0;
+}
 
-    &:hover {
-      background-color: $darkBlue;
-      color: $lightColor;
-    }
+.submitCourt{
+  margin-top: 10px;
+}
+
+button,
+input[type="submit"] {
+  background-color: $blue;
+  border: none;
+  border-radius: 1px;
+  padding: 8px 15px;
+  color: $white;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background-color: $darkBlue;
+    color: $lightColor;
   }
 }
 

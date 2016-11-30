@@ -1,13 +1,12 @@
 <?php
   include 'DatabaseFacade.php';
   session_start();
-  function display() {
-    addGame($_POST["name"], $_POST["datetime"], $_GET["courtID"]);
-    echo "Added Game <br>";
-  }
   if(isset($_POST['submit'])) {
     display();
     header('Location: court.php?courtID='.$_GET["courtID"]);
+  }
+  function display() {
+    addGame($_POST["name"], $_POST["datetime"], $_GET["courtID"]);
   }
 
   $title = 'Add Game';
