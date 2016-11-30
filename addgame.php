@@ -7,7 +7,6 @@
   }
   function display() {
     addGame($_POST["name"], $_POST["datetime"], $_GET["courtID"]);
-    echo "Added Game <br>";
   }
 
   $title = 'Add Game';
