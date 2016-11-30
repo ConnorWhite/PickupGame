@@ -5,19 +5,16 @@
   include 'header.php';
   include 'DatabaseFacade.php';
 
-
-
   #for the _SESSION_ID
   if($_SERVER['REQUEST_METHOD'] == 'POST'){
       $function = $_POST['function'];
       switch($function) {
-
-  		case('setCourtSession'):
-      $CourtID = $_POST['CourtID'];
-      $_SESSION['CourtID']  = $CourtID;
-      echo $_SESSION['CourtID'];
-      break;
-    }
+  		    case('setCourtSession'):
+            $CourtID = $_POST['CourtID'];
+            $_SESSION['CourtID']  = $CourtID;
+            echo $_SESSION['CourtID'];
+          break;
+      }
   }
 
 ?>
@@ -26,26 +23,11 @@
 <script src="jquery_form/external/jquery/jquery.js"></script>
 <script src="jquery_form/jquery-ui.js"></script>
 
-
-<?php /*
-<div id="addCourtDialog" title="New Court Form">
-    <p>Input court name</p>
-    <input id="addCourtName" class="myInput" type="text" />
-</div>
-
-<div id="courtInfoDialog" title="DynamicCourtTitle">
-  <div id="dynamicCourtInfoTextCourtInfo"></div>
-  <div id="dynamicCourtInfoTextCourtGameInfo"></div>
-</div> */ ?>
-
-
 <div id="map">
   <!-- Display all courts -->
   <!-- Create plus button for adding a new court -->
   <!-- All done in map.js -->
 </div>
-
-
 
 <?php
   include('footer.php');

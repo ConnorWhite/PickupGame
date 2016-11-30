@@ -86,33 +86,22 @@ function addGeoMarker(pos,map, icon) {
 // returns true if user decided to add a court
 // returns false otherwise
 function addCourt(marker) {
-  if(courtAlreadyAdded(marker))
-  {
+  if(courtAlreadyAdded(marker)){
     alert("Can't add court here. Court Already Exists!");
     return;
   }
 
-  if(confirm("Are you sure you want to add a new court here?"))
-  { // display new court pin on map
+  if(confirm("Are you sure you want to add a new court here?")){
+    // display new court pin on map
     //var courtName = prompt("Please enter this new court's name", "Court Name");
-    var courtNameIn = '<input id = "CourtName" type="text" name="FirstName" value="Court Name"><br>';
-    var courtSubmit = '<button id = SubmitCourt>Submit</button>';
+    var courtNameInput = "<p>Court Name: <input type='text' name='courtName' value='Court Name'></p>";
+    var courtSubmit = "<input class='submitCourt' type='submit' value='Submit'>";
+    var url = "addcourt.php?lat=" + addCourtMarker.position.lat() + "lon=" + addCourtMarker.position.lng();
     infowindow = new google.maps.InfoWindow({
-      content: "Enter Court Name: " + courtNameIn +
-      courtSubmit
+      content: "<form action=" + url + " method='post'>" + courtNameInput + courtSubmit + "</form>"
     });
 
     infowindow.open(map, marker);
-
-    $("#SubmitCourt")[0].addEventListener("click", function(){
-      var courtData = [];
-      courtData["Name"] = $('#CourtName').val();
-      console.log("infow window add court: " + courtData['Name']);
-      courtData["Latitude"] = addCourtMarker.position.lat();
-      courtData["Longitude"] = addCourtMarker.position.lng();
-      addCourtLevelDialog(true, courtData);
-      infowindow.close();
-      marker.visible = false;});
   }
   return;
 }
@@ -323,7 +312,7 @@ function addViewCourtMarkerListeners(marker,courtData)
       .concat(" player(s).</p>")
     ));
 
-    courtTitle = "<h1>" + courtData['Name'] + "</h1>"+"<p class=numGames>Games: " + (courtInfo.length-1).toString() + "</p>";
+    courtTitle = "<h2 class=courtTitle>" + courtData['Name'] + "</h2>"+"<p class=numGames>Games: " + (courtInfo.length-1).toString() + "</p>";
 
     var games_titles = "";
     // I added more information than necessary,

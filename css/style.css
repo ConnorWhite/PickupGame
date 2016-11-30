@@ -93,6 +93,13 @@ p {
   margin-top: 15px;
   font-size: 1rem; }
 
+.courtTitle {
+  margin: 0; }
+
+.submitCourt {
+  margin-top: 10px; }
+
+button,
 input[type="submit"] {
   background-color: #08c;
   border: none;
@@ -100,6 +107,7 @@ input[type="submit"] {
   padding: 8px 15px;
   color: #fff;
   transition: all 0.2s ease; }
+  button:hover,
   input[type="submit"]:hover {
     background-color: #004f76;
     color: #ccc; }
