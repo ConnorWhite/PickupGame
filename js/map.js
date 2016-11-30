@@ -116,36 +116,35 @@ function courtAlreadyAdded(marker) {
 // We add the court if the user presses submit
 // We don't if else
 function addCourtLevelDialog(value, courtData){
-      if(value)
-      {
-        // call php function databaseFacade-> add court data, with the location data and court name
-        // Initialize and Display the markers for all courts in database
-        // Since there is now a new court in the database
-        console.log("new Court Data: ");
-        console.log(courtData);
+  if(value)
+  {
+    // call php function databaseFacade-> add court data, with the location data and court name
+    // Initialize and Display the markers for all courts in database
+    // Since there is now a new court in the database
+    console.log("new Court Data: ");
+    console.log(courtData);
 
-        $.ajax({
-          type: "POST",
-          url: "process.php",
-          data: {
-                dataType: 'json',
-               'function': 'addCourt',
-               'id': 'map',
-               'name': courtData['Name'],
-               'lat' : courtData['Latitude'],
-               'long': courtData['Longitude'],
-
-            },
-            success: function(data){
-                console.log("database add Success");
-                console.log(data);
-                courtDisplayMarkers = [];
-                addCourtMarker.visible = false;
-                initCourtDisplayMarkers(courtDisplayMarkers);
-            }
-        });
+    $.ajax({
+      type: "POST",
+      url: "process.php",
+      data: {
+            dataType: 'json',
+           'function': 'addCourt',
+           'id': 'map',
+           'name': courtData['Name'],
+           'lat' : courtData['Latitude'],
+           'long': courtData['Longitude'],
+      },
+      success: function(data){
+          console.log("database add Success");
+          console.log(data);
+          courtDisplayMarkers = [];
+          addCourtMarker.visible = false;
+          initCourtDisplayMarkers(courtDisplayMarkers);
       }
-    }
+    });
+  }
+}
 
 // Function that stores all courts
 // currently in the database, as markers
@@ -159,7 +158,7 @@ function initCourtDisplayMarkers(arrayOfMarkers)
 {
     // range in which to find the courts
     // in the database
-    var range = [1,1];
+  var range = [1,1];
   $.ajax({
     type: "GET",
     url: "process.php",
@@ -171,21 +170,17 @@ function initCourtDisplayMarkers(arrayOfMarkers)
          'long': userCenter['long'],
          'rangeLat' : range[0],
          'rangeLong': range[1]
-      },
+    },
     dataType: "json",
     success: function(data){
       // Store the court data
       console.log("Courts in Database: ");
       console.log(data);
-
       // Loop through each court,
       // and store all data from court, e.g.
       // name, id, ...
-
-      for(var i = 0; i < data.length; i++)
-      {
+      for(var i = 0; i < data.length; i++){
         var court = data[i];
-
         var marker = placeMarker( new google.maps.LatLng(court["Latitude"],court["Longitude"]),
           false,
           null,
