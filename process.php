@@ -3,26 +3,17 @@ session_start();
 include 'DatabaseFacade.php';
 
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
-    $function = $_POST['function'];
-	$id = $_POST['id'];
-    $log = array();
+  $function = $_POST['function'];
+  $id = $_POST['id'];
+  $log = array();
 
-    switch($function) {
-
+  switch($function) {
 		case('addCourt'):
-
-    $name = $_POST['name'];
-    $userlat = $_POST['lat'];
-    $userlong = $_POST['long'];
-    $courtID = addCourt($name,$userlat,$userlong);
-
-
-
-    echo $courtID;
-    break;
-
-
-
+      $name = $_POST['name'];
+      $userlat = $_POST['lat'];
+      $userlong = $_POST['long'];
+      $courtID = addCourt($name,$userlat,$userlong);
+      break;
 
 		case('getChatState'):
 			$chatlog = "chat/logs/$id.txt";
@@ -38,7 +29,6 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 			if(file_exists("$chatlog")){
 				$lines = file("$chatlog");
 			}
-
 			$count =  count($lines);
 			if($state == $count){
 		 		$log['state'] = $state;
@@ -80,16 +70,14 @@ if($_SERVER['REQUEST_METHOD'] == 'GET'){
 
       switch($function) {
         case('getCourt'):
-        $chatlog = "chat/logs/$id.txt";
-
+          $chatlog = "chat/logs/$id.txt";
           $userlat = $_GET['lat'];
           $userlong = $_GET['long'];
           $range1 = $_GET['rangeLat'];
           $range2 = $_GET['rangeLong'];
           $courts = getCourtsInRange( $userlat,$userlong,array($range2,$range1));
           $courts_array = array();
-          foreach($courts as $court)
-          {
+          foreach($courts as $court){
             array_push($courts_array, $court);
           }
           #fwrite(fopen("$chatlog", 'a'), $userlat);
@@ -102,12 +90,9 @@ if($_SERVER['REQUEST_METHOD'] == 'GET'){
           $courtID = $_GET['courtID'];
           $games = getGamesByCourtID($courtID);
           $games_array = array();
-          foreach($games as $game)
-          {
-
+          foreach($games as $game){
             array_push($games_array, $game);
           }
-
           header('Content-type: application/json');
           echo json_encode($games_array);
           break;
@@ -117,9 +102,7 @@ if($_SERVER['REQUEST_METHOD'] == 'GET'){
           $players = getPlayers($gameID);
 
           $players_array = array();
-          foreach($players as $player)
-          {
-
+          foreach($players as $player){
             array_push($players_array, $player);
           }
           header('Content-type: application/json');
