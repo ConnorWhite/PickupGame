@@ -6,8 +6,6 @@
     header('Location: court.php?courtID='.$_GET["courtID"]);
   }
   function display() {
-    echo $_POST["datetime"];
-    echo $_POST["datetime-local"];
     addGame($_POST["name"], $_POST["datetime"], $_GET["courtID"]);
   }
 
