@@ -66,9 +66,7 @@
         <?php } ?>
       </div>
     </div>
-	<footer><meta name="google-signin-scope" content="profile email">
+	<meta name="google-signin-scope" content="profile email">
 	<meta name="google-signin-client_id" content="1027363779831-uegm0phf52h2g6ijaqds1t1h788h7rpf.apps.googleusercontent.com">
 	<script src="https://apis.google.com/js/platform.js" async defer></script>
-	<script src="js/login.js"></script></footer>
-
-
+	<script src="js/login.js"></script>
