@@ -7,8 +7,8 @@ $white: #fff;
 $lightColor: #ccc;
 $medColor: #777;
 $darkColor: #333;
-$blue: #08c;
-$darkBlue: #004f76;
+$blue: #4285f4;
+$darkBlue: #0758E3;
 
 $gutter320: 5%;
 $gutter720: 10%;
@@ -207,7 +207,7 @@ input[type="submit"] {
   }
   form {
     margin: 0 auto;
-    padding: 10px 20px;
+    padding: 10px 20px 65px 20px;
     width: 230px;
     background-color: rgba(48, 48, 48, 0.7);
 
@@ -272,6 +272,18 @@ input[type="submit"] {
 .numGames {
   padding-top: 5px;
   padding-bottom: 7px;
+}
+
+.g-signin2{
+  margin-top: 10px;
+  margin-bottom: 10px;
+  float: right;
+}
+
+#login input[type="submit"] {
+    font-size: 0.9rem;
+    float: left;
+    padding: 8px 23px;
 }
 
 #content {

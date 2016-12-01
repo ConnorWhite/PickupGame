@@ -70,12 +70,12 @@ h2 {
   margin: 0.75rem 0; }
 
 a {
-  color: #08c;
+  color: #4285f4;
   text-decoration: none;
   margin: 0;
   transition: all 0.2s ease; }
   a:hover {
-    color: #004f76; }
+    color: #0758E3; }
 
 p {
   margin: 0; }
@@ -101,7 +101,7 @@ p {
 
 button,
 input[type="submit"] {
-  background-color: #08c;
+  background-color: #4285f4;
   border: none;
   border-radius: 1px;
   padding: 8px 15px;
@@ -109,7 +109,7 @@ input[type="submit"] {
   transition: all 0.2s ease; }
   button:hover,
   input[type="submit"]:hover {
-    background-color: #004f76;
+    background-color: #0758E3;
     color: #ccc; }
 
 .wrap {
@@ -156,7 +156,7 @@ input[type="submit"] {
         padding: 8rem 0 5rem; } }
   #login form {
     margin: 0 auto;
-    padding: 10px 20px;
+    padding: 10px 20px 65px 20px;
     width: 230px;
     background-color: rgba(48, 48, 48, 0.7); }
     #login form input {
@@ -186,12 +186,12 @@ input[type="submit"] {
   .game:hover {
     color: #ccc; }
   .game div {
-    background: #08c;
+    background: #4285f4;
     margin: 15px 0px 0px 0px;
     border-radius: 2px;
     transition: all 0.2s ease; }
     .game div:hover {
-      background: #004f76; }
+      background: #0758E3; }
     .game div h2 {
       margin: 0px;
       padding: 10px 15px 5px; }
@@ -204,6 +204,16 @@ input[type="submit"] {
 .numGames {
   padding-top: 5px;
   padding-bottom: 7px; }
+
+.g-signin2 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  float: right; }
+
+#login input[type="submit"] {
+  font-size: 0.9rem;
+  float: left;
+  padding: 8px 23px; }
 
 #content {
   margin-bottom: 72px; }
