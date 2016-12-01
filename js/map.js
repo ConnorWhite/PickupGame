@@ -104,10 +104,14 @@ function courtAlreadyAdded(marker) {
     var addingLat = Math.abs(marker.position.lat());
     var addingLong = Math.abs(marker.position.lng());
 
-    if(Math.abs(addedLong-addingLong) <= 0.00015)
+    if(Math.abs(addedLong-addingLong) <= 0.00015 &&
+      Math.abs(addedLat-addingLat) <= 0.00015)
       return true;
+
+    /*
     if(Math.abs(addedLat-addingLat) <= 0.00015)
       return true;
+    */
   }
   return false;
 }
