@@ -6,6 +6,8 @@
     header('Location: court.php?courtID='.$_GET["courtID"]);
   }
   function display() {
+    echo $_POST["datetime"];
+    echo $_POST["datetime-local"];
     addGame($_POST["name"], $_POST["datetime"], $_GET["courtID"]);
   }
 
@@ -17,7 +19,7 @@
     <form id="addGameForm" method="post" action="">
       <p>Game Name</p>
       <input type="text" name="name"/><br>
-      <p>Date</p>
+      <p>Date (YYYY-MM-DD HH:MM:SS)</p>
       <input type="datetime-local" name="datetime"/><br>
       <input type="submit" name="submit" value="Submit"/>
     </form>
