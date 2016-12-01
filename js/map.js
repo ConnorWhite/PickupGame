@@ -84,7 +84,7 @@ function addCourt(marker) {
     //var courtName = prompt("Please enter this new court's name", "Court Name");
     var courtNameInput = "<p>Court Name: <input type='text' name='courtName' value='Court Name'></p>";
     var courtSubmit = "<input class='submitCourt' type='submit' value='Submit'>";
-    var url = "addcourt.php?lat=" + addCourtMarker.position.lat() + "lon=" + addCourtMarker.position.lng();
+    var url = "addcourt.php?lat=" + addCourtMarker.position.lat() + "&lon=" + addCourtMarker.position.lng();
     infowindow = new google.maps.InfoWindow({
       content: "<form action=" + url + " method='post'>" + courtNameInput + courtSubmit + "</form>"
     });
@@ -104,10 +104,14 @@ function courtAlreadyAdded(marker) {
     var addingLat = Math.abs(marker.position.lat());
     var addingLong = Math.abs(marker.position.lng());
 
-    if(Math.abs(addedLong-addingLong) <= 0.00015)
+    if(Math.abs(addedLong-addingLong) <= 0.00015 &&
+      Math.abs(addedLat-addingLat) <= 0.00015)
       return true;
+
+    /*
     if(Math.abs(addedLat-addingLat) <= 0.00015)
       return true;
+    */
   }
   return false;
 }
@@ -156,8 +160,8 @@ function addCourtLevelDialog(value, courtData){
 // called whenever a new court is added
 function initCourtDisplayMarkers(arrayOfMarkers)
 {
-    // range in which to find the courts
-    // in the database
+  // range in which to find the courts
+  // in the database
   var range = [1,1];
   $.ajax({
     type: "GET",
@@ -244,12 +248,8 @@ function placeMarker(location, courtAddFlag, marker,courtData) {
     if(marker == null)
     {
       var icon = {
-        //url: '/PickupGame/img/pin.svg',
-        //scaledSize: new google.maps.Size(20,20),
         url: '/PickupGame/img/pin.png',
         scaledSize: new google.maps.Size(32, 32),
-        //url: 'https://cdn0.iconfinder.com/data/icons/elite-sports/512/basketball-court-512.png', // url
-        //scaledSize: new google.maps.Size(50, 34), // scaled size
       };
       var marker = new google.maps.Marker({
         position: location,
